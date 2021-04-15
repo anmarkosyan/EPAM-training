@@ -30,6 +30,7 @@
 // let str1 = 'Hello 1';
 // let str2 = "Hello 2";
 // let str3 = `Hello 3`; => template string
+// let str4 = new String("A String object");
 
 //3️⃣ Boolean
 // let bool1 = true;
@@ -106,85 +107,68 @@
 // console.log('12' * '2'); //24 type number
 
 //7️⃣ comparison operators
-const x = 5;
-const y = 7;
-console.log(x < y);
-console.log(x > y);
-console.log(x >= y);
-console.log(x <= y);
-
-
-
-// // comparative operator =>  x > y;
-// const x1 = 5;
-// const y1 = 6;
-// console.log(x1 < y1);//true
-// console.log(x1 >= y1);//false
-
-// //typeof operator
-// console.log(typeof x1);//'number'
-// console.log(typeof typeof x1);// 'string'
-// console.log(String('hi'));//'hi'
-// console.log(Number(123));//123
-// console.log(Boolean(true));
-// console.log(Boolean(' '))//true
-
-// //math operator
-// let x = '4';
-// let y = '2';
-// console.log(typeof (x - y));//2
-// console.log(Number('2er'));//NaN
-// console.log(x + y);//concat
-//
-
-// //equal operator
-// let x = 4;
-// let y = 2;
-// console.log(x == y);
-// console.log(x === y);
-// console.log( 'a' > 'b'); // true
-// console.log('aab' > 'aaa');//true
-// console.log('A' > 'a');//false
-//
-// //functions
-// //alert('HI there!');//
-// prompt('how are you?');
-// confirm('HI there');
-
-console.log('-----------');
-
-// console.log("string" <- typeof "number" <- typeof x)
-
-// const k = String(`hi`)
-// const z = Number(6)
-// const l = Boolean(" ")
-// console.log(k)
-// console.log(z)
-// console.log(l)
-
-// let x = "5";
-// let y = 10;
-// console.log(Number("hello"))
-// const o = y - x;
-// console.log(typeof o)
-// console.log(y / x);
-// console.log(y * x);
-// console.log(y ** x);
-// console.log(y)
-
-// let x = "10";
-// let y = 10;
-// console.log(x == y);
-// console.log(x === y);
-
-// let x = "a";
-// let y = "A";
-// "B" -> 101
-// "A" -> 100
-// "b" -> 1
-// "a" -> 0
+// const x = 5;
+// const y = 7;
+// console.log(x < y);
 // console.log(x > y);
-// console.log(1+"")
+// console.log(x >= y);
+// console.log(x <= y);
+// console.log('A' > 'a'); //false
+// console.log('a' > 'b'); // false
+// console.log('aab' > 'aaa'); //true
+
+//8️⃣ equality comparisons
+//📍abstract equality or double equal == // value should be equal
+//📍strict equality or triple equal ===  // value and type should be equal
+// const num = 0;
+// const obj = new String('hi there how are you'); //{'0'}
+// const str = '0';
+//
+// console.log(num == str);//true
+// console.log(num === num); // true
+// console.log(obj === obj); // true
+// console.log(str === str); // true
+//
+// console.log(num === obj); // false
+// console.log(num === str); // false
+// console.log(obj === str); // false
+//
+// console.log(null === undefined); // false
+// console.log(obj === null); // false
+// console.log(obj === undefined); // false
+// console.log(NaN === NaN);//false
+
+//9️⃣ Type conversion for primitives
+let value = true;
+console.log(typeof value); // 'boolean' => typeof is always return type in string format
+console.log(typeof typeof value); // 'string'
+
+//📍String conversion
+value = 1234;
+console.log(String(value)); // '1234' -> typeof string
+console.log(123 + '');//'123'
+
+//📍Number conversion
+console.log(Number('  123   ')); // 123 typeof number
+console.log(Number('hello')); //NaN
+console.log(Number(true));//1
+console.log(Number(false));//0
+console.log(+'12.23'); //12.23
+console.log(+'12.3abc'); // NaN
+
+//using parsing GLOBAL functions
+console.log(Number.parseInt('12.23abc', 10)); //12 => will return an integer
+console.log(Number.parseInt('e12.3abc', 10)); //NaN => string should start with number
+
+console.log(Number.parseFloat('    12.3abc    ')); // 12.3 => ignore whitespaces
+console.log(Number.parseFloat('    12er       ')); //12  => ignore whitespaces
+
+//📍Boolean conversion
+console.log(Boolean(1));//true
+console.log(Boolean(0));//false
+console.log(!!' ');//true
+console.log(!!'');//false
+
 
 //========================= 👩🏻‍💻 coding challenge ==========================
 //1️⃣ task:
