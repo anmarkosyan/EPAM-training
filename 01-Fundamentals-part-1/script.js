@@ -1,6 +1,6 @@
 'use strict';
 
-//===================== 🔴 Variables and types ===================
+//===================== 🔴 Variables and Data types ===================
 //📍var, let and cost
 // var x = 1;
 // var x = 2;
@@ -47,26 +47,80 @@
 // console.log(age); //undefined
 
 // 6️⃣ BigInt => if integer is larger then this number it means it NOT SAFE, cannot represented accurately
-// let bigI = 2 ** 53 - 1;
+// const bigI = 2 ** 53 - 1;
 // console.log(bigI); //9007199254740991
 //console.log(Number.MAX_SAFE_INTEGER);//9007199254740991
 
 //7️⃣ Symbol => Value that is uniq and cannot be changed
-// let sym2 = Symbol('foo');
-// let sym3 = Symbol('foo');
+// const sym2 = Symbol('foo');
+// const sym3 = Symbol('foo');
 // console.log(sym2 === sym3);//false => It creates a new Symbol each time:
 
-//statement vs expression
+//========================= 🔴 Operators ========================
+//each side of operator called OPERAND
+//1️⃣ unary operator => with one operand
+// let i = 1;
+// i++;
+// console.log(i); //2
+// console.log(++i); //3
+// console.log(-i); //-3
+// i = -1;
+// console.log(+i); // -1❗️no effect
+// i = '4';
+// console.log(+i); // convert string to number
+
+//2️⃣ binary operator => with two operands
+// const a = 1;
+// const b = 2;
+// console.log(a + b); //3
+// console.log(1 + 4); //5
+
+//3️⃣ ternary operator => with 3 operands
+// const int = 123.56;
+// console.log(`${int % 1 === 0 ? 'integer number' : 'decimal number'}`);
+
+//4️⃣ math operators
+// console.log(1 + 2);
+// console.log(4 - 2);
+// console.log(4 * 2);
+// console.log(4 / 2);
+
+//5️⃣ reminder operator
+// const isEven = n => n % 2 === 0;
+// const isOdd = n => n % 2 !== 0;
+// const isInteger = n => n % 1 === 0;
+// console.log(isEven(23)); //false
+// console.log(isEven(52)); //true
+// console.log(isOdd(23)); //true
+// console.log(isOdd(154)); //false
+// console.log(isInteger(12.3));//false
+// console.log(isInteger(123));//true
+
+//6️⃣ concatenation operator => only work with + sign
+// console.log('12' + 5); //'125' => type string -> if one of the operands is string result will always be a string
+// console.log('hi' + ' ' + 'there'); // 'hi there'
+// console.log(12 + 5); //17 typeof number
 //
-// // operator => operand
-// // 1+1  => binary => have 2 operands
-// // i++ => unary => have 1 operand
-// // ternary operator => 3 operand
+// console.log('12' - 5); //7 typeof number => will convert string operand to number
+// console.log('12' / '4'); //3 type number
+// console.log('12' * '2'); //24 type number
+
+//7️⃣ comparison operators
+const x = 5;
+const y = 7;
+console.log(x < y);
+console.log(x > y);
+console.log(x >= y);
+console.log(x <= y);
+
+
+
 // // comparative operator =>  x > y;
 // const x1 = 5;
 // const y1 = 6;
 // console.log(x1 < y1);//true
 // console.log(x1 >= y1);//false
+
 // //typeof operator
 // console.log(typeof x1);//'number'
 // console.log(typeof typeof x1);// 'string'
@@ -74,7 +128,7 @@
 // console.log(Number(123));//123
 // console.log(Boolean(true));
 // console.log(Boolean(' '))//true
-//
+
 // //math operator
 // let x = '4';
 // let y = '2';
@@ -82,9 +136,7 @@
 // console.log(Number('2er'));//NaN
 // console.log(x + y);//concat
 //
-// //reminder operator
-// console.log(10 % 5);
-//
+
 // //equal operator
 // let x = 4;
 // let y = 2;
@@ -98,6 +150,41 @@
 // //alert('HI there!');//
 // prompt('how are you?');
 // confirm('HI there');
+
+console.log('-----------');
+
+// console.log("string" <- typeof "number" <- typeof x)
+
+// const k = String(`hi`)
+// const z = Number(6)
+// const l = Boolean(" ")
+// console.log(k)
+// console.log(z)
+// console.log(l)
+
+// let x = "5";
+// let y = 10;
+// console.log(Number("hello"))
+// const o = y - x;
+// console.log(typeof o)
+// console.log(y / x);
+// console.log(y * x);
+// console.log(y ** x);
+// console.log(y)
+
+// let x = "10";
+// let y = 10;
+// console.log(x == y);
+// console.log(x === y);
+
+// let x = "a";
+// let y = "A";
+// "B" -> 101
+// "A" -> 100
+// "b" -> 1
+// "a" -> 0
+// console.log(x > y);
+// console.log(1+"")
 
 //========================= 👩🏻‍💻 coding challenge ==========================
 //1️⃣ task:
