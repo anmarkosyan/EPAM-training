@@ -1,46 +1,68 @@
-"use strict";
+'use strict';
 
 //===================== 🔴 Variables and types ===================
+//📍var, let and cost
 // var x = 1;
 // var x = 2;
+// console.log(x); //2  => ✅ in this case it's allow us to declare two VAR with the same name --> without syntaxError:
 
 // let y = 2;
-// let y = 3;// can't be 2 variables
-//
+// let y = 3;
+// console.log(y);// ❗️SyntaxError: Identifier 'y' has already been declared => can't declared  2 variables with the same name
+
 // const b = 2;
+// //b = 4; // ❗️TypeError: Assignment to constant variable.
 //
-// //numbers
-// let num1 = 12;
-// let num2 = 12.4;
-// let num3 = NaN;
+// const refType = [1, 2, 3];
+// refType[0] = 4;// ✅ for all reference types --> array, object literal, function..
+// console.log(b, refType);//2 immutable only for primitive types, can mutate for reference types
+
+// 📍DATA TYPES
+// 1️⃣ Numbers
+// let num1 = 123;
+// let num2 = 1.4;
+// let num3 = -4;
 // let num4 = Infinity;
-// let num5 = -Infinity;
-//
-// //string
-// let str1 = 'hi';
-// let str2 = "hi";
-// let str3 = `hi`;
-//
-// //boolean
-// let bo1 = true;
-// let bo2 = false;
-//
-// //null
-// let nu = null;// for check diff between null and undefined;
-//
-// //undefined
-// let und = undefined;//no
-//
-// //bigInt
-// let big = 2e4;
+// let num5 = NaN;
+// let num6 = -Infinity;
+
+//2️⃣ Strings
+// let str1 = 'Hello 1';
+// let str2 = "Hello 2";
+// let str3 = `Hello 3`; => template string
+
+//3️⃣ Boolean
+// let bool1 = true;
+// let bool2 = false;
+
+//4️⃣ Null => typeof === object;
+// let nu = null;
+// let name = null;
+// name = 12;
+// console.log(name);
+
+// 5️⃣ Undefined => Value is not defined yet
+// let und = undefined;
+// let age;
+// console.log(age); //undefined
+
+// 6️⃣ BigInt => if integer is larger then this number it means it NOT SAFE, cannot represented accurately
+// let bigI = 2 ** 53 - 1;
+// console.log(bigI); //9007199254740991
+//console.log(Number.MAX_SAFE_INTEGER);//9007199254740991
+
+//7️⃣ Symbol => Value that is uniq and cannot be changed
+// let sym2 = Symbol('foo');
+// let sym3 = Symbol('foo');
+// console.log(sym2 === sym3);//false => It creates a new Symbol each time:
 
 //statement vs expression
-
-//operator => operand
-//1+1  => binary => have 2 operands
-//i++ => unary => have 1 operand
-//ternary operator => 3 operand
-//comparative operator =>  x > y;
+//
+// // operator => operand
+// // 1+1  => binary => have 2 operands
+// // i++ => unary => have 1 operand
+// // ternary operator => 3 operand
+// // comparative operator =>  x > y;
 // const x1 = 5;
 // const y1 = 6;
 // console.log(x1 < y1);//true
@@ -52,15 +74,15 @@
 // console.log(Number(123));//123
 // console.log(Boolean(true));
 // console.log(Boolean(' '))//true
-
-//math operator
+//
+// //math operator
 // let x = '4';
 // let y = '2';
 // console.log(typeof (x - y));//2
 // console.log(Number('2er'));//NaN
 // console.log(x + y);//concat
-
-//modules operator
+//
+// //reminder operator
 // console.log(10 % 5);
 //
 // //equal operator
