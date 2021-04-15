@@ -1,4 +1,4 @@
-# EPAM training 💥
+# EPAM JavaScript training 💥
 
 ---
 ## Table of contents
