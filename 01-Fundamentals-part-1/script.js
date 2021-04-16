@@ -146,13 +146,13 @@ console.log(typeof typeof value); // 'string'
 //📍String conversion
 value = 1234;
 console.log(String(value)); // '1234' -> typeof string
-console.log(123 + '');//'123'
+console.log(123 + ''); //'123'
 
 //📍Number conversion
 console.log(Number('  123   ')); // 123 typeof number
 console.log(Number('hello')); //NaN
-console.log(Number(true));//1
-console.log(Number(false));//0
+console.log(Number(true)); //1
+console.log(Number(false)); //0
 console.log(+'12.23'); //12.23
 console.log(+'12.3abc'); // NaN
 
@@ -164,25 +164,29 @@ console.log(Number.parseFloat('    12.3abc    ')); // 12.3 => ignore whitespaces
 console.log(Number.parseFloat('    12er       ')); //12  => ignore whitespaces
 
 //📍Boolean conversion
-console.log(Boolean(1));//true
-console.log(Boolean(0));//false
-console.log(!!' ');//true
-console.log(!!'');//false
-
+console.log(Boolean(1)); //true
+console.log(Boolean(0)); //false
+console.log(!!' '); //true
+console.log(!!''); //false
 
 //========================= 👩🏻‍💻 coding challenge ==========================
 //1️⃣ task:
-/*
-alert('This is math calc');
-const firstVal = +prompt('Type  number');
-const secondOp = prompt('Type operator');
-const thirdVal = +prompt('Type second number');
+alert('This is math calculation!');
+const firstNum = +prompt('Type  number');
+const mathOp = prompt('Type operator');
+const secondNum = +prompt('Type second number');
+//1 way
+// if (mathOp === '+') alert(`The result is ${firstNum + secondNum}`);
+// else if (mathOp === '-') alert(`The result is ${firstNum - secondNum}`);
+// else if (mathOp === '*') alert(`The result is ${firstNum * secondNum}`);
+// else alert(`The result is ${firstNum / secondNum}`);
 
-if(secondOp === '+') alert(firstVal + thirdVal);
-else if(secondOp === '-') alert(firstVal - thirdVal);
-else if(secondOp=== '*') alert(firstVal * thirdVal);
-else if(secondOp === '/') alert(firstVal / thirdVal);
-*/
+//2 way
+alert(
+  `The result is ${
+    mathOp === '+' ? firstNum + secondNum : mathOp === '-' ? firstNum - secondNum : mathOp === '*' ? firstNum * secondNum : firstNum / secondNum
+  }`
+);
 
 //2️⃣ task:
 /*
