@@ -83,11 +83,14 @@ Print in the end User is ${age}' and concat ageDescription or default value  'mo
 Use ?? Nullish coalescing operator.
  */
 
-const age = +prompt('Please enter your age!', '');
-let ageDescription;
+// const age = prompt('Please enter your age!', '');
+// let ageDescription;
+//
+// if (+age >= 1) {
+//   ageDescription = 'years';
+// }
 
-if (+age >= 1) {
-  ageDescription = 'years';
-}
+//alert(ageDescription ? `User is ${age} ${ageDescription}` : `User is ${Math.round(age * 12)} ${ageDescription ?? 'months'}`);
 
-alert(ageDescription ? `User is ${age} ${ageDescription}` : `User is ${Math.round(age * 12)} ${ageDescription ?? 'months'}`);
+//❗️all rounding integers Math methods have type coercion, string auto convert to number
+//in this case Math.round(age) // typeof number
