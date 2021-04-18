@@ -44,25 +44,35 @@ using prompt you need to get value and existing of type to alert the type and va
  if it is string, you should alert 'the type is string and value: ${value}'
 */
 
-const val = prompt('Please, enter random value!', '');
-const type = typeof +val === 'number' && +val === +val ? 'number' : 'string';
+//const val = prompt('Please, enter random value!', '');
+
 //1 way
-// if (type === 'number' && +val > 30) {
+// if (+val > 30) {
+//   alert(`The type is number and more than 30.`);
+// } else if (+val < 30) {
+//   alert(`The type is number and less than 30.`);
+// } else {
+//   alert(`The type is string and value: ${val}`);
+// }
+//2 way
+// const type = typeof +val === 'number' && +val === +val ? 'number' : 'string';
+//
+// if ( +val > 30) {
 //   alert(`The type is ${type} and more than 30.`);
-// } else if (type === 'number' && +val < 30) {
+// } else if (+val < 30) {
 //   alert(`The type is ${type} and less than 30`);
 // } else {
 //   alert(`The type is ${type} and value: ${val}`);
-// }
-//2 way
-const msg =
-  type === 'number' && +val > 30
-    ? `The type is ${type} and more than 30.`
-    : type === 'number' && +val < 30
-    ? `The type is ${type} and less than 30`
-    : `The type is ${type} and value: ${val}`;
+//  }
+//or
+// const msg =
+//    +val > 30
+//     ? `The type is ${type} and more than 30.`
+//     :  +val < 30
+//     ? `The type is ${type} and less than 30`
+//     : `The type is ${type} and value: ${val}`;
 
-alert(msg);
+// alert(msg);
 
 //2️⃣:
 /*
