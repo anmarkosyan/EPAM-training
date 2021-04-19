@@ -54,25 +54,15 @@ if (+promptVal > 30) {
 } else {
   alert(`The type is ${type} and value: ${promptVal}`);
 }
-//2 way
-// const type = typeof val === 'number' && +val === +val ? 'number' : 'string';
-//
-// if ( +val > 30) {
-//   alert(`The type is ${type} and more than 30.`);
-// } else if (+val < 30) {
-//   alert(`The type is ${type} and less than 30`);
-// } else {
-//   alert(`The type is ${type} and value: ${val}`);
-//  }
 //or
-// const msg =
-//    +val > 30
-//     ? `The type is ${type} and more than 30.`
-//     :  +val < 30
-//     ? `The type is ${type} and less than 30`
-//     : `The type is ${type} and value: ${val}`;
+const msg =
+   +promptVal > 30
+    ? `The type is ${type} and more than 30.`
+    :  +promptVal < 30
+    ? `The type is ${type} and less than 30`
+    : `The type is ${type} and value: ${promptVal}`;
 
-// alert(msg);
+alert(msg);
 
 //2️⃣:
 /*
