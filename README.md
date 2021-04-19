@@ -1,9 +1,6 @@
 # EPAM JavaScript training 💥
-
 ---
-
-## Table of contents
-
+ ## Table of contents
 - **01: Fundamentals-part-1**
   - Variables and Data types
   - Operators
