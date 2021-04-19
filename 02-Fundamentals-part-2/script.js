@@ -43,26 +43,17 @@ using prompt you need to get value and existing of type to alert the type and va
  otherwise 'the type is number and less than 30',
  if it is string, you should alert 'the type is string and value: ${value}'
 */
+const promptVal = prompt('Please, enter random value!', '');
+const type = +promptVal ? 'number' : 'string';
+const msg = !promptVal
+  ? 'Try again!'
+  : +promptVal > 30
+  ? `The type is ${type} and more than 30.`
+  : +promptVal < 30
+  ? `The type is ${type} and less than 30.`
+  : `The type is ${type} and value: ${promptVal}`;
 
-// const promptVal = prompt('Please, enter random value!', '');
-// const type = +promptVal ? 'number' : 'string';
-
-// if (+promptVal > 30) {
-//   alert(`The type is ${type} and more than 30.`);
-// } else if (+promptVal < 30) {
-//   alert(`The type is ${type} and less than 30.`);
-// } else {
-//   alert(`The type is ${type} and value: ${promptVal}`);
-// }
-// //or
-// const msg =
-//    +promptVal > 30
-//     ? `The type is ${type} and more than 30.`
-//     :  +promptVal < 30
-//     ? `The type is ${type} and less than 30`
-//     : `The type is ${type} and value: ${promptVal}`;
-//
-// alert(msg);
+alert(msg);
 
 //2️⃣:
 /*
