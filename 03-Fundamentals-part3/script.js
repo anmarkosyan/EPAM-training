@@ -1,43 +1,5 @@
 'use strict';
 
-//======================== 🔴loops: while, do ... while, for, sw
-//📍while loop
-// let x = 0;
-// while (x < 10) {
-//   let y = x + 1;
-//   x++;
-// }
-//console.log(x);// 10
-
-// let x = 10;
-// while (x > 5) {
-//   let y = x * x;
-//   x += 2;
-// }
-// console.log(x);//infinity
-
-// let i = 3;
-// while (i <= 10) {
-//   let z = i++;
-//   i += 2;
-// }
-// console.log(i);//12;
-
-// const quotientAndRemainder = function (n, k) {
-//   let quotient = 0;
-//   let reminder;
-//   while (n >= k) {
-//     n = n - k;
-//     quotient++;
-//   }
-//   reminder = n;
-//   return [quotient, reminder];
-// };
-// console.log(quotientAndRemainder(5, 5));// [1, 0];
-// console.log(quotientAndRemainder(5, 2));//  [2, 1];
-// console.log(quotientAndRemainder(12, 5));// [2, 2];
-// console.log(quotientAndRemainder(5, 7));//[0, 5].
-
 //====================== 👩🏻‍💻 coding challenge ======================
 //1️⃣:
 /*
@@ -53,7 +15,7 @@ You can just alert once after switch case by assigning above paragraphs to anoth
 */
 
 //1️⃣:
-// const vehicleName = prompt('Please, enter the type of vehicle  for delivery!', '');
+const vehicleName = prompt('Please, enter the type of vehicle  for delivery!', '');
 // //1way
 // let alertMessage;
 //
@@ -81,31 +43,25 @@ You can just alert once after switch case by assigning above paragraphs to anoth
 //
 // //2 way
 // const userAlert = function (name) {
-//   let alertMessage;
 //   switch (name) {
 //     case '':
-//       alertMessage = 'Try again!';
-//       break;
+//       return 'Try again!';
 //     case 'car':
-//       alertMessage = 'Shipping method is land.';
-//       break;
+//       return 'Shipping method is land.';
 //     case 'ship':
-//       alertMessage = 'Shipping method is ocean.';
-//       break;
+//       return 'Shipping method is ocean.';
 //     case 'airplane':
-//       alertMessage = 'Shipping method is air.';
-//       break;
+//       return 'Shipping method is air.';
 //     case 'train':
 //     case 'tram':
-//       alertMessage = 'Shipping method is rail.';
-//       break;
+//       return 'Shipping method is rail.';
 //     default:
-//       alertMessage = 'What an unusual shipping method!';
+//       return 'What an unusual shipping method!';
 //   }
-//   return alert(alertMessage);
 // };
 //
-// userAlert(vehicleName);
+// const resultMessage = userAlert(vehicleName);
+// alert(resultMessage);
 
 //2️⃣:
 /*
@@ -116,16 +72,16 @@ where sum is previous odd numbers total.
 In case of all the numbers are valid, need to alert once after for loop
  */
 
-let sum = 0;
-for (let i = 1; i <= 5; i++) {
-  let userInput = +prompt('Enter random number  calculation of odd numbers!');
-
-  if (userInput % 2 !== 0) {
-    sum += userInput;
-  } else {
-    break;
-  }
-
-}
-
-alert(!sum ? 'Try again!' : sum ? sum : `Invalid number was entered. Current total is ${sum}`);
+// let sum = 0;
+// for (let i = 1; i <= 5; i++) {
+//   let userInput = +prompt('Enter random number  calculation of odd numbers!');
+//
+//   if (userInput % 2 !== 0) {
+//     sum += userInput;
+//   } else {
+//     break;
+//   }
+//
+// }
+//
+// alert(!sum ? 'Try again!' : sum ? sum : `Invalid number was entered. Current total is ${sum}`);
