@@ -11,3 +11,9 @@
   - Conditional branching: if/else, '?'
   - Logical operators
   - Nullish coalescing operator '??'
+  
+
+- **03: Fundamentals-part-3**
+  - Loops: while and for
+  - The "switch" statement
+
