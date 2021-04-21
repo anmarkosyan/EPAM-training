@@ -15,7 +15,7 @@ You can just alert once after switch case by assigning above paragraphs to anoth
 */
 
 //1️⃣:
-const vehicleName = prompt('Please, enter the type of vehicle  for delivery!', '');
+//const vehicleName = prompt('Please, enter the type of vehicle  for delivery!', '');
 // //1way
 // let alertMessage;
 //
@@ -72,16 +72,21 @@ where sum is previous odd numbers total.
 In case of all the numbers are valid, need to alert once after for loop
  */
 
-// let sum = 0;
-// for (let i = 1; i <= 5; i++) {
-//   let userInput = +prompt('Enter random number  calculation of odd numbers!');
-//
-//   if (userInput % 2 !== 0) {
-//     sum += userInput;
-//   } else {
-//     break;
-//   }
-//
-// }
-//
-// alert(!sum ? 'Try again!' : sum ? sum : `Invalid number was entered. Current total is ${sum}`);
+let msg;
+let sum = 0;
+let step = 1;
+
+for (; step <= 5; step++) {
+  let userInput = +prompt('This is simple calculation of odd numbers!');
+
+  if (!userInput) {
+    msg = `Invalid number was entered. Current total is ${sum}`;
+    break;
+  } else if (userInput % 2 !== 0) {
+    sum += userInput;
+  } else {
+    continue;
+  }
+}
+
+alert(step === 5 ? sum : msg);
