@@ -74,10 +74,10 @@ In case of all the numbers are valid, need to alert once after for loop
 
 let msg;
 let sum = 0;
-let step = 1;
+let numOfSteps = 1;
 
-for (; step <= 5; step++) {
-  let userInput = +prompt('This is simple calculation of odd numbers!');
+for (; numOfSteps <= 5; numOfSteps++) {
+  let userInput = +prompt('This is simple calculation of odd numbers!', '');
 
   if (!userInput) {
     msg = `Invalid number was entered. Current total is ${sum}`;
@@ -89,4 +89,5 @@ for (; step <= 5; step++) {
   }
 }
 
-alert(step === 5 ? sum : msg);
+alert(numOfSteps === 5 ? sum : msg);
+
