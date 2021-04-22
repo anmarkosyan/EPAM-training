@@ -75,15 +75,36 @@ If something is not clear, ask me to clarify it )
 */
 
 const passengersDetails = {
+  passengerName: prompt('OPTIONAL: \n Please, enter your name', ''),
   passportNum: +prompt('Please, enter your passport number!', '0000000000'),
   ticketCode: +prompt('Please, enter your ticket code!', '000000'),
+  successAlert: function (sitName) {
+    let name = this.passengerName;
+
+    if (isNaN(+name)) {
+      name = name.toLowerCase();
+      const firstUpperName = name[0].toUpperCase() + name.slice(1);
+
+      alert(`Thank you ${firstUpperName}: \n Your place at number ${sitName}`);
+    } else if (typeof +name === 'number' && +name === +name) {
+      alert(`Thank you Mr/Mrs: \n Your place at number ${sitName}`);
+    }
+  },
+  invalidFlightAlert: function () {
+    alert(`Wrong passport number or ticket code. Please, try again!`);
+  },
 };
 
 // The main function
-function passportControl(passenger, successFlight, invalidFlight) {
+function passportControl(passenger) {
   const sitNum = Math.round(Math.random() * 100) + 1;
 
-  return check(passenger.passportNum, passenger.ticketCode) ? successFlight(sitNum) : invalidFlight();
+  if (check(passenger.passportNum, passenger.ticketCode)) {
+    return passenger.successAlert(sitNum);
+  }
+  return passenger.invalidFlightAlert();
+
+  // return check(passenger.passportNum, passenger.ticketCode) ? successFlight(passenger.passengerName, sitNum) : invalidFlight();
 }
 
 // checker function
@@ -91,12 +112,4 @@ const check = function (passport, ticket) {
   return passport && ticket;
 };
 
-//success callback
-const successResult = sitNum => {
-  alert(`Thank you: \n Your place at number ${sitNum}`);
-};
-
-//error callback
-const invalidRegistration = () => alert(`Wrong passport number, or ticket code. Please, try again!`);
-
-passportControl(passengersDetails, successResult, invalidRegistration);
+passportControl(passengersDetails);
