@@ -42,12 +42,14 @@ callback in case of invalid registration
 If something is not clear, ask me to clarify it )
 */
 
+//1️⃣ way
 // const passengersDetails = {
 //   passengerName: prompt('OPTIONAL: \n Please, enter your name.', ''),
 //   passportNum: +prompt('Please, enter your passport number!', '0000000000'),
 //   ticketCode: +prompt('Please, enter your ticket code!', '000000'),
 // };
-// // The main function
+
+// The main function
 // function passportControl(passenger, successFlight, invalidFlight) {
 //   const sitNum = Math.round(Math.random() * 100) + 1;
 //
@@ -57,11 +59,13 @@ If something is not clear, ask me to clarify it )
 //   return invalidFlight();
 //   // return check(passenger.passportNum, passenger.ticketCode) ? successFlight(passenger.passengerName, sitNum) : invalidFlight();
 // }
+
 // // checker function
 // const check = function (passport, ticket) {
 //   return passport && ticket;
 // };
-// //success callback
+
+//success callback
 // const successResult = (name, sitNum) => {
 //   //checking if  user name exist or no
 //   if (isNaN(+name)) {
@@ -72,13 +76,13 @@ If something is not clear, ask me to clarify it )
 //     alert(`Thank you Mr/Mrs: \n Your place at number ${sitNum}`);
 //   }
 // };
-// //error callback
+
+//error callback
 // const invalidRegistration = () => alert(`Wrong passport number or ticket code. Please, try again!`);
-//
-// //invoke main function
+
 // passportControl(passengersDetails, successResult, invalidRegistration);
 
-//2 way with object methods
+//2️⃣ way with object methods
 // const passengersDetails = {
 //   passengerName: prompt('OPTIONAL: \n Please, enter your name', ''),
 //   passportNum: +prompt('Please, enter your passport number!', '0000000000'),
