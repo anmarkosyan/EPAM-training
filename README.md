@@ -1,6 +1,9 @@
 # EPAM JavaScript training 💥
+
 ---
- ## Table of contents
+
+## Table of contents
+
 - **01: Fundamentals-part-1**
   - Variables and Data types
   - Operators
@@ -16,4 +19,13 @@
 - **03: Fundamentals-part-3**
   - Loops: while and for
   - The "switch" statement
+  
+
+- **04: Functions**
+  - Function declaration
+  - Function expression
+  - Arrow function
+  
+
+- **05: Code quality**
 
