@@ -1,5 +1,11 @@
 'use strict';
 
+//========================== 🔴 Functions =========================
+//📍One of the most dynamic features of JavaScript is that it has first-class functions,
+// meaning that functions are treated like any other first-class object — they can be stored in variables,
+// passed around, returned from other functions, and even hold their own properties.
+
+/*
 function age() {
   const currYear = 34;
   return year(currYear);
@@ -11,7 +17,7 @@ function year(year) {
   console.log(`I am ${year}.`);
 }
 
-//=====
+//📌 using arrow functions and trying to call before declare it
 function age1() {
   const currYear = 33;
   return year1(currYear);
@@ -23,6 +29,39 @@ const year1 = function (year) {
 };
 
 age1(); //I am 33.
+ */
+
+//EXP: 2
+// Function definition and invocation
+function speak(str) {
+  console.log(str);
+}
+
+speak('Hello'); // Hello
+
+// Store in a variable
+const talk = speak;
+talk('Hi'); // Hi
+
+// Pass as an argument to a function
+// Return from a function
+function returner(fnc) {
+  return fnc;
+}
+
+const chat = returner(talk);
+chat('Good morning');//Good morning
+
+// Store in a data structure
+const myFunc = [talk];
+myFunc[0]('Good afternoon'); //Good afternoon
+
+// Owns properties
+talk.myProperty = 'Good night';
+console.log(talk.myProperty);//Good night
+
+
+
 
 //======================= 👩🏻‍💻 coding challenge ==================
 /*Create function which takes 4 arguments:
@@ -48,8 +87,8 @@ If something is not clear, ask me to clarify it )
 //   passportNum: +prompt('Please, enter your passport number!', '0000000000'),
 //   ticketCode: +prompt('Please, enter your ticket code!', '000000'),
 // };
-
-// The main function
+//
+// //the main function
 // function passportControl(passenger, successFlight, invalidFlight) {
 //   const sitNum = Math.round(Math.random() * 100) + 1;
 //
@@ -59,13 +98,11 @@ If something is not clear, ask me to clarify it )
 //   return invalidFlight();
 //   // return check(passenger.passportNum, passenger.ticketCode) ? successFlight(passenger.passengerName, sitNum) : invalidFlight();
 // }
-
-// // checker function
+//
 // const check = function (passport, ticket) {
-//   return passport && ticket;
+//   return !!(passport && ticket);
 // };
-
-//success callback
+//
 // const successResult = (name, sitNum) => {
 //   //checking if  user name exist or no
 //   if (isNaN(+name)) {
@@ -76,11 +113,10 @@ If something is not clear, ask me to clarify it )
 //     alert(`Thank you Mr/Mrs: \n Your place at number ${sitNum}`);
 //   }
 // };
-
-//error callback
-// const invalidRegistration = () => alert(`Wrong passport number or ticket code. Please, try again!`);
-
-// passportControl(passengersDetails, successResult, invalidRegistration);
+//
+// const errorResult = () => alert(`Wrong passport number or ticket code. Please, try again!`);
+//
+// passportControl(passengersDetails, successResult, errorResult);
 
 //2️⃣ way with object methods
 // const passengersDetails = {
