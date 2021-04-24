@@ -43,6 +43,8 @@ speak('Hello'); // Hello
 const talk = speak;
 talk('Hi'); // Hi
 
+console.log(speak === talk); //true
+
 // Pass as an argument to a function
 // Return from a function
 function returner(fnc) {
@@ -50,7 +52,7 @@ function returner(fnc) {
 }
 
 const chat = returner(talk);
-chat('Good morning');//Good morning
+chat('Good morning'); //Good morning
 
 // Store in a data structure
 const myFunc = [talk];
@@ -58,10 +60,25 @@ myFunc[0]('Good afternoon'); //Good afternoon
 
 // Owns properties
 talk.myProperty = 'Good night';
-console.log(talk.myProperty);//Good night
+console.log(talk); //{ myProperty: 'Good night' }
+console.log(talk.myProperty); //Good night
 
+//=================📍Higher-Order Functions ==========
+const myNums = [1, 2, 3, 4, 5];
 
+function doubleNum(num) {
+  return num * 2;
+}
 
+// Built-in Array.prototype.map function, using anonymous function argument
+const doubledNums = myNums.map(function(num) {
+  return num * 2;
+});
+console.log(doubledNums);// [2, 4, 6, 8, 10]
+
+// Built-in Array.prototype.map function, using named callback argument
+const otherDoubledNums = myNums.map(doubleNum);
+console.log(otherDoubledNums);//[2, 4, 6, 8, 10]
 
 //======================= 👩🏻‍💻 coding challenge ==================
 /*Create function which takes 4 arguments:
@@ -154,7 +171,7 @@ If something is not clear, ask me to clarify it )
 //
 // // checker function
 // const check = function (passport, ticket) {
-//   return passport && ticket;
+//   return !!(passport && ticket);
 // };
 //
 // passportControl(passengersDetails);
