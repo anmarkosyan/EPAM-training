@@ -29,3 +29,8 @@
 
 - **05: Code quality**
 
+
+- **06: Objects**
+  - Object references and copying
+  - Garbage collection
+
