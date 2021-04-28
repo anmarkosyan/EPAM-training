@@ -33,4 +33,9 @@
 - **06: Objects**
   - Object references and copying
   - Garbage collection
+  
+
+- **07: Objects**
+  - Object methods
+  - this 
 
