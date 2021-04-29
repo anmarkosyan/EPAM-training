@@ -1,27 +1,40 @@
 'use strict';
 
 //====================== 🔴 this keyword =====================
-//console.log(this); // window object
+/*
+console.log(this); // window object
 //======
 const calcAge = function () {
-  //console.log(this); //undefined
+  console.log(this); //undefined
 };
 calcAge();
 
 //=========
 function calcAge1() {
-  //console.log(this); //undefined
+  console.log(this); //undefined
 }
 calcAge1();
 
 //======
 const calcAge2 = () => {
-  //console.log(this); //window object, because arrow function doesn't have it's own this, instead he use LEXICAL KEYWORD, it means will
+  console.log(this); //window object, because arrow function doesn't have it's own this, instead he use LEXICAL KEYWORD, it means will
   //inherit parents function this
 };
 calcAge2();
 
 //=======
+const year = 2021;
+
+const style = {
+  year: 1951,
+  getYear: function () {
+    return this.year;// 'this' is refer between object and function
+    //return year;// 2021 because JS engine will search for variable name with year, not property!!!!!
+  },
+};
+
+console.log(style.getYear());
+//=====
 var firstName = 'Aram';
 
 const user = {
@@ -40,6 +53,46 @@ const user = {
 
 user.calcAge();
 user.greet();
+
+ */
+//=========
+// function makeUser() {
+//   return {
+//     name: 'John',
+//     //ref: this,//undefined
+//     ref: function () {
+//       return this; //{name: 'John', [functions: ref]}
+//     },
+//   };
+// }
+//
+// let user = makeUser(); //let user = { name: 'John', ref: undefined}
+// //console.log(user.ref.name); //TypeError: Cannot read property 'name' of undefined
+// console.log(user.ref().name); //'John'
+
+//=======
+let ladder = {
+  step: 0,
+  up() {
+    this.step++;
+    return this;
+  },
+  down() {
+    this.step--;
+    return this;
+  },
+  showStep: function () {
+    // shows the current step
+    return this.step;
+  },
+};
+
+console.log(ladder.up());
+console.log(ladder.up());
+console.log(ladder.down());
+console.log(ladder.showStep()); //1
+
+//console.log(ladder.up().up().down().showStep());
 
 //1️⃣ exp:
 // const user = {
