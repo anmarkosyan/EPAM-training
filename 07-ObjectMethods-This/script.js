@@ -71,26 +71,26 @@ user.greet();
 // console.log(user.ref().name); //'John'
 
 //=======
-let ladder = {
-  step: 0,
-  up() {
-    this.step++;
-    return this;
-  },
-  down() {
-    this.step--;
-    return this;
-  },
-  showStep: function () {
-    // shows the current step
-    return this.step;
-  },
-};
-
-console.log(ladder.up());
-console.log(ladder.up());
-console.log(ladder.down());
-console.log(ladder.showStep()); //1
+// let ladder = {
+//   step: 0,
+//   up() {
+//     this.step++;
+//     return this;
+//   },
+//   down() {
+//     this.step--;
+//     return this;
+//   },
+//   showStep: function () {
+//     // shows the current step
+//     return this.step;
+//   },
+// };
+//
+// console.log(ladder.up());
+// console.log(ladder.up());
+// console.log(ladder.down());
+// console.log(ladder.showStep()); //1
 
 //console.log(ladder.up().up().down().showStep());
 
@@ -130,10 +130,52 @@ console.log(ladder.showStep()); //1
 // console.log(obj.innerMessage()); //TypeError: Cannot read property 'message' of undefined
 
 //==========
+// const numbers = {
+//   numberA: 5,
+//   numberB: 10,
+//
+//   sum: function () {
+//     console.log(this === numbers); // => true
+//     const self = this;
+//     // function calculate() {
+//     //   // this is window or undefined in strict mode
+//     //   console.log(this === numbers); // => false
+//     //   console.log(self === numbers);// => true
+//     //   return self.numberA + self.numberB;
+//     // }
+//
+//     //or using arrow functions
+//     const calculate = () => {
+//       console.log(this === numbers); // => true
+//       return this.numberA + this.numberB;
+//     };
+//
+//     return calculate();
+//   },
+// };
+//
+// numbers.sum();
 
 //======================= 🔴 constructor function ==================
-//lexical environment
-//constructor function
+const Person = function (firstName, birthYear) {
+  //console.log(this); //Person {}=> will create a empty object
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+//constructor invocation with new keyword
+const aram = new Person('Aram', 1986);
+console.log(aram); //Person { firstName: 'Aram', birthYear: 1986 }
+
+//when we call a function with new operator, behind a scenes
+//1️⃣ New {} is created
+//2️⃣ functions is called, this ===  {}
+//3️⃣ {} -> linked to prototype
+//4️⃣ function automatically  return {}
+
+const alice = new Person('Alice', 1991);
+console.log(aram === alice); //false
+
+//===========
 // function Car(carName, yearA, carsColor) {
 //   this.name = carName;
 //   this.year = yearA;
@@ -145,6 +187,7 @@ console.log(ladder.showStep()); //1
 // const toyota = new Car('Toyota', 1890, 'black');
 // console.log(toyota); //Car { name: 'Toyota', year: 1890, color: 'black', func: [Function] }
 // console.log(toyota.func()); //131
+
 //====================== 👩🏻‍💻 coding challenge ==============
 /*
 Create a constructor function named as ProgrammingLanguage, it should create an object with parameters like this:
@@ -157,3 +200,5 @@ log: function(str) {
 }
 feel free do add additional parameters, also please send the data as function parameters
 */
+
+function ProgrammingLanguage() {}
