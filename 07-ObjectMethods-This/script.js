@@ -29,7 +29,7 @@ const style = {
   year: 1951,
   getYear: function () {
     return this.year;// 'this' is refer between object and function
-    //return year;// 2021 because JS engine will search for variable name with year, not property!!!!!
+    //return year;// 2021 because JS engine will search for variwith year, not property!!!!!
   },
 };
 
@@ -58,17 +58,17 @@ user.greet();
 //=========
 // function makeUser() {
 //   return {
-//     name: 'John',
+// 'John',
 //     //ref: this,//undefined
 //     ref: function () {
-//       return this; //{name: 'John', [functions: ref]}
+//       return this 'John', [functions: ref]}
 //     },
 //   };
 // }
 //
-// let user = makeUser(); //let user = { name: 'John', ref: undefined}
-// //console.log(user.ref.name); //TypeError: Cannot read property 'name' of undefined
-// console.log(user.ref().name); //'John'
+// let user = makeUser(); //let user 'John', ref: undefined}
+// //console.log(user; //TypeError: Cannot read prope of undefined
+// console.log(user.r //'John'
 
 //=======
 // let ladder = {
@@ -96,7 +96,7 @@ user.greet();
 
 //1️⃣ exp:
 // const user = {
-//   name: 'Anush',
+// 'Anush',
 //   year: 2021,
 //   birthYear: 2000,
 //
@@ -157,27 +157,27 @@ user.greet();
 // numbers.sum();
 
 //======================= 🔴 constructor function ==================
-const Person = function (firstName, birthYear) {
-  //console.log(this); //Person {}=> will create a empty object
-  this.firstName = firstName;
-  this.birthYear = birthYear;
-};
-//constructor invocation with new keyword
-const aram = new Person('Aram', 1986);
-console.log(aram); //Person { firstName: 'Aram', birthYear: 1986 }
-
-//when we call a function with new operator, behind a scenes
-//1️⃣ New {} is created
-//2️⃣ functions is called, this ===  {}
-//3️⃣ {} -> linked to prototype
-//4️⃣ function automatically  return {}
-
-const alice = new Person('Alice', 1991);
-console.log(aram === alice); //false
+// const Person = function (firstName, birthYear) {
+//   //console.log(this); //Person {}=> will create a empty object
+//   this.firstName = firstName;
+//   this.birthYear = birthYear;
+// };
+// //constructor invocation with new keyword
+// const aram = new Person('Aram', 1986);
+// console.log(aram); //Person { firstName: 'Aram', birthYear: 1986 }
+//
+// //when we call a function with new operator, behind a scenes
+// //1️⃣ New {} is created
+// //2️⃣ functions is called, this ===  {}
+// //3️⃣ {} -> linked to prototype
+// //4️⃣ function automatically  return {}
+//
+// const alice = new Person('Alice', 1991);
+// console.log(aram === alice); //false
 
 //===========
 // function Car(carName, yearA, carsColor) {
-//   this.name = carName;
+//   = carName;
 //   this.year = yearA;
 //   this.color = carsColor;
 //   this.func = function () {
@@ -185,14 +185,12 @@ console.log(aram === alice); //false
 //   };
 // }
 // const toyota = new Car('Toyota', 1890, 'black');
-// console.log(toyota); //Car { name: 'Toyota', year: 1890, color: 'black', func: [Function] }
+// console.log(toyota); //C 'Toyota', year: 1890, color: 'black', func: [Function] }
 // console.log(toyota.func()); //131
 
 //====================== 👩🏻‍💻 coding challenge ==============
 /*
-Create a constructor function named as ProgrammingLanguage, it should create an object with parameters like this:
-{
-name: "JavaScript",
+Create a constructor function named as ProgrammingLanguage, it should create an object with parameters like thi "JavaScript",
 creationDate: 1995,
 log: function(str) {
   console.log(str)
@@ -201,4 +199,53 @@ log: function(str) {
 feel free do add additional parameters, also please send the data as function parameters
 */
 
-function ProgrammingLanguage() {}
+const languageData = ['Javascript', 'Python', 'C++'];
+const promptVal = prompt(`What is your favourite programming language?.\n${languageData.join('\n')}`, '');
+
+const formattedName = function (name) {
+  name = name.toLowerCase();
+  return name[0].toUpperCase() + name.slice(1);
+};
+
+//the main function
+function ProgrammingLanguage(inputName, creationDate, createdBy, programmingLanguageType, nameFnc) {
+  this.inputName = inputName;
+  this.creationDate = creationDate;
+  this.createdBy = createdBy;
+  this.programmingLanguageType = programmingLanguageType;
+  this.year = 2021;
+  this.nameFnc = nameFnc;
+  this.calcYear = function () {
+    return this.year - this.creationDate;
+  };
+
+  this.alertMsg = function () {
+    alert(
+      `Welcome! \n${this.nameFnc(this.inputName)}, is a  ${this.programmingLanguageType} programming language created by ${this.createdBy} in ${
+        this.creationDate
+      }, almost ${this.calcYear()} years ago!`
+    );
+  };
+}
+
+//creat objects
+const javaScript = new ProgrammingLanguage(promptVal, 1995, 'Brendan Eich', 'High-level', formattedName);
+const python = new ProgrammingLanguage(promptVal, 1991, 'Guido van Rossum', 'mid-level', formattedName);
+const c = new ProgrammingLanguage(promptVal, 1985, 'Bjarne Stroustrup', 'low-level', formattedName);
+
+//function invocation
+const result = function (programName) {
+  if (!programName) {
+    alert('Try again!');
+  } else if (javaScript.nameFnc(programName) === 'Javascript') {
+    return javaScript.alertMsg();
+  } else if (python.nameFnc(programName) === 'Python') {
+    return python.alertMsg();
+  } else if (c.nameFnc(programName) === 'C++') {
+    return c.alertMsg();
+  } else {
+    alert('Wrong answer!');
+  }
+};
+
+result(promptVal);
