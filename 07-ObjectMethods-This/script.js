@@ -213,7 +213,7 @@ function ProgrammingLanguage(inputName, creationDate, createdBy, programmingLang
   this.creationDate = creationDate;
   this.createdBy = createdBy;
   this.programmingLanguageType = programmingLanguageType;
-  this.year = 2021;
+  this.year = new Date().getFullYear();
   this.nameFnc = nameFnc;
   this.calcYear = function () {
     return this.year - this.creationDate;
@@ -236,16 +236,15 @@ const c = new ProgrammingLanguage(promptVal, 1985, 'Bjarne Stroustrup', 'low-lev
 //function invocation
 const result = function (programName) {
   if (!programName) {
-    alert('Try again!');
+    return alert('Try again!');
   } else if (javaScript.nameFnc(programName) === 'Javascript') {
     return javaScript.alertMsg();
   } else if (python.nameFnc(programName) === 'Python') {
     return python.alertMsg();
   } else if (c.nameFnc(programName) === 'C++') {
     return c.alertMsg();
-  } else {
-    alert('Wrong answer!');
   }
+  return alert('Wrong answer!');
 };
 
 result(promptVal);
