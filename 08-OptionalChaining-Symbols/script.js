@@ -1,58 +1,89 @@
 'use strict';
 
-//==================== 🔴optional chaining =================
+//==================== 🔴optional chaining: ES2020 =================
 //syntax
 // obj.val?.prop
 // obj.val?.[expr]
 // obj.arr?.[index]
 // obj.func?.(args)
 
-const user = {};
-console.log(user.address); //undefined
-//console.log(user.address.street);//❗️TypeError: Cannot read property 'street' of undefined
-console.log(user?.address?.street); // undefined
+// const user = {};
+// console.log(user.address); //undefined
+// //console.log(user.address.street);//❗️TypeError: Cannot read property 'street' of undefined
+// console.log(user?.address?.street); // undefined
+//
+// //if not exist: is null or undefined, immediately return UNDEFINED (NOT TypeERROR)
+// const user1 = {
+//   address: {
+//     shop: undefined,
+//     street: null,
+//   },
+//
+// };
+// console.log(user1.address?.shop?.open); //undefined
+//
+// //if exist: 0, '' => value
+// const user2 = {
+//   address: {
+//     street: 0,
+//     shop: '',
+//   },
+//
+// };
+//
+// console.log(user2.address?.street); //0
+// console.log(user2.address?.shop);//''
+//
+// //exp:
+// let potentiallyNullObj = null;
+// let x = 0;
+// let prop = potentiallyNullObj?.[x++];
+// console.log(x);//0
 
-//if not exist: is null or undefined, immediately return UNDEFINED (NOT TypeERROR)
-const user1 = {
-  address: {
-    shop: undefined,
-    street: null,
-  },
+//===================== 🔴 Symbol data type ===============
+const id = Symbol('hi there');
+const id1 = Symbol('hi there');
 
+console.log(id); //Symbol(id)
+console.log(id === id1); //false
+
+//Symbols don’t auto-convert to a string
+//alert(id);//TypeError: Cannot convert a Symbol value to a string
+//alert(id.toString());//Symbol(hi there)
+//alert(id.description);//hi there
+
+//1️⃣ in an object literal
+const id2 = Symbol(12 + 2);
+
+const user = {
+  name: 'Anush',
+  [id2]: 123,
 };
-console.log(user1.address?.shop?.open); //undefined
+console.log(id2.description); //14
+console.log(typeof id2.description); //string
+console.log(user); //{ name: 'Anush', [Symbol(id)]: 123 }
+console.log(user[id2]); //123
+console.log(typeof user[id2]); //number
 
-//if exist: 0, '' => value
-const user2 = {
-  address: {
-    street: 0,
-    shop: '',
-  },
+//❗️Symbolic properties do not participate in for..in loop.Object.keys() and Object.values()
+for (const key in user) {
+  console.log(user[key]); //Anush
+}
+console.log(Object.keys(user)); //[ 'name' ]
+console.log(Object.values(user)); //[ 'Anush' ]
 
-};
+//✅ but with Object.assign will copy and also for {...user}
+const copy = Object.assign({}, user);
+console.log(copy);//{ name: 'Anush', [Symbol(14)]: 123 }
+console.log(copy[id2]);//123
 
-console.log(user2.address?.street); //0
-console.log(user2.address?.shop);//''
+const copy2 = {...user};
+console.log(copy2);//{ name: 'Anush', [Symbol(14)]: 123 }
 
-//exp:
-let potentiallyNullObj = null;
-let x = 0;
-let prop = potentiallyNullObj?.[x++];
-console.log(x);//0
-
-//===================== 🔴 symbol data type ===============
-// const id = Symbol('');
-// console.log(Symbol('name') === Symbol('name'));//false
 //
-// const unique = Symbol('id');
-// const user = {
-//   name: 'Anush',
-// [unique]: 122,
-// }
-//
-// console.log(user[unique]);
-// console.log(unique);
-//
+
+
+
 // const uni1 = Symbol.for('if');
 // const uni2 = Symbol.for('if');
 //
