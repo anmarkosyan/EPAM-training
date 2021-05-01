@@ -177,11 +177,11 @@ user.greet();
 
 //===========
 // function Car(carName, yearA, carsColor) {
-//   = carName;
+//   this.carName = carName;
 //   this.year = yearA;
 //   this.color = carsColor;
 //   this.func = function () {
-//     return 2021 - yearA;
+//     return 2021 - this.year;
 //   };
 // }
 // const toyota = new Car('Toyota', 1890, 'black');
