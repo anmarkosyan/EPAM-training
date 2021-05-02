@@ -40,12 +40,16 @@
 // let prop = potentiallyNullObj?.[x++];
 // console.log(x);//0
 
-//===================== 🔴 Symbol data type ===============
-const id = Symbol('hi there');
-const id1 = Symbol('hi there');
+//arrays
+// const users = [{ name: 'Ralf', age: 33 }];
+// console.log(users[0]?.name ?? 'no user');
 
-console.log(id); //Symbol(id)
-console.log(id === id1); //false
+//===================== 🔴 Symbol data type ===============
+// const id = Symbol('hi there');
+// const id1 = Symbol('hi there');
+//
+// console.log(id); //Symbol(id)
+// console.log(id === id1); //false
 
 //Symbols don’t auto-convert to a string
 //alert(id);//TypeError: Cannot convert a Symbol value to a string
@@ -53,60 +57,53 @@ console.log(id === id1); //false
 //alert(id.description);//hi there
 
 //1️⃣ in an object literal
-const id2 = Symbol(12 + 2);
-
-const user = {
-  name: 'Anush',
-  [id2]: 123,
-};
-console.log(id2.description); //14
-console.log(typeof id2.description); //string
-console.log(user); //{ name: 'Anush', [Symbol(id)]: 123 }
-console.log(user[id2]); //123
-console.log(typeof user[id2]); //number
-
-//❗️Symbolic properties do not participate in for..in loop.Object.keys() and Object.values()
-for (const key in user) {
-  console.log(user[key]); //Anush
-}
-console.log(Object.keys(user)); //[ 'name' ]
-console.log(Object.values(user)); //[ 'Anush' ]
-
-//✅ but with Object.assign will copy and also for {...user}
-const copy = Object.assign({}, user);
-console.log(copy);//{ name: 'Anush', [Symbol(14)]: 123 }
-console.log(copy[id2]);//123
-
-const copy2 = {...user};
-console.log(copy2);//{ name: 'Anush', [Symbol(14)]: 123 }
-
+// const id2 = Symbol(12 + 2);
 //
-
-
-
-// const uni1 = Symbol.for('if');
-// const uni2 = Symbol.for('if');
+// const user = {
+//   name: 'Anush',
+//   [id2]: 123,
+// };
+// console.log(id2.description); //14
+// console.log(typeof id2.description); //string
+// console.log(user); //{ name: 'Anush', [Symbol(id)]: 123 }
+// console.log(user[id2]); //123
+// console.log(typeof user[id2]); //number
 //
+// //❗️Symbolic properties do not participate in for..in loop.Object.keys() and Object.values()
+// for (const key in user) {
+//   console.log(user[key]); //Anush
+// }
+// console.log(Object.keys(user)); //[ 'name' ]
+// console.log(Object.values(user)); //[ 'Anush' ]
+//
+// //✅ but with Object.assign will copy and also for {...user}
+// const copy = Object.assign({}, user);
+// console.log(copy); //{ name: 'Anush', [Symbol(14)]: 123 }
+// console.log(copy[id2]); //123
+//
+// const copy2 = { ...user };
+// console.log(copy2); //{ name: 'Anush', [Symbol(14)]: 123 }
+
 // console.log(typeof uni1.description);
 // Symbol.iterator()
 // Symbol.isConcatSpreadable();
 
-//objects converted into primitives
+//====================== 🔴 objects converted into primitives ==================
 
 // const product = {
 //   title: 'hello',
 //   price: 15,
-//   // [Symbol.toPrimitive]: function(){
-//   //   return 'hello'
+//   [Symbol.toPrimitive]: function(hin){
+//     return 'hello'
+//   },
+//   // toString() {
+//   //   return this.title;
 //   // },
-//   toString() {
-//     return this.title;
-//   },
-//   valueOf() {
-//     return this.price;
-//   },
+//   // valueOf() {
+//   //   return this.price;
+//   // },
 // };
-// //console.log(product);//
+// console.log(product);//
 // //alert(product);
 // console.log(product * 5); //
 // console.log(product + product);
@@ -128,3 +125,65 @@ Using Symbol.toPrimitive we should get following results (revise this method hin
 2.when conversion type is number, e.g. product1 * product2, it should return price
 3.in case of default conversion, e.g product1 + product2, it should return qty * price
  */
+
+// const Product = function (title, qty, price) {
+//   this.title = title;
+//   this.qty = qty;
+//   this.price = price;
+//   this.category = {
+//     id: 123,
+//     title: 'fruit',
+//   };
+//
+//
+// };
+// const product1 = new Product('apple', 15, 5, )
+// console.log(product1)
+const id = Symbol('id');
+
+const product1 = {
+  title: 'apple',
+  qty: 15,
+  price: 5,
+  category: {
+    [id]: 123,
+    title: 'fruit',
+  },
+  [Symbol.toPrimitive](hint) {
+    if (hint === 'string') {
+      return `This is an ${this.title}, from <${this.category.title}> category with ${this.price} price!`;
+    }
+    if (hint === 'number') {
+      return this.price;
+    }
+    return this.qty * this.price;
+  },
+};
+
+const product2 = {
+  title: 'banana',
+  qty: 25,
+  price: 15,
+  category: {
+    [id]: 124,
+    title: 'fruit',
+  },
+  [Symbol.toPrimitive](hint) {
+    if (hint === 'string') {
+      return `This is an ${this.title}, from <${this.category.title}> category with ${this.price} price!`;
+    }
+    if (hint === 'number') {
+      return this.price;
+    }
+    return this.qty * this.price;
+  },
+};
+
+//1.when conversion type is string, we should get title + category + $price , e.g. alert(product1)
+console.log(`${product1} \n${product2}`); //This is an apple, from <fruit> category with 20 price!
+
+//2.when conversion type is number, e.g. product1 * product2, it should return price
+console.log(product1 * product2); //75
+
+//3.in case of default conversion, e.g product1 + product2, it should return qty * price
+console.log(product1 + product1); //150
