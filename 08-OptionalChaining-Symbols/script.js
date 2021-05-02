@@ -126,30 +126,28 @@ Using Symbol.toPrimitive we should get following results (revise this method hin
 3.in case of default conversion, e.g product1 + product2, it should return qty * price
  */
 const promotion = Symbol('applyPromotion');
+const category = {
+  id: 123,
+  title: 'fruit',
+};
 
-function Product(title, qty, price) {
+function Product(title, qty, price, about) {
   this.title = title;
   this.qty = qty;
   this.price = price;
-
-  const category = {
-    id: 123,
-    title: 'fruit',
-  };
+  this.category = about;
 
   this[promotion] = function (decreaseByPrice) {
-    price -= decreaseByPrice;
-    this.price = price;
+    return price - decreaseByPrice;
   };
 
   this[Symbol.toPrimitive] = function (hint) {
-    const { title } = { ...category };
-    return hint === 'string' ? `This is an ${title}, from <${title}> category with ${price} price!` : hint === 'number' ? price : qty * price;
+    return hint === 'string' ? `This is an ${title}, from <${about.title}> category with ${price} price!` : hint === 'number' ? price : qty * price;
   };
 }
 
-const product1 = new Product('apple', 15, 20);
-const product2 = new Product('banana', 20, 12);
+const product1 = new Product('apple', 15, 20, category);
+const product2 = new Product('banana', 20, 12, category);
 
 //alert(product1);
 console.log(product1[promotion](3));
