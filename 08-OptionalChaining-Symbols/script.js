@@ -141,7 +141,7 @@ function Product(title, qty, price, about) {
   this.category = about;
 
   this[promotion] = function (decreaseByPrice) {
-    return price - decreaseByPrice;
+    this.price -= decreaseByPrice;
   };
 
   this[Symbol.toPrimitive] = function (hint) {
@@ -152,8 +152,9 @@ function Product(title, qty, price, about) {
 const product1 = new Product('apple', 15, 20, category);
 const product2 = new Product('banana', 20, 12, category);
 
-alert(product1);
-console.log(product1[promotion](3));
+//alert(product1);
+product1[promotion](3);
+product1[promotion](2);
 console.log(product1);
 
 console.log(`${product1} \n${product2}`);
