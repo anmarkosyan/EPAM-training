@@ -127,8 +127,11 @@ Using Symbol.toPrimitive we should get following results (revise this method hin
  */
 const promotion = Symbol('applyPromotion');
 const category = {
-  id: 123,
+  id: '0012323',
   title: 'fruit',
+  toString() {
+    return `id: ${this.id} - title: ${this.title}`;
+  },
 };
 
 function Product(title, qty, price, about) {
@@ -142,14 +145,14 @@ function Product(title, qty, price, about) {
   };
 
   this[Symbol.toPrimitive] = function (hint) {
-    return hint === 'string' ? `This is an ${title}, from <${about.title}> category with ${price} price!` : hint === 'number' ? price : qty * price;
+    return hint === 'string' ? ` title: ${title} \n category: ${about} \n price: ${price}` : hint === 'number' ? price : qty * price;
   };
 }
 
 const product1 = new Product('apple', 15, 20, category);
 const product2 = new Product('banana', 20, 12, category);
 
-//alert(product1);
+alert(product1);
 console.log(product1[promotion](3));
 console.log(product1);
 
