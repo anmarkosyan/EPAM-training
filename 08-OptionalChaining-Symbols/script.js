@@ -125,65 +125,36 @@ Using Symbol.toPrimitive we should get following results (revise this method hin
 2.when conversion type is number, e.g. product1 * product2, it should return price
 3.in case of default conversion, e.g product1 + product2, it should return qty * price
  */
+const promotion = Symbol('applyPromotion');
 
-// const Product = function (title, qty, price) {
-//   this.title = title;
-//   this.qty = qty;
-//   this.price = price;
-//   this.category = {
-//     id: 123,
-//     title: 'fruit',
-//   };
-//
-//
-// };
-// const product1 = new Product('apple', 15, 5, )
-// console.log(product1)
-const id = Symbol('id');
+function Product(title, qty, price) {
+  this.title = title;
+  this.qty = qty;
+  this.price = price;
 
-const product1 = {
-  title: 'apple',
-  qty: 15,
-  price: 5,
-  category: {
-    [id]: 123,
+  const category = {
+    id: 123,
     title: 'fruit',
-  },
-  [Symbol.toPrimitive](hint) {
-    if (hint === 'string') {
-      return `This is an ${this.title}, from <${this.category.title}> category with ${this.price} price!`;
-    }
-    if (hint === 'number') {
-      return this.price;
-    }
-    return this.qty * this.price;
-  },
-};
+  };
 
-const product2 = {
-  title: 'banana',
-  qty: 25,
-  price: 15,
-  category: {
-    [id]: 124,
-    title: 'fruit',
-  },
-  [Symbol.toPrimitive](hint) {
-    if (hint === 'string') {
-      return `This is an ${this.title}, from <${this.category.title}> category with ${this.price} price!`;
-    }
-    if (hint === 'number') {
-      return this.price;
-    }
-    return this.qty * this.price;
-  },
-};
+  this[promotion] = function (decreaseByPrice) {
+    price -= decreaseByPrice;
+    this.price = price;
+  };
 
-//1.when conversion type is string, we should get title + category + $price , e.g. alert(product1)
-console.log(`${product1} \n${product2}`); //This is an apple, from <fruit> category with 20 price!
+  this[Symbol.toPrimitive] = function (hint) {
+    const { title } = { ...category };
+    return hint === 'string' ? `This is an ${title}, from <${title}> category with ${price} price!` : hint === 'number' ? price : qty * price;
+  };
+}
 
-//2.when conversion type is number, e.g. product1 * product2, it should return price
-console.log(product1 * product2); //75
+const product1 = new Product('apple', 15, 20);
+const product2 = new Product('banana', 20, 12);
 
-//3.in case of default conversion, e.g product1 + product2, it should return qty * price
-console.log(product1 + product1); //150
+//alert(product1);
+console.log(product1[promotion](3));
+console.log(product1);
+
+console.log(`${product1} \n${product2}`);
+console.log(product1 * product2);
+console.log(product1 + product2);
