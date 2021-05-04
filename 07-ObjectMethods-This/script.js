@@ -55,20 +55,16 @@ user.calcAge();
 user.greet();
 
  */
-//=========
-// function makeUser() {
-//   return {
-// 'John',
-//     //ref: this,//undefined
-//     ref: function () {
-//       return this 'John', [functions: ref]}
-//     },
-//   };
-// }
-//
-// let user = makeUser(); //let user 'John', ref: undefined}
-// //console.log(user; //TypeError: Cannot read prope of undefined
-// console.log(user.r //'John'
+//=======
+function NameMe(first, last) {
+  this.firstName = first;
+  this.lastName = last;
+  this.name = `${this.firstName} ${this.lastName}`;
+}
+const n = new NameMe('ann', 'Markos');
+console.log(n.firstName);
+console.log(n.lastName);
+console.log(n.name);
 
 //=======
 // let ladder = {
@@ -199,6 +195,7 @@ log: function(str) {
 feel free do add additional parameters, also please send the data as function parameters
 */
 
+/*
 const languageData = ['Javascript', 'Python', 'C++'];
 const promptVal = prompt(`What is your favourite programming language?.\n${languageData.join('\n')}`, '');
 
@@ -248,3 +245,4 @@ const result = function (programName) {
 };
 
 result(promptVal);
+ */
