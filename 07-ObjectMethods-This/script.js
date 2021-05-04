@@ -56,15 +56,45 @@ user.greet();
 
  */
 //=======
-function NameMe(first, last) {
-  this.firstName = first;
-  this.lastName = last;
-  this.name = `${this.firstName} ${this.lastName}`;
-}
-const n = new NameMe('ann', 'Markos');
-console.log(n.firstName);
-console.log(n.lastName);
-console.log(n.name);
+// function NameMe(first, last) {
+//   this.firstName = first;
+//   this.lastName = last;
+//   this.name = `${this.firstName} ${this.lastName}`;
+// }
+// const n = new NameMe('ann', 'Markos');
+// console.log(n.firstName);
+// console.log(n.lastName);
+// console.log(n.name);
+
+//=======
+// const obj = {
+//   arr: [],
+// };
+//
+// obj.arr.push(17);
+// const obj1 = obj;
+//
+// console.log(obj1.arr === obj.arr); //true
+// console.log([17] === [17]); //false
+
+//======
+// function fn() {
+//   console.log(this);
+// }
+//
+// const obj = {
+//   value: 5
+// };
+//
+//
+// const boundFn = obj.fn;
+// console.log(obj);
+
+
+
+//boundFn(); // -> { value: 5 }
+//fn.call(obj); // -> { value: 5 }
+//fn.apply(obj); // -> { value: 5 }
 
 //=======
 // let ladder = {
