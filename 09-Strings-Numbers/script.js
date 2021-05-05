@@ -30,35 +30,40 @@ Create a function that receives an argument epam's name,
 // console.log(displayAboutUser('hi', 'say'));
 
 //2️⃣
-function displayAboutUser(...arg) {
-  const aboutObj = { ...arg };
-  let namesToUpper = '';
-
-  for (const key in aboutObj) {
-    namesToUpper += aboutObj[key].toUpperCase() + ' ';
-  }
-  return namesToUpper;
-}
-
-console.log(displayAboutUser('Jonas', 'epam', 'Australia'));
+// function displayAboutUser(...arg) {
+//   const aboutObj = { ...arg };
+//   let namesToUpper = '';
+//
+//   for (const key in aboutObj) {
+//     namesToUpper += aboutObj[key].toUpperCase() + ' ';
+//   }
+//   return namesToUpper;
+// }
+//
+// console.log(displayAboutUser('Jonas', 'epam', 'Australia'));
 
 //3️⃣
-function DisplayAboutUser(name, company, from) {
+function DisplayAboutUser(name, company, from, experience) {
   this.name = name;
   this.company = company;
   this.from = from;
-  this.namesToUpper = '';
+  this.experience = experience;
+  this.numericMsg = '';
+  this.letterMsg = '';
 
-    for (let i = 0; i < arguments.length; i++) {
-      this.namesToUpper += arguments[i].toUpperCase() + ' ';
+  for (let i = 0; i < arguments.length; i++) {
+    if (Number.isFinite(arguments[i])) {
+      this.numericMsg += ` ${arguments[i]}:`;
+    } else {
+      this.letterMsg += `${arguments[i].toUpperCase()}: `;
     }
+  }
 
-
+  this.message = this.letterMsg + this.numericMsg;
 }
-const user1 = new DisplayAboutUser('Jonas', 'epam', 'Australia');
-const user2 = new DisplayAboutUser('Sarah', 'adobe', 'usa');
+const user1 = new DisplayAboutUser('Jonas', 'epam', 'Australia', 3, 'aba', 543);
+const user2 = new DisplayAboutUser('Sarah', 'adobe', 'usa', 5);
 
 console.log(user1);
-console.log(user1.namesToUpper);
-console.log(user2.namesToUpper);
-
+console.log(user1.message);
+console.log(user2.message);
