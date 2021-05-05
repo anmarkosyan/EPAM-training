@@ -62,18 +62,3 @@ console.log(user1);
 console.log(user1.namesToUpper);
 console.log(user2.namesToUpper);
 
-// function printInformation(informationToPrint){
-//   for(let key in informationToPrint){
-//     console.log(informationToPrint[key]);
-//   }
-// }
-// function CompanyInformation(){
-//   const companyData = {};
-//   for(let i = 0; i < arguments.length; i++){
-//     companyData[`data${i+1}`] = arguments[i].toUpperCase();
-//   }
-//
-//   return companyData;
-// }
-// const companyInfo = CompanyInformation('ePAm', 'New Jersey', 'United States', '1993', 'Arkadiy Dobkin');
-// printInformation(companyInfo);
