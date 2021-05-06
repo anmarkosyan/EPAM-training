@@ -4,7 +4,7 @@
 Create a function that receives an argument epam's name,
  and returns an object with uppercase,
  then we need to console.log of this object's values
- Lets console without directly taking the object key
+ Lets console without directly taking the object value
  */
 //function should take argument(s),
 // you need take whole arguments and create an  object
@@ -15,34 +15,18 @@ Create a function that receives an argument epam's name,
 // don't forgot to use these values with Uppercase.
 
 //1️⃣
-// const displayAboutUser = function (userName, userCompany) {
-//   return {
-//     name: userName.toUpperCase(),
-//     company: userCompany.toUpperCase(),
-//
-//     [Symbol.toPrimitive]() {
-//       return `${this.name}: from ${this.company}`;
-//     },
-//   };
-// };
-//
-// console.log(`${displayAboutUser('Jonas', 'epam')}`);
-// console.log(displayAboutUser('hi', 'say'));
+function displayAboutUser() {
+  const aboutObj = {};
+
+  for (const value in arguments) {
+    aboutObj[value] = arguments[value].toString().toUpperCase();
+  }
+  return aboutObj;
+}
+
+console.log(displayAboutUser('Jonas', 'epam', 'Australia', 2, 445, ));
 
 //2️⃣
-// function displayAboutUser(...arg) {
-//   const aboutObj = { ...arg };
-//   let namesToUpper = '';
-//
-//   for (const key in aboutObj) {
-//     namesToUpper += aboutObj[key].toUpperCase() + ' ';
-//   }
-//   return namesToUpper;
-// }
-//
-// console.log(displayAboutUser('Jonas', 'epam', 'Australia'));
-
-//3️⃣
 function DisplayAboutUser(name, company, from, experience) {
   this.name = name;
   this.company = company;
