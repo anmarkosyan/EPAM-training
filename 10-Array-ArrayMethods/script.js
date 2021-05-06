@@ -96,59 +96,77 @@ console.log(x);
 // for these implementation please read this simple example in order to understand how you can create custom methods for Array,
 // if you don't know what is the prototype, just use it as it is, in future we will learn about
 //1️⃣ map
-const users = [
-  { id: 1, firstName: 'Tony', lastName: 'Stark', age: 45, employee: true },
-  { id: 2, firstName: 'Steve', lastName: 'Strange', age: 40, employee: true },
-  { id: 3, firstName: 'Bruce', lastName: 'banner', age: 35, employee: false },
-  { id: 4, firstName: 'Steve', lastName: 'Rogers', age: 73, employee: false },
-  { id: 5, firstName: 'Sia', lastName: 'Yung', age: 33, employee: true },
-  { id: 6, firstName: 'Jonas', lastName: 'Marker', age: 23, employee: true },
-  { id: 7, firstName: null, lastName: null },
-];
+// const users = [
+//   { id: 1, firstName: 'Tony', lastName: 'Stark', age: 50, employee: true },
+//   { id: 2, firstName: 'Steve', lastName: 'Strange', age: 40, employee: true },
+//   { id: 3, firstName: 'Bruce', lastName: 'Banner', age: 65, employee: false },
+//   { id: 4, firstName: 'Steve', lastName: 'Rogers', age: 73, employee: false },
+//   { id: 5, firstName: 'Sia', lastName: 'Yung', age: 33, employee: true },
+//   { id: 6, firstName: 'Jonas', lastName: 'Marker', age: 23, employee: true },
+//   { id: 7, firstName: null, lastName: null },
+// ];
 
-Array.prototype.myMap = function () {
-  const arr = this;
-  const newArr = [];
-
-  //1 way: using forEach method
-  arr.forEach(function (user) {
-    if (user.id && user.firstName && user.lastName) {
-      newArr.push({ id: user.id, fullName: `${user.firstName} ${user.lastName}` });
-    } else {
-      newArr.push({ userStatus: 'no found' });
-    }
-  });
-
-  //2 way: with for... of loop
-  // for (const user of arr) {
-  //   if (user.id && user.firstName && user.lastName) {
-  //     newArr.push({ id: user.id, fullName: `${user.firstName} ${user.lastName}` });
-  //   } else {
-  //     newArr.push({ userStatus: 'no found' });
-  //   }
-  // }
-  //
-  // return newArr;
-
-  //3 way: with reduce()
-  // arr.reduce(function (acc, user) {
-  //   if (user.id && user.firstName && user.lastName) {
-  //     acc.id = user.id;
-  //     acc.fullName = `${user.firstName} ${user.lastName}`;
-  //
-  //     newArr.push({ id: acc.id, fullName: acc.fullName });
-  //   } else {
-  //     acc.userStatuse = 'notfound';
-  //
-  //     newArr.push({ userStatus: acc.userStatuse });
-  //   }
-  //
-  //   return acc;
-  //}, {});
-
-  return newArr;
-};
-console.log(users.myMap());
+// Array.prototype.myMap = function () {
+//   const arr = this;
+//   const newArr = [];
+//
+//   //1 way: using forEach method
+//   arr.forEach(function (user) {
+//     if (user.id && user.firstName && user.lastName) {
+//       newArr.push({ id: user.id, fullName: `${user.firstName} ${user.lastName}` });
+//     } else {
+//       newArr.push({ userStatus: 'no found' });
+//     }
+//   });
+//
+//   //2 way: with for... of loop
+//   // for (const user of arr) {
+//   //   if (user.id && user.firstName && user.lastName) {
+//   //     newArr.push({ id: user.id, fullName: `${user.firstName} ${user.lastName}` });
+//   //   } else {
+//   //     newArr.push({ userStatus: 'no found' });
+//   //   }
+//   // }
+//   //
+//   // return newArr;
+//
+//   //3 way: with reduce()
+//   // arr.reduce(function (acc, user) {
+//   //   if (user.id && user.firstName && user.lastName) {
+//   //     acc.id = user.id;
+//   //     acc.fullName = `${user.firstName} ${user.lastName}`;
+//   //
+//   //     newArr.push({ id: acc.id, fullName: acc.fullName });
+//   //   } else {
+//   //     acc.userStatuse = 'notfound';
+//   //
+//   //     newArr.push({ userStatus: acc.userStatuse });
+//   //   }
+//   //
+//   //   return acc;
+//   //}, {});
+//
+//   return newArr;
+// };
+// console.log(users.myMap());
 
 //2️⃣ filter
 
+const arr = [23, 4, 2, 3, 23, 2, 56, 4, 7];
+const dupRem = arr.filter(function(num){
+  return  arr.indexOf(num) === arr.lastIndexOf(num)
+})
+
+console.log(dupRem);//[3, 56, 7]
+
+Array.prototype.myFilter = function () {
+  const arr = this;
+  const duplicateRemovedArr = [];
+
+  for (const num of arr) {
+    if (arr.indexOf(num) === arr.lastIndexOf(num)) duplicateRemovedArr.push(num);
+  }
+
+  return duplicateRemovedArr;
+};
+console.log(arr.myFilter());
