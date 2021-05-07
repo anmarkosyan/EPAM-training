@@ -126,50 +126,6 @@ console.log(x);
 //
 // console.log(users.myMap(callbackFnc));
 
-// Array.prototype.myMap = function () {
-//   const arr = this;
-//   const newArr = [];
-//
-//   //1 way: using forEach method
-//   arr.forEach(function (user) {
-//     if (user.id && user.firstName && user.lastName) {
-//       newArr.push({ id: user.id, fullName: `${user.firstName} ${user.lastName}` });
-//     } else {
-//       newArr.push({ userStatus: 'no found' });
-//     }
-//   });
-
-//2 way: with for... of loop
-// for (const user of arr) {
-//   if (user.id && user.firstName && user.lastName) {
-//     newArr.push({ id: user.id, fullName: `${user.firstName} ${user.lastName}` });
-//   } else {
-//     newArr.push({ userStatus: 'no found' });
-//   }
-// }
-//
-// return newArr;
-
-// 3 way: with reduce()
-//   arr.reduce(function (acc, user) {
-//     if (user.id && user.firstName && user.lastName) {
-//       acc.id = user.id;
-//       acc.fullName = `${user.firstName} ${user.lastName}`;
-//
-//       newArr.push({ id: acc.id, fullName: acc.fullName });
-//     } else {
-//       acc.userStatuse = 'notfound';
-//
-//       newArr.push({ userStatus: acc.userStatuse });
-//     }
-//
-//     return acc;
-//   }, {});
-//
-//   return newArr;
-// };
-// console.log(users.myMap());
-
 //2️⃣ filter
 // const dupRem = arr.filter(function(num){
 //   return  arr.indexOf(num) === arr.lastIndexOf(num)
