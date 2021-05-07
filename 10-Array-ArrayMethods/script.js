@@ -105,6 +105,26 @@ console.log(x);
 //   { id: 6, firstName: 'Jonas', lastName: 'Marker', age: 23, employee: true },
 //   { id: 7, firstName: null, lastName: null },
 // ];
+//
+// Array.prototype.myMap = function (fnc) {
+//   const arr = this;
+//   const newArr = [];
+//
+//   for (const user of arr) {
+//     newArr.push(fnc(user));
+//   }
+//   return newArr;
+// };
+//
+// const callbackFnc = function (el) {
+//   if (el.id && el.firstName && el.lastName) {
+//     return { id: el.id, fullName: `${el.firstName} ${el.lastName}` };
+//   } else {
+//     return { userStatus: 'no found' };
+//   }
+// };
+//
+// console.log(users.myMap(callbackFnc));
 
 // Array.prototype.myMap = function () {
 //   const arr = this;
@@ -118,55 +138,61 @@ console.log(x);
 //       newArr.push({ userStatus: 'no found' });
 //     }
 //   });
+
+//2 way: with for... of loop
+// for (const user of arr) {
+//   if (user.id && user.firstName && user.lastName) {
+//     newArr.push({ id: user.id, fullName: `${user.firstName} ${user.lastName}` });
+//   } else {
+//     newArr.push({ userStatus: 'no found' });
+//   }
+// }
 //
-//   //2 way: with for... of loop
-//   // for (const user of arr) {
-//   //   if (user.id && user.firstName && user.lastName) {
-//   //     newArr.push({ id: user.id, fullName: `${user.firstName} ${user.lastName}` });
-//   //   } else {
-//   //     newArr.push({ userStatus: 'no found' });
-//   //   }
-//   // }
-//   //
-//   // return newArr;
+// return newArr;
+
+// 3 way: with reduce()
+//   arr.reduce(function (acc, user) {
+//     if (user.id && user.firstName && user.lastName) {
+//       acc.id = user.id;
+//       acc.fullName = `${user.firstName} ${user.lastName}`;
 //
-//   //3 way: with reduce()
-//   // arr.reduce(function (acc, user) {
-//   //   if (user.id && user.firstName && user.lastName) {
-//   //     acc.id = user.id;
-//   //     acc.fullName = `${user.firstName} ${user.lastName}`;
-//   //
-//   //     newArr.push({ id: acc.id, fullName: acc.fullName });
-//   //   } else {
-//   //     acc.userStatuse = 'notfound';
-//   //
-//   //     newArr.push({ userStatus: acc.userStatuse });
-//   //   }
-//   //
-//   //   return acc;
-//   //}, {});
+//       newArr.push({ id: acc.id, fullName: acc.fullName });
+//     } else {
+//       acc.userStatuse = 'notfound';
+//
+//       newArr.push({ userStatus: acc.userStatuse });
+//     }
+//
+//     return acc;
+//   }, {});
 //
 //   return newArr;
 // };
 // console.log(users.myMap());
 
 //2️⃣ filter
+// const dupRem = arr.filter(function(num){
+//   return  arr.indexOf(num) === arr.lastIndexOf(num)
+// })
+//console.log(dupRem); //[3, 56, 7]
 
-const arr = [23, 4, 2, 3, 23, 2, 56, 4, 7];
-const dupRem = arr.filter(function(num){
-  return  arr.indexOf(num) === arr.lastIndexOf(num)
-})
-
-console.log(dupRem);//[3, 56, 7]
-
-Array.prototype.myFilter = function () {
-  const arr = this;
-  const duplicateRemovedArr = [];
-
-  for (const num of arr) {
-    if (arr.indexOf(num) === arr.lastIndexOf(num)) duplicateRemovedArr.push(num);
-  }
-
-  return duplicateRemovedArr;
-};
-console.log(arr.myFilter());
+// const arr = [23, 4, 2, 3, 23, 2, 56, 4, 7];
+//
+// Array.prototype.myFilter = function (fnc) {
+//   const arr = this;
+//   const duplicateRemovedArr = [];
+//
+//   for (let i = 0; i < arr.length; i++) {
+//     if (fnc(arr[i], arr)) {
+//       duplicateRemovedArr.push(arr[i]);
+//     }
+//   }
+//
+//   return duplicateRemovedArr;
+// };
+//
+// const callbackFunction = function (el, currentArr) {
+//   return currentArr.indexOf(el) === currentArr.lastIndexOf(el);
+// };
+//
+// console.log(arr.myFilter(callbackFunction));
