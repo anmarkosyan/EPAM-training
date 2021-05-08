@@ -91,10 +91,8 @@ console.log(x);
 // console.log(users.myMap());
 
 //====================== 👩🏻‍💻 coding challenge =============
-
 //implement `map` and `filter` methods manually,
-// for these implementation please read this simple example in order to understand how you can create custom methods for Array,
-// if you don't know what is the prototype, just use it as it is, in future we will learn about
+
 //1️⃣ map
 // const users = [
 //   { id: 1, firstName: 'Tony', lastName: 'Stark', age: 50, employee: true },
@@ -183,3 +181,26 @@ console.log(x);
 // };
 //
 // console.log(arr.myFilter(callbackFunction));
+
+//============== problem with reduce ======
+//const arr = [1, 2, 3, 5, 7, 4, 23, 56, 4];
+//
+// const oddAvg = function (numsArr) {
+//   //1way:
+//   const obj = numsArr.reduce(
+//     function (acc, num) {
+//       if (num % 2 !== 0) {
+//         acc.sum += num;
+//         acc.length++;
+//       }
+//       return acc;
+//     },
+//     { sum: 0, length: 0 }
+//   );
+//   return obj.sum / obj.length;
+//
+//   //2way:
+//   // const oddNums = numsArr.filter(el => el % 2 !== 0);
+//   // return oddNums.reduce((acc, num) => acc + num, 0) / oddNums.length;
+// };
+// console.log(oddAvg(arr));
