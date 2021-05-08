@@ -5,8 +5,8 @@
 //string
 //Set
 //Map
-
-const obj = { one: 1, two: 2 };//❗️object is not iterable
+//✅ object
+const obj = { one: 1, two: 2 }; //❗️object is not iterable
 for (const key in obj) console.log(key); // => one, two
 //❗️for(const value of obj) console.log(value); // =>❗️ TypeError: range is not iterable
 for (const key of Object.keys(obj)) console.log(key); // => one, two
@@ -16,32 +16,31 @@ for (const [key, value] of Object.entries(obj)) console.log(key, value); // => o
 const obj1 = { one: { integer: 1, decimal: 1.0 } };
 for (const [key, value] of Object.entries(obj1)) console.log(key, value); //one { integer: 1, decimal: 1 }
 for (const [key, { integer, decimal }] of Object.entries(obj1)) console.log(key, integer, decimal); //one 1 1
-
+//✅ array
 const arr = [1, 2, 3];
 for (const index in arr) console.log(index); // 0, 1, 2
 for (const el of arr) console.log(el); //1, 2, 3
 for (const [index, el] of arr.entries()) console.log(index, el); //0 1, 1 2, 2 3,
-
+//✅ string
 const str = 'hello';
 for (const index in str) console.log(index); //0, 1, 2, 3, 4
 for (const el of str) console.log(el); //h, e, l, l, o
-
+//✅ new Set()
 const set = new Set([1, 2, 3, 2, 4, 1]);
 const set1 = new Set('abcdc');
+const setObj = { name: 'Ush' };
 console.log(set1); //Set { 'a', 'b', 'c', 'd' }
 console.log(set); //Set { 1, 2, 3, 4 }
+console.log(set.add(setObj)); //Set { 1, 2, 3, 4, { name: 'Ush' } }
 for (const el of set1) console.log(el); // a, b, c, d
 set.forEach(function (el) {
-  console.log(el);//1, 2, 3, 4
+  console.log(el); //1, 2, 3, 4
 });
-
+//✅ new Map()
 const map = new Map();
 console.log(map);
 
 //2️⃣ [Symbol.iterator] for looping over the object using for...of
-
-
-
 
 // let obj = {
 //   from: 1,
@@ -77,11 +76,24 @@ console.log(map);
 // //map.values()
 
 //4️⃣ new Set()
-// const set = new Set();
-// const obj1 = {
-//
-// }
-// console.log(set.add(obj1));
+const ordersSet = new Set(['hi', 'hi', 'hello', 'hello']);
+
+console.log(ordersSet); //Set { 'hi', 'hello' }
+console.log(ordersSet.size); // 2
+console.log(ordersSet.has('hi')); // true => like includes() method
+console.log(ordersSet.add('there')); //{ 'hi', 'hello', 'there' }
+console.log(ordersSet.delete('hi')); //true
+console.log(ordersSet.entries()); // { [hello, hello], [there, there]}
+//console.log(ordersSet.clear());{}
+
+// Example with array added in Set after converted to array
+const staff = ['waiter', 'chef', 'waiter', 'manager', 'chef', 'waiter'];
+
+const uniquePosition = new Set(staff); //{''...}
+console.log([...uniquePosition]); //[...]
+//or
+console.log([...new Set(staff)]); //[...]
+
 //***************
 // const map = new Map([
 //   ['some key', 'some value'],
@@ -98,24 +110,33 @@ console.log(map);
 // }
 
 //==================== 👩🏻‍💻 coding challenge ================
-// const arr = [1, 2, 3, 5, 7, 4, 23, 56, 4];
-//
-// const oddAvg = function (numsArr) {
-//   //1way:
-//   const obj = numsArr.reduce(
-//     function (acc, num) {
-//       if (num % 2 !== 0) {
-//         acc.sum += num;
-//         acc.length++;
-//       }
-//       return acc;
-//     },
-//     { sum: 0, length: 0 }
-//   );
-//   return obj.sum / obj.length;
-//
-//   //2way:
-//   // const oddNums = numsArr.filter(el => el % 2 !== 0);
-//   // return oddNums.reduce((acc, num) => acc + num, 0) / oddNums.length;
-// };
-// console.log(oddAvg(arr));
+//🏋🏻‍♀️Set
+//Create a function unique(arr) that should return an array with unique items of arr.
+function unique(arr) {
+  return [...new Set(arr)];
+  //return Array.from(new Set(arr))
+}
+
+const values = ['Hare', 'Krishna', 'Hare', 'Krishna', 'Krishna', 'Krishna', 'Hare', 'Hare', ':-O'];
+
+console.log(unique(values)); //[ 'Hare', 'Krishna', ':-O' ]
+
+//***************************************************************
+//🏋🏻‍Map♀️
+//Write a function aclean(arr) that returns an array cleaned from anagrams.
+const arrAnagram = ['nap', 'teachers', 'cheaters', 'PAN', 'ear', 'era', 'hectares'];
+function aclean(arr) {
+  const map = new Map();
+
+  for (const el of arr) {
+    const orderingName = el.toLowerCase().split('').sort().join('');
+
+    map.set(orderingName, el);
+    console.log(map);
+  }
+
+  return [...map.values()];
+  //return Array.from(map.values());
+}
+
+console.log(aclean(arrAnagram));
