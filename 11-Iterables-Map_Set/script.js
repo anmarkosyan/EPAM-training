@@ -1,8 +1,12 @@
 'use strict';
 //=================== 🔴 lecture part =======================
-//1️⃣[Symbol.iterator] for looping over the object using for...of
+//1️⃣ iteration for iterables
+//array
+//string
+//Set
+//Map
 
-const obj = { one: 1, two: 2 };
+const obj = { one: 1, two: 2 };//❗️object is not iterable
 for (const key in obj) console.log(key); // => one, two
 //❗️for(const value of obj) console.log(value); // =>❗️ TypeError: range is not iterable
 for (const key of Object.keys(obj)) console.log(key); // => one, two
@@ -16,16 +20,28 @@ for (const [key, { integer, decimal }] of Object.entries(obj1)) console.log(key,
 const arr = [1, 2, 3];
 for (const index in arr) console.log(index); // 0, 1, 2
 for (const el of arr) console.log(el); //1, 2, 3
+for (const [index, el] of arr.entries()) console.log(index, el); //0 1, 1 2, 2 3,
 
 const str = 'hello';
 for (const index in str) console.log(index); //0, 1, 2, 3, 4
 for (const el of str) console.log(el); //h, e, l, l, o
 
-const set = new Set();
+const set = new Set([1, 2, 3, 2, 4, 1]);
+const set1 = new Set('abcdc');
+console.log(set1); //Set { 'a', 'b', 'c', 'd' }
+console.log(set); //Set { 1, 2, 3, 4 }
+for (const el of set1) console.log(el); // a, b, c, d
+set.forEach(function (el) {
+  console.log(el);//1, 2, 3, 4
+});
 
-// for(const num of range){
-//   console.log(num);//=> num = 1, 2, 3, 4, 5 => instead of we get this => TypeError: range is not iterable
-// }
+const map = new Map();
+console.log(map);
+
+//2️⃣ [Symbol.iterator] for looping over the object using for...of
+
+
+
 
 // let obj = {
 //   from: 1,
@@ -48,7 +64,7 @@ const set = new Set();
 //   console.log(key);
 // }
 //
-//2️⃣ new Map()
+//3️⃣ new Map()
 //
 // //map.set()
 // //map.get()
@@ -60,7 +76,7 @@ const set = new Set();
 // //map.keys()
 // //map.values()
 
-//3️⃣ new Set()
+//4️⃣ new Set()
 // const set = new Set();
 // const obj1 = {
 //
