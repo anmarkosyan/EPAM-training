@@ -5,8 +5,8 @@
 //string
 //Set
 //Map
-//✅ object
 /*
+//✅ object
 const obj = { one: 1, two: 2 }; //❗️object is not iterable
 for (const key in obj) console.log(key); // => one, two
 //❗️for(const value of obj) console.log(value); // =>❗️ TypeError: range is not iterable
@@ -78,9 +78,8 @@ restaurant
 
 const currTime = 22;
 const msg = restaurant.get(currTime > restaurant.get('open') && currTime < restaurant.get('close'));
+
 console.log(msg);
-
-
 // //map.has()
 // //map.delete()
 // //map.size()
@@ -89,20 +88,17 @@ console.log(msg);
 // //map.keys()
 // //map.values()
 
-//***************
-// const map = new Map([
-//   ['some key', 'some value'],
-//   ['asdasd', 'asdasd'],
-// ]);
-// console.log(map);
-// // const obj = Object.fromEntries(map.entries());
-// // console.log(obj);
-// // const map2 = new Map(Object.entries(obj));
-// // console.log(map2);
-// console.log(map.entries());
-// for (let [key, value] of map.entries()) {
-//   console.log(Object.fromEntries(key));
-// }
+//Example:
+const map = new Map([
+  ['some key', 'some value'],
+  ['asdasd', 'asdasd'],
+]);
+console.log(map);
+console.log(map.entries());
+const obj = Object.fromEntries(map.entries());
+console.log(obj);
+const map2 = new Map(Object.entries(obj));
+console.log(map2);
 
 //4️⃣ new Set()
 // const ordersSet = new Set(['hi', 'hi', 'hello', 'hello']);
