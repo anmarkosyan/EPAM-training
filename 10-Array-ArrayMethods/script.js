@@ -105,7 +105,26 @@ console.log(x);
 //   { id: 6, firstName: 'Jonas', lastName: 'Marker', age: 23, employee: true },
 //   { id: 7, firstName: null, lastName: null },
 // ];
+//===============
+// const usingReduce = function (usersData) {
+//   const newArr = [];
+//   usersData.reduce(function (acc, user) {
+//     if (user.id && user.firstName && user.lastName) {
+//       acc.id = user.id;
+//       acc.fullName = `${user.firstName} ${user.lastName}`;
+//       newArr.push({ id: acc.id, fullName: acc.fullName });
+//     } else {
+//       acc.userStatuse = 'notfound';
+//       newArr.push({ userStatus: acc.userStatuse });
+//     }
 //
+//     return acc;
+//   }, {});
+//
+//   return newArr;
+// };
+// console.log(usingReduce(users));
+//===================
 // Array.prototype.myMap = function (fnc) {
 //   const arr = this;
 //   const newArr = [];
@@ -127,13 +146,25 @@ console.log(x);
 // console.log(users.myMap(callbackFnc));
 
 //2️⃣ filter
+//const arr = [23, 4, 2, 3, 23, 2, 56, 4, 7];
+//===================
 // const dupRem = arr.filter(function(num){
 //   return  arr.indexOf(num) === arr.lastIndexOf(num)
 // })
 //console.log(dupRem); //[3, 56, 7]
-
-// const arr = [23, 4, 2, 3, 23, 2, 56, 4, 7];
+//==================
+//using only reduce for creating new array of unique numbers
+// const usingReduceForFilter = function (numbersArr) {
+//   return numbersArr.reduce(function (acc, num, _, arr) {
+//     if (arr.indexOf(num) === arr.lastIndexOf(num)) {
+//       acc.push(num);
+//     }
 //
+//     return acc;
+//   }, []);
+// };
+// console.log(usingReduceForFilter(arr));
+//===================
 // Array.prototype.myFilter = function (fnc) {
 //   const arr = this;
 //   const duplicateRemovedArr = [];
