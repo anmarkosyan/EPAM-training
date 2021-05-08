@@ -6,6 +6,7 @@
 //Set
 //Map
 //✅ object
+/*
 const obj = { one: 1, two: 2 }; //❗️object is not iterable
 for (const key in obj) console.log(key); // => one, two
 //❗️for(const value of obj) console.log(value); // =>❗️ TypeError: range is not iterable
@@ -39,7 +40,7 @@ set.forEach(function (el) {
 //✅ new Map()
 const map = new Map();
 console.log(map);
-
+ */
 //2️⃣ [Symbol.iterator] for looping over the object using for...of
 
 // let obj = {
@@ -64,9 +65,22 @@ console.log(map);
 // }
 //
 //3️⃣ new Map()
-//
-// //map.set()
-// //map.get()
+const restaurant = new Map();
+restaurant
+  .set('name', 'Mayrig')
+  .set(1, 'Sayat-Nova')
+  .set(2, 'Amiryan')
+  .set('open', 11)
+  .set('close', 22)
+  .set(true, 'we are open')
+  .set(false, 'we are closed')
+  .set([], '');
+
+const currTime = 22;
+const msg = restaurant.get(currTime > restaurant.get('open') && currTime < restaurant.get('close'));
+console.log(msg);
+
+
 // //map.has()
 // //map.delete()
 // //map.size()
@@ -74,25 +88,6 @@ console.log(map);
 // //map.entries()
 // //map.keys()
 // //map.values()
-
-//4️⃣ new Set()
-const ordersSet = new Set(['hi', 'hi', 'hello', 'hello']);
-
-console.log(ordersSet); //Set { 'hi', 'hello' }
-console.log(ordersSet.size); // 2
-console.log(ordersSet.has('hi')); // true => like includes() method
-console.log(ordersSet.add('there')); //{ 'hi', 'hello', 'there' }
-console.log(ordersSet.delete('hi')); //true
-console.log(ordersSet.entries()); // { [hello, hello], [there, there]}
-//console.log(ordersSet.clear());{}
-
-// Example with array added in Set after converted to array
-const staff = ['waiter', 'chef', 'waiter', 'manager', 'chef', 'waiter'];
-
-const uniquePosition = new Set(staff); //{''...}
-console.log([...uniquePosition]); //[...]
-//or
-console.log([...new Set(staff)]); //[...]
 
 //***************
 // const map = new Map([
@@ -109,34 +104,51 @@ console.log([...new Set(staff)]); //[...]
 //   console.log(Object.fromEntries(key));
 // }
 
+//4️⃣ new Set()
+// const ordersSet = new Set(['hi', 'hi', 'hello', 'hello']);
+//
+// console.log(ordersSet); //Set { 'hi', 'hello' }
+// console.log(ordersSet.size); // 2
+// console.log(ordersSet.has('hi')); // true => like includes() method
+// console.log(ordersSet.add('there')); //{ 'hi', 'hello', 'there' }
+// console.log(ordersSet.delete('hi')); //true
+// console.log(ordersSet.entries()); // { [hello, hello], [there, there]}
+// //console.log(ordersSet.clear());{}
+//
+// // Example with array added in Set after converted to array
+// const staff = ['waiter', 'chef', 'waiter', 'manager', 'chef', 'waiter'];
+//
+// const uniquePosition = new Set(staff); //{''...}
+// console.log([...uniquePosition]); //[...]
+// //or
+// console.log([...new Set(staff)]); //[...]
+
 //==================== 👩🏻‍💻 coding challenge ================
 //🏋🏻‍♀️Set
 //Create a function unique(arr) that should return an array with unique items of arr.
-function unique(arr) {
-  return [...new Set(arr)];
-  //return Array.from(new Set(arr))
-}
-
-const values = ['Hare', 'Krishna', 'Hare', 'Krishna', 'Krishna', 'Krishna', 'Hare', 'Hare', ':-O'];
-
-console.log(unique(values)); //[ 'Hare', 'Krishna', ':-O' ]
-
-//***************************************************************
-//🏋🏻‍Map♀️
-//Write a function aclean(arr) that returns an array cleaned from anagrams.
-const arrAnagram = ['nap', 'teachers', 'cheaters', 'PAN', 'ear', 'era', 'hectares'];
-function aclean(arr) {
-  const map = new Map();
-
-  for (const el of arr) {
-    const orderingName = el.toLowerCase().split('').sort().join('');
-
-    map.set(orderingName, el);
-    console.log(map);
-  }
-
-  return [...map.values()];
-  //return Array.from(map.values());
-}
-
-console.log(aclean(arrAnagram));
+// function unique(arr) {
+//   return [...new Set(arr)];
+//   //return Array.from(new Set(arr))
+// }
+//
+// const values = ['Hare', 'Krishna', 'Hare', 'Krishna', 'Krishna', 'Krishna', 'Hare', 'Hare', ':-O'];
+//
+// console.log(unique(values)); //[ 'Hare', 'Krishna', ':-O' ]
+//
+// //***************************************************************
+// //🏋🏻‍Map♀️
+// //Write a function aclean(arr) that returns an array cleaned from anagrams.
+// const arrAnagram = ['nap', 'teachers', 'cheaters', 'PAN', 'ear', 'era', 'hectares'];
+// function aclean(arr) {
+//   const map = new Map();
+//
+//   for (const el of arr) {
+//     const orderingName = el.toLowerCase().split('').sort().join('');
+//     map.set(orderingName, el);
+//   }
+//
+//   return [...map.values()];
+//   //return Array.from(map.values());
+// }
+//
+// console.log(aclean(arrAnagram));
