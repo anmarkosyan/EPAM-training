@@ -34,13 +34,27 @@ console.log(set1); //Set { 'a', 'b', 'c', 'd' }
 console.log(set); //Set { 1, 2, 3, 4 }
 console.log(set.add(setObj)); //Set { 1, 2, 3, 4, { name: 'Ush' } }
 for (const el of set1) console.log(el); // a, b, c, d
-set.forEach(function (el) {
-  console.log(el); //1, 2, 3, 4
+set.forEach(function (el, elAgain, set) {
+  console.log(el, elAgain, set); //1, 2, 3, 4
 });
-//✅ new Map()
-const map = new Map();
-console.log(map);
  */
+//✅ new Map()
+// const loopMap = new Map([
+//   ['name', 'Anush'],
+//   ['age', 34],
+//   ['address', 'USA '],
+//   ['tell', 123123123],
+// ]);
+// console.log(loopMap);
+//
+// for (const el of loopMap) console.log(el);
+// for (const key of loopMap.keys()) console.log(key);
+// for (const value of loopMap.values()) console.log(value);
+// for (const [key, value] of loopMap.entries()) console.log(key, value);
+// loopMap.forEach(function (value, key, map) {
+//   console.log(key, value, map);
+// });
+
 //2️⃣ [Symbol.iterator] for looping over the object using for...of
 
 // let obj = {
@@ -65,21 +79,22 @@ console.log(map);
 // }
 //
 //3️⃣ new Map()
-const restaurant = new Map();
-restaurant
-  .set('name', 'Mayrig')
-  .set(1, 'Sayat-Nova')
-  .set(2, 'Amiryan')
-  .set('open', 11)
-  .set('close', 22)
-  .set(true, 'we are open')
-  .set(false, 'we are closed')
-  .set([], '');
+// const restaurant = new Map();
+// restaurant
+//   .set('name', 'Mayrig')
+//   .set(1, 'Sayat-Nova')
+//   .set(2, 'Amiryan')
+//   .set('open', 11)
+//   .set('close', 22)
+//   .set(true, 'we are open')
+//   .set(false, 'we are closed')
+//   .set([], '');
+//
+// const currTime = 22;
+// const msg = restaurant.get(currTime > restaurant.get('open') && currTime < restaurant.get('close'));
+//
+// console.log(msg);
 
-const currTime = 22;
-const msg = restaurant.get(currTime > restaurant.get('open') && currTime < restaurant.get('close'));
-
-console.log(msg);
 // //map.has()
 // //map.delete()
 // //map.size()
@@ -89,16 +104,16 @@ console.log(msg);
 // //map.values()
 
 //Example:
-const map = new Map([
-  ['some key', 'some value'],
-  ['asdasd', 'asdasd'],
-]);
-console.log(map);
-console.log(map.entries());
-const obj = Object.fromEntries(map.entries());
-console.log(obj);
-const map2 = new Map(Object.entries(obj));
-console.log(map2);
+// const map = new Map([
+//   ['some key', 'some value'],
+//   ['asdasd', 'asdasd'],
+// ]);
+// console.log(map);
+// console.log(map.entries());
+// const obj = Object.fromEntries(map.entries());
+// console.log(obj);
+// const map2 = new Map(Object.entries(obj));
+// console.log(map2);
 
 //4️⃣ new Set()
 // const ordersSet = new Set(['hi', 'hi', 'hello', 'hello']);
