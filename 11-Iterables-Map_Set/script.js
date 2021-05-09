@@ -163,3 +163,28 @@ set.forEach(function (el, elAgain, set) {
 // }
 //
 // console.log(aclean(arrAnagram));
+//=====================
+//🏋🏻‍♀️add one to number
+
+const increaseNumsByOne = function (arr) {
+  for (let i = arr.length - 1; i >= 0; i--) {
+    arr[i]++;
+    if (arr[i] <= 9) {
+      return arr;
+    } else if (arr[i - 1]) {
+      arr[i] = 0;
+    } else if (arr[i] > 9) {
+      arr[i] = 1;
+      arr.push(0);
+    }
+  }
+
+  return arr;
+};
+console.log(increaseNumsByOne([1, 2, 3])); //[1, 2, 4]
+console.log(increaseNumsByOne([1])); //[6] => 1 + 5
+console.log(increaseNumsByOne([1, 2, 3])); //+ 1 => 123 + 1 = [1, 2, 4]
+console.log(increaseNumsByOne([2, 9, 9])); // [3, 0, 0]
+console.log(increaseNumsByOne([8, 9])); // [9, 0]
+console.log(increaseNumsByOne([7, 9, 5])); //[7, 9, 6]
+console.log(increaseNumsByOne([9])); //[1, 0]
