@@ -178,13 +178,13 @@ const increaseNumsByOne = function (arr) {
       arr.push(0);
     }
   }
-
   return arr;
 };
-console.log(increaseNumsByOne([1, 2, 3])); //[1, 2, 4]
-console.log(increaseNumsByOne([1])); //[6] => 1 + 5
+console.log(increaseNumsByOne([1])); //[2] => 1 + 1
 console.log(increaseNumsByOne([1, 2, 3])); //+ 1 => 123 + 1 = [1, 2, 4]
 console.log(increaseNumsByOne([2, 9, 9])); // [3, 0, 0]
 console.log(increaseNumsByOne([8, 9])); // [9, 0]
 console.log(increaseNumsByOne([7, 9, 5])); //[7, 9, 6]
 console.log(increaseNumsByOne([9])); //[1, 0]
+
+
