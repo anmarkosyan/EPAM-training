@@ -177,23 +177,94 @@ console.log(bite(player));
 console.log(bite(plant));
  */
 
+//🏋🏻‍
+// function mostFrequentElement(arr) {
+//   const obj = arr.reduce(function (acc, num) {
+//     if (!acc[num]) acc[num] = 1;
+//     else acc[num]++;
+//     return acc;
+//   }, {});
+//
+//   const maxNum = Math.max(...Object.values(obj));
+//
+//   return Object.keys(obj).reduce(function (acc, num) {
+//     if (obj[num] === maxNum) acc.push(+num);
+//     return acc;
+//   }, []);
+// }
+//
+// console.log(mostFrequentElement([5, 2, 1, 5])); //[5]
+// console.log(mostFrequentElement([5, 7, 1, 1, 1, 8, 7, 3, 6, 7, 1])); //[1]
+// console.log(mostFrequentElement([5, 7, 7, 1, 1, 1, 8, 7, 3, 6, 7, 1])); //[1, 7]
+
 //🏋🏻‍♀️
-function mostFrequentElement(arr) {
-  const obj = arr.reduce(function (acc, num) {
-    if (!acc[num]) acc[num] = 1;
-    else acc[num]++;
-    return acc;
-  }, {});
+/*
+const Ball = function (ballType = 'regular') {
+  this.ballType = ballType;
+};
 
-  const maxNum = Math.max(...Object.values(obj));
-
-  return Object.keys(obj).reduce(function(acc, num){
-    if(obj[num] === maxNum) acc.push(+num)
-    return acc;
-  }, [])
+console.log(new Ball().ballType);//'regular'
+console.log(new Ball('super').ballType);//'super'
+ */
+//🏋🏻‍
+️String.prototype.isUpperCase = function() {
+  return this.toString() === this.toUpperCase();
 
 }
 
-console.log(mostFrequentElement([5, 2, 1, 5])); //[5]
-console.log(mostFrequentElement([5, 7, 1, 1, 1, 8, 7, 3, 6, 7, 1])); //[1]
-console.log(mostFrequentElement([5, 7, 7, 1, 1, 1, 8, 7, 3, 6, 7, 1])); //[1, 7]
+console.log('c'.isUpperCase())//false
+console.log('C'.isUpperCase())// == true
+console.log('-------');
+console.log('#LOVEWINS'.isUpperCase());//true
+console.log('hello I AM DONALD'.isUpperCase());// == false
+console.log('HELLO I AM DONALD'.isUpperCase());// == true
+console.log('ACSKLDFJSgSKLDFJSKLDFJ'.isUpperCase());// == false
+console.log('ACSKLDFJSGSKLDFJSKLDFJ'.isUpperCase());// == true
+
+//🏋🏻‍♀️
+/*
+Create a vehicle object with the following properties using function constructor:
+-model
+-manufacturer
+-country
+-power
+-run
+-fuel consumption
+-color
+-tiers object consists of these properties
+         o qty
+         o  diameter
+         o  model
+         o  run
+Function constructor should get one argument as an object.
+All the bold italic properties should be optional (you should assign default values for them).
+Use object destructuring  in function argument and initialize vehicle (this) object.
+Add a method for the object called getTiersInfo which should return a descriptive string
+consist of destructured properties about tiers nested object.
+
+ You can also add a couple of other methods using destructuring (up to you :))
+*/
+
+// const vehicle = {
+//   model: 'Mini Cooper',
+//   manufacturer: 'England',
+//   country: 'European',
+//   power: '',
+//   run: '',
+//   fuelConsumption: '',
+//   color: '',
+//   tiers: {
+//     qty: 0,
+//     diameter: 0,
+//     model: '',
+//     run: 123,
+//   },
+// };
+// const Vehicle = function (obj) {
+//    this.obj = obj;
+// };
+//
+// const vehicle1 = new Vehicle(vehicle);
+// console.log(vehicle1);
+
+
