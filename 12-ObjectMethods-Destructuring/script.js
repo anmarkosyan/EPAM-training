@@ -205,22 +205,34 @@ const Ball = function (ballType = 'regular') {
 
 console.log(new Ball().ballType);//'regular'
 console.log(new Ball('super').ballType);//'super'
+*/
+//🏋🏻‍♀️
+// String.prototype.isUpperCase = function () {
+//   return this.toString() === this.toUpperCase();
+// };
+//
+// console.log('c'.isUpperCase()); //false
+// console.log('C'.isUpperCase()); // == true
+// console.log('-------');
+// console.log('#LOVEWINS'.isUpperCase());
+// console.log('hello I AM DONALD'.isUpperCase()); // == false
+// console.log('HELLO I AM DONALD'.isUpperCase()); // == true
+// console.log('ACSKLDFJSgSKLDFJSKLDFJ'.isUpperCase()); // == false
+// console.log('ACSKLDFJSGSKLDFJSKLDFJ'.isUpperCase()); // == true
+
+//🏋🏻‍♀️
+//checker only for 0-9 digits
+/*
+String.prototype.digit = function() {
+  return /^\d$/g.test(this);
+};
+console.log(''.digit());//false
+console.log('7'.digit());//true
+console.log('12'.digit());//false
+console.log('2ac'.digit());//false
+
+console.log(+'');
  */
-//🏋🏻‍
-️String.prototype.isUpperCase = function() {
-  return this.toString() === this.toUpperCase();
-
-}
-
-console.log('c'.isUpperCase())//false
-console.log('C'.isUpperCase())// == true
-console.log('-------');
-console.log('#LOVEWINS'.isUpperCase());//true
-console.log('hello I AM DONALD'.isUpperCase());// == false
-console.log('HELLO I AM DONALD'.isUpperCase());// == true
-console.log('ACSKLDFJSgSKLDFJSKLDFJ'.isUpperCase());// == false
-console.log('ACSKLDFJSGSKLDFJSKLDFJ'.isUpperCase());// == true
-
 //🏋🏻‍♀️
 /*
 Create a vehicle object with the following properties using function constructor:
@@ -245,26 +257,25 @@ consist of destructured properties about tiers nested object.
  You can also add a couple of other methods using destructuring (up to you :))
 */
 
-// const vehicle = {
-//   model: 'Mini Cooper',
-//   manufacturer: 'England',
-//   country: 'European',
-//   power: '',
-//   run: '',
-//   fuelConsumption: '',
-//   color: '',
-//   tiers: {
-//     qty: 0,
-//     diameter: 0,
-//     model: '',
-//     run: 123,
-//   },
-// };
-// const Vehicle = function (obj) {
-//    this.obj = obj;
-// };
-//
-// const vehicle1 = new Vehicle(vehicle);
-// console.log(vehicle1);
+const vehicle = {
+  model: 'Mini Cooper',
+  manufacturer: 'England',
+  country: 'European',
+  power: '',
+  run: '',
+  fuelConsumption: '',
+  color: '',
+  tiers: {
+    qty: 0,
+    diameter: 0,
+    model: '',
+    run: 123,
+  },
+};
+const Vehicle = function (obj) {
+   this.obj = obj;
+};
 
+const vehicle1 = new Vehicle(vehicle);
+//console.log(vehicle1);
 
