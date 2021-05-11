@@ -81,19 +81,77 @@ If salaries is empty, then the result must be 0
 
 //🏋🏻‍♀️
 
-const curry = {
-  fName: "Steph",
-  lName:"Curry",
-  number:30,
-  team:"Warriors",
-  college:"Davidson"};
+// const curry = {
+//   fName: "Steph",
+//   lName:"Curry",
+//   number:30,
+//   team:"Warriors",
+//   college:"Davidson"};
+//
+// function getCollege(player){
+//   return player.college;
+//
+// }
+//
+// console.log(getCollege(curry));
 
-function getCollege(player){
-  return player.college;
-
+//🏋🏻
+/*‍♀️
+function NBAPlayer(name, team, ppg){
+  this.name=name;
+  this.team=team;
+  this.ppg=ppg;
 }
 
-console.log(getCollege(curry));
+const iverson = new NBAPlayer("Iverson", "76ers", 11.2);
+const jordan = new NBAPlayer("Jordan", "bulls", 20.2);
+
+
+const sumPPG = function(player1, player2){
+  return player1.ppg + player2.ppg
+
+};
+
+console.log(sumPPG(iverson, jordan));// => 31.4
+ */
 
 //🏋🏻‍♀️
+/*
+function countLetters(str) {
+  const newStr = str.toLowerCase();
+  // const obj = {};
+  // for (const el of newStr) {
+  //   if (el !== ' ' && !obj[el]) {
+  //     obj[el] = 1;
+  //   } else if (obj[el]) {
+  //     obj[el]++;
+  //   }
+  // }
+  //
+  // return obj;
 
+  return [...newStr].reduce(function(acc, el){
+    if(el !== ' ' && !acc[el]) {
+          acc[el] = 1;
+        } else if (acc[el]) {
+          acc[el]++;
+        }
+    return acc;
+  }, {})
+}
+
+console.log(countLetters('school')); //{s: 1, c: 1, h: 1, o: 2, l: 1}
+console.log(countLetters('I like milk')); //{i: 3, l: 2, k: 2, e: 1, m: 1}
+ */
+
+//🏋🏻‍♀️
+function countWords(str) {
+  const lowerStr = str.toLowerCase();
+  return lowerStr.split(' ').reduce(function (acc, word) {
+    if (!acc[word]) acc[word] = 1;
+    else acc[word]++;
+    return acc;
+  }, {});
+}
+
+console.log(countWords('A life is a moment')); //{a: 2, life: 1, is: 1, moment: 1}
