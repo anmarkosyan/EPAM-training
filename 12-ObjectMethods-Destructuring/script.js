@@ -145,13 +145,32 @@ console.log(countLetters('I like milk')); //{i: 3, l: 2, k: 2, e: 1, m: 1}
  */
 
 //🏋🏻‍♀️
-function countWords(str) {
-  const lowerStr = str.toLowerCase();
-  return lowerStr.split(' ').reduce(function (acc, word) {
-    if (!acc[word]) acc[word] = 1;
-    else acc[word]++;
-    return acc;
-  }, {});
-}
+// function countWords(str) {
+//   const lowerStr = str.toLowerCase();
+//   return lowerStr.split(' ').reduce(function (acc, word) {
+//     if (!acc[word]) acc[word] = 1;
+//     else acc[word]++;
+//     return acc;
+//   }, {});
+// }
+//
+// console.log(countWords('A life is a moment')); //{a: 2, life: 1, is: 1, moment: 1}
 
-console.log(countWords('A life is a moment')); //{a: 2, life: 1, is: 1, moment: 1}
+//🏋🏻‍♀️
+function LivingThing(name, race) {
+  this.name = name;
+  this.race = race;
+}
+const player = new LivingThing('Gary', 'human');
+const plant = new LivingThing('Carrot', 'plant');
+
+const bite = function (thing) {
+  // if (thing.race === 'human') thing.race = 'zombie';
+  //
+  // return thing;
+
+   thing.race === 'human' ? thing.race = 'zombie': thing.race;
+   return thing;
+};
+console.log(bite(player));
+console.log(bite(plant));
