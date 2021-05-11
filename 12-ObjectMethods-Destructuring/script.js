@@ -157,6 +157,7 @@ console.log(countLetters('I like milk')); //{i: 3, l: 2, k: 2, e: 1, m: 1}
 // console.log(countWords('A life is a moment')); //{a: 2, life: 1, is: 1, moment: 1}
 
 //🏋🏻‍♀️
+/*
 function LivingThing(name, race) {
   this.name = name;
   this.race = race;
@@ -169,8 +170,30 @@ const bite = function (thing) {
   //
   // return thing;
 
-   thing.race === 'human' ? thing.race = 'zombie': thing.race;
-   return thing;
+  thing.race === 'human' ? (thing.race = 'zombie') : thing.race;
+  return thing;
 };
 console.log(bite(player));
 console.log(bite(plant));
+ */
+
+//🏋🏻‍♀️
+function mostFrequentElement(arr) {
+  const obj = arr.reduce(function (acc, num) {
+    if (!acc[num]) acc[num] = 1;
+    else acc[num]++;
+    return acc;
+  }, {});
+
+  const maxNum = Math.max(...Object.values(obj));
+
+  return Object.keys(obj).reduce(function(acc, num){
+    if(obj[num] === maxNum) acc.push(+num)
+    return acc;
+  }, [])
+
+}
+
+console.log(mostFrequentElement([5, 2, 1, 5])); //[5]
+console.log(mostFrequentElement([5, 7, 1, 1, 1, 8, 7, 3, 6, 7, 1])); //[1]
+console.log(mostFrequentElement([5, 7, 7, 1, 1, 1, 8, 7, 3, 6, 7, 1])); //[1, 7]
