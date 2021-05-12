@@ -1,4 +1,4 @@
-'use strict';
+//'use strict';
 //🏋🏻‍♀️
 // Number.prototype.plus = function (number) {
 //   return this + number;
@@ -246,3 +246,71 @@ console.log(+'');
 //   x[el] = undefined;
 // });
 // console.log(x);//{ hi: undefined, there: undefined }
+
+//🏋🏻‍♀️
+// var arr1 = 'john'.split('');
+// var arr2 = arr1.reverse();
+// var arr3 = 'jones'.split('');
+// arr2.push(arr3);
+//
+// console.log(arr1, arr2);
+// console.log('array 1: length=' + arr1.length + ' last=' + arr1.slice(-1));
+// console.log('array 2: length=' + arr2.length + ' last=' + arr2.slice(-1));
+
+//🏋🏻‍♀️
+// console.log(1 +  "2" + "2");//'122'
+// console.log(1 +  +"2" + "2");//'32'
+// console.log(1 +  -"1" + "2");//'02'
+// console.log(+"1" +  "1" + "2");//'112'
+// console.log( "A" - "B" + "2");//'NaN2'
+// console.log( "A" - "B" + 2);//'NaN'
+
+//🏋🏻‍♀️
+// console.log("0 || 1 = "+(0 || 1));//'0 || 1 = 1'
+// console.log("1 || 2 = "+(1 || 2));//'1 || 2 = 1'
+// console.log("0 && 1 = "+(0 && 1));//'0 && 1 = 0'
+// console.log("1 && 2 = "+(1 && 2));//'1 && 2 = 2'
+
+//🏋🏻‍♀️
+// var a = {},
+//   b = { key: 'b' },
+//   c = { key: 'c' },
+//   d = { key: 'd' };
+//
+// a[b] = 123;
+// a[c] = 456;
+// a[d] = 234;
+// console.log(a); //{ '[object Object]': 234 }
+//
+// console.log(a[c]); //234
+// console.log(a[b]); //234
+
+//🏋🏻‍♀️
+// var hero = {
+//   _name: 'John Doe',
+//   getSecretIdentity: function (){
+//     return this._name;
+//   }
+// };
+//
+// var stoleSecretIdentity = hero.getSecretIdentity;
+//
+// console.log(stoleSecretIdentity());//undefined
+// console.log(hero.getSecretIdentity());//'John Doe'
+
+//🏋🏻‍♀️
+// console.log(typeof undefined == typeof NULL);//true
+// console.log(typeof undefined === typeof null);//false
+
+//🏋🏻‍♀️
+// var b = 1;
+// function outer() {
+//   var b = 2;
+//   function inner() {
+//     b++; //NaN
+//     var b = 3;
+//     console.log(b);//3
+//   }
+//   inner();
+// }
+// outer();//3
