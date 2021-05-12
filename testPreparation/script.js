@@ -314,3 +314,60 @@ console.log(+'');
 //   inner();
 // }
 // outer();//3
+
+//🏋🏻‍♀️
+// const length = 4;
+// const numbers = [];
+// for (var i = 0; i < length; i++){
+//   numbers.push(i + 1);
+// }
+//
+// console.log(numbers); // [1, 2, 3, 4]
+
+//🏋🏻‍♀️
+// const person = Object.create({
+//   name: 'Anush',
+//   age: 34,
+// });
+// delete person.age;
+// console.log(person.age); //34
+//
+// const person2 = {
+//   name: 'Aram',
+//   age: 35,
+// };
+//
+// delete person2.age;
+// console.log(person2.age); //undefined
+
+//🏋🏻‍♀️
+// var a = 1;
+// function foo() {
+//   var a = 2;
+//   console.log(a);//2
+// }
+// foo();
+// console.log(a);//1
+
+//🏋🏻‍♀️
+// var answer = 0;
+//
+// const baseValue = value => multipleValue => value * multipleValue;
+//
+// const multiple = baseValue(2);
+// answer = multiple(5);
+// console.log(answer);//10
+
+//🏋🏻‍♀️
+function outerFunc(outerParam) {
+  function innerFunc(innerParam) {
+    outerParam["b"] = innerParam;
+  }
+  return innerFunc;
+}
+
+const obj = {a:1}
+const example = outerFunc(obj);
+const answer = example(2)
+console.log(obj);//{ a: 1, b: 2 }
+
