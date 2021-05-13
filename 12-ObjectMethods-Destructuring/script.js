@@ -67,14 +67,8 @@ consist of destructured properties about tiers nested object.
 //   this.tiers = { ...arg };
 //
 //   this.getTiersInfo = function () {
-//     const {
-//       carModel,
-//       country,
-//       color,
-//       fuelConsumption,
-//       tiers: { 0: qty, 1: diameter, 2: model, 3: run },
-//     } = this;
-//     return `🚙 Car description: \n ${carModel} - ${model}\n country: ${country}\n color: ${color} \n diameter: ${diameter}\n quantity: ${qty}\n run: ${run} \n fuel consumption: ${fuelConsumption}`;
+//     const {tiers: { 0: qty, 1: diameter, 2: model, 3: run }} = this;
+//      return `🚙 Car description: \n ${this.carModel} - ${model}\n manufacturer: ${this.manufacturer} \n country: ${this.country}\n color: ${this.color} \n diameter: ${diameter}\n quantity: ${qty}\n run: ${run}`;
 //   };
 // };
 // const miniCooper = new Vehicle('Mini Cooper', 'England', 'Netherlands', undefined, 120.7, undefined, 'chestnut', 1, 65, 'K10', 120);
@@ -99,16 +93,10 @@ const Vehicle = function (...arg) {
   this.tiers = { ...others };
 
   this.getTiersInfo = function () {
-    const {
-      carModel,
-      country,
-      color,
-      fuelConsumption,
-      tiers: { 7: qty, 8: diameter, 9: model, 10: run },
-    } = this;
+    const {tiers: { 7: qty, 8: diameter, 9: model, 10: run }} = this;
 
-    return `🚙 Car description: \n ${carModel} - ${model}\n country: ${country}\n color: ${color} \n diameter: ${diameter}\n quantity: ${qty}\n run: ${run} \n fuel consumption: ${fuelConsumption}`;
-  };
+     return `🚙 Car description: \n ${this.carModel} - ${model}\n manufacturer: ${this.manufacturer} \n country: ${this.country}\n color: ${this.color} \n diameter: ${diameter}\n quantity: ${qty}\n run: ${run}`;
+     };
 };
 
 const miniCooper = new Vehicle('Mini Cooper', 'England', 'Netherlands', undefined, 120.7, undefined, 'chestnut', 1, 65, 'K10', 120);
@@ -142,15 +130,9 @@ const Vehicle = function ({
   this.tiers = tiers;
 
   this.getTiersInfo = function () {
-    const {
-      carModel,
-      country,
-      color,
-      fuelConsumption,
-      tiers: { qty, diameter, model, run },
-    } = this;
+    const { tiers: { qty, diameter, model, run }} = this;
 
-    return `🚙 Car description: \n ${carModel} - ${model}\n country: ${country}\n color: ${color} \n diameter: ${diameter}\n quantity: ${qty}\n run: ${run} \n fuel consumption: ${fuelConsumption}`;
+    return `🚙 Car description: \n ${this.carModel} - ${model}\n manufacturer: ${this.manufacturer} \n country: ${this.country}\n color: ${this.color} \n diameter: ${diameter}\n quantity: ${qty}\n run: ${run}`;
   };
 };
 const miniCooper = new Vehicle({
