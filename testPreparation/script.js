@@ -359,15 +359,81 @@ console.log(+'');
 // console.log(answer);//10
 
 //🏋🏻‍♀️
-function outerFunc(outerParam) {
-  function innerFunc(innerParam) {
-    outerParam["b"] = innerParam;
-  }
-  return innerFunc;
-}
+// function outerFunc(outerParam) {
+//   function innerFunc(innerParam) {
+//     outerParam['b'] = innerParam;
+//   }
+//   return innerFunc;
+// }
+//
+// const obj = { a: 1 };
+// const example = outerFunc(obj);
+// const answer = example(2);
+// console.log(obj); //{ a: 1, b: 2 }
 
-const obj = {a:1}
-const example = outerFunc(obj);
-const answer = example(2)
-console.log(obj);//{ a: 1, b: 2 }
+//🏋🏻‍♀️
+// let arr = [1, 2];
+// function test(array) {
+//   array.push(3);
+// }
+// test(arr);
+// console.log(arr); //[1, 2, 3]
+//
+// let arr1 = [1, 2];
+// function test1(array) {
+//   array.push(3);
+// }
+// test1([...arr]);
+// console.log(arr1); //[1, 2]
+//
+// let arr2 = [1, 2];
+// function test2(array) {
+//   arr2 = [1, 2, 3];
+// }
+// test2(arr2);
+// console.log(arr2);
+
+//🏋🏻‍♀️
+// const carDetails = {
+//   name: "Tomer",
+//   getName(){
+//     return this.name;
+//   },
+// };
+// var name = "Joe";
+// var getCarName = carDetails.getName;
+//console.log(getCarName()); //undefined with struct mode and 'Joe' without mode
+
+//🏋🏻‍♀️
+// var foo = 'bim';
+// var getFoo = function () {
+//   return foo;
+// };
+//
+// foo = 'boum';
+// console.log(getFoo()); // 'boum'
+
+//🏋🏻‍♀️
+// function Dog(name) {
+//   this.name = name;
+// }
+// Dog.bark = function () {
+//   console.log(this.name + ' says woof');
+// };
+// let fido = new Dog('fido');
+//
+// console.log(fido);//Dog { name: 'fido' }
+//fido.bark();//TypeError: fido.bark is not a function
+
+// function Dog1 (name) {
+//   this.name = name
+// }
+//
+// Dog1.prototype.bark = function () {
+//   console.log(this.name + ' says woof')
+// }
+//
+// let fido1 = new Dog1('fido')
+// fido1.bark() // "fido says woof"
+
 
