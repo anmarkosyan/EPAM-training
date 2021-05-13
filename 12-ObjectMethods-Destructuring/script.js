@@ -85,6 +85,7 @@ consist of destructured properties about tiers nested object.
 // console.log(lexus.getTiersInfo());
 
 //2way:
+/*
 const Vehicle = function (...arg) {
   const obj = { ...arg };
   const { 0: model, 1: manufacturer, 2: country, 3: run = 90, 4: power, 5: fuelConsumption = 'petrol', 6: color, ...others } = obj;
@@ -119,5 +120,48 @@ console.log(lexus);
 console.log(miniCooper.getTiersInfo());
 console.log(lexus.getTiersInfo());
 
+ */
 //3way:
+const Vehicle = function ({
+  carModel,
+  manufacturer,
+  country,
+  runPow = 90,
+  power,
+  fuelConsumption = 'petrol',
+  color,
+  tiers = { qty: 1, diameter: 67, model: 'classic', run: 65 },
+}) {
+  this.carModel = carModel;
+  this.manufacturer = manufacturer;
+  this.country = country;
+  this.power = power;
+  this.runPow = runPow;
+  this.fuelConsumption = fuelConsumption;
+  this.color = color;
+  this.tiers = tiers;
 
+  this.getTiersInfo = function () {
+    const {
+      carModel,
+      country,
+      color,
+      fuelConsumption,
+      tiers: { qty, diameter, model, run },
+    } = this;
+
+    return `🚙 Car description: \n ${carModel} - ${model}\n country: ${country}\n color: ${color} \n diameter: ${diameter}\n quantity: ${qty}\n run: ${run} \n fuel consumption: ${fuelConsumption}`;
+  };
+};
+const miniCooper = new Vehicle({
+  carModel: 'Mini Cooper',
+  manufacturer: 'England',
+  country: 'Netherlands',
+  runPow: undefined,
+  power: 120.7,
+  fuelConsumption: undefined,
+  color: 'chestnut',
+  tiers: { qty: 1, diameter: 78, model: 'K10', run: 120 },
+});
+console.log(miniCooper);
+console.log(miniCooper.getTiersInfo());
