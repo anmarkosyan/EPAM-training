@@ -88,6 +88,14 @@ const jonas = createUser('Jonas', 33, 'WebDeveloper', userMsg);
 console.log(jonas.about());
 jonas.positionWebDeveloper();
 
+//✅ destructuring array
+const getNames = function () {
+  return ['Anush', 'Aram', 'Jonas'];
+};
+
+const [firstName, secondName] = getNames(6);
+console.log(firstName, secondName); // Anush Aram
+
 //========================= 👩🏻‍💻 coding challenges =========================
 //🏋🏻‍♀️
 /*
@@ -182,7 +190,7 @@ console.log(lexus.getTiersInfo());
 
  */
 //3way:
-/*
+
 const Vehicle = function ({
   carModel,
   manufacturer,
@@ -203,15 +211,13 @@ const Vehicle = function ({
   this.tiers = tiers;
 
   this.getTiersInfo = function () {
-    const {
-      tiers: { qty, diameter, model, run },
-    } = this;
+    const { model, run, diameter, qty } = this.tiers;
 
-    return `🚙  Car description: 
+    return `🚙  Car description:
     ${this.carModel} - ${model}
     manufacturer: ${this.manufacturer}
     country: ${this.country}
-    color: ${this.color} 
+    color: ${this.color}
     diameter: ${diameter}
     quantity: ${qty}
     run: ${run}
@@ -226,8 +232,8 @@ const miniCooper = new Vehicle({
   power: 120.7,
   fuelConsumption: undefined,
   color: 'chestnut',
-  tiers: { qty: 1, diameter: 78, model: 'K10', run: 120 },
+  tiers: { qty: 2, diameter: 78, model: 'K10', run: 120 },
 });
+
 console.log(miniCooper);
 console.log(miniCooper.getTiersInfo());
- */
