@@ -134,6 +134,41 @@ set.forEach(function (el, elAgain, set) {
 // //or
 // console.log([...new Set(staff)]); //[...]
 
+//5️⃣ WeakMap() / WeakSet()
+/*
+let obj = {
+  name: 'Jonas',
+};
+const set = new Set();
+set.add(obj);
+obj = null;
+
+console.log(set);
+//====================
+const MAX1 = 10;
+const map1 = new Map();
+
+for (let i = 0; i <= MAX1; i++) {
+  const key = { index: i };
+  map1.set(key, i);
+}
+
+console.log('DONE');
+console.log(map1);
+
+//====
+const MAX = 10;
+const map = new WeakMap();
+
+for (let i = 0; i <= MAX; i++) {
+  const key = { index: i };
+  map.set(key, i);
+  console.log(map);
+}
+console.log(map);
+console.log('DONE');
+//console.log(map);
+ */
 //==================== 👩🏻‍💻 coding challenge ================
 //🏋🏻‍♀️Set
 //Create a function unique(arr) that should return an array with unique items of arr.
