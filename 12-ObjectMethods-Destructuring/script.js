@@ -1,7 +1,7 @@
 'use strict';
 
 //============================== 🔴 Lecture part ============================
-//✅ destructuring
+//✅ spread operator
 /*
 const obj = { name: 'Anush', age: 34 };
 //❗️console.log(...obj);//TypeError: Found non-callable @@iterator
@@ -30,6 +30,64 @@ const map = new Map([
 ]);
 console.log(...map); //['name', 'Aram'] ['age', 12 ]
  */
+
+//✅ template literals
+//📌A template literal may be untagged or tagged.
+//Transform template literal with tags
+/*
+const user = {
+  name: 'Jonas',
+  age: 34,
+};
+
+const msg = function (text, ...expressions) {
+  console.log(text); //[ 'This is ', ', how are you?' ]
+  console.log(expressions); //['Jonas', 34]
+};
+
+msg`This is ${user.name}, I am ${user.age} years old, what's about you?`;
+//-------
+const agent = 'Bond';
+const organization = 'MI6';
+
+const mask = function (texts, ...expressions) {
+  const convertMask = char => '*'.repeat(char.length);
+
+  const maskMsg = expressions
+    .map(function (el, index) {
+      return `${texts[index]}${convertMask(el.toString())}`;
+    })
+    .join('');
+
+  const textLength = texts[texts.length - 1];
+
+  return `${maskMsg}${textLength}`;
+};
+
+console.log(mask`Hi, I'm ${agent}, with ${organization}!`); //Hi, I'm ****, with ***.
+ */
+
+// using object literals
+const createUser = function (name, age, prof, msgFnc) {
+  return {
+    name,
+    age,
+    about() {
+      return `${this.name} ${this.age}`;
+    },
+
+    [`position${prof}`]: msgFnc,
+  };
+};
+
+const userMsg = function () {
+  console.log(`hi ${this.name}, nice to meet you!`);
+};
+
+const jonas = createUser('Jonas', 33, 'WebDeveloper', userMsg);
+console.log(jonas.about());
+jonas.positionWebDeveloper();
+
 //========================= 👩🏻‍💻 coding challenges =========================
 //🏋🏻‍♀️
 /*
@@ -68,7 +126,14 @@ consist of destructured properties about tiers nested object.
 //
 //   this.getTiersInfo = function () {
 //     const {tiers: { 0: qty, 1: diameter, 2: model, 3: run }} = this;
-//      return `🚙 Car description: \n ${this.carModel} - ${model}\n manufacturer: ${this.manufacturer} \n country: ${this.country}\n color: ${this.color} \n diameter: ${diameter}\n quantity: ${qty}\n run: ${run}`;
+//      return `🚙 Car description:
+//     ${this.carModel} - ${model}
+//     manufacturer: ${this.manufacturer}
+//     country: ${this.country}
+//     color: ${this.color}
+//     diameter: ${diameter}
+//     quantity: ${qty}
+//     run: ${run}`;
 //   };
 // };
 // const miniCooper = new Vehicle('Mini Cooper', 'England', 'Netherlands', undefined, 120.7, undefined, 'chestnut', 1, 65, 'K10', 120);
@@ -95,8 +160,15 @@ const Vehicle = function (...arg) {
   this.getTiersInfo = function () {
     const {tiers: { 7: qty, 8: diameter, 9: model, 10: run }} = this;
 
-     return `🚙 Car description: \n ${this.carModel} - ${model}\n manufacturer: ${this.manufacturer} \n country: ${this.country}\n color: ${this.color} \n diameter: ${diameter}\n quantity: ${qty}\n run: ${run}`;
-     };
+   return `🚙 Car description:
+    ${this.carModel} - ${model}
+    manufacturer: ${this.manufacturer}
+    country: ${this.country}
+    color: ${this.color}
+    diameter: ${diameter}
+    quantity: ${qty}
+    run: ${run}`;
+  };
 };
 
 const miniCooper = new Vehicle('Mini Cooper', 'England', 'Netherlands', undefined, 120.7, undefined, 'chestnut', 1, 65, 'K10', 120);
@@ -110,6 +182,7 @@ console.log(lexus.getTiersInfo());
 
  */
 //3way:
+/*
 const Vehicle = function ({
   carModel,
   manufacturer,
@@ -130,9 +203,19 @@ const Vehicle = function ({
   this.tiers = tiers;
 
   this.getTiersInfo = function () {
-    const { tiers: { qty, diameter, model, run }} = this;
+    const {
+      tiers: { qty, diameter, model, run },
+    } = this;
 
-    return `🚙 Car description: \n ${this.carModel} - ${model}\n manufacturer: ${this.manufacturer} \n country: ${this.country}\n color: ${this.color} \n diameter: ${diameter}\n quantity: ${qty}\n run: ${run}`;
+    return `🚙  Car description: 
+    ${this.carModel} - ${model}
+    manufacturer: ${this.manufacturer}
+    country: ${this.country}
+    color: ${this.color} 
+    diameter: ${diameter}
+    quantity: ${qty}
+    run: ${run}
+    `;
   };
 };
 const miniCooper = new Vehicle({
@@ -147,3 +230,4 @@ const miniCooper = new Vehicle({
 });
 console.log(miniCooper);
 console.log(miniCooper.getTiersInfo());
+ */
