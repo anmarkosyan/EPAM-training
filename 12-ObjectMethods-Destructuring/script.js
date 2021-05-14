@@ -89,7 +89,7 @@ console.log(jonas.about());
 jonas.positionWebDeveloper();
 
 //✅ destructuring array
-const getNames = function () {
+const getNames = function (number) {
   return ['Anush', 'Aram', 'Jonas'];
 };
 
@@ -190,7 +190,7 @@ console.log(lexus.getTiersInfo());
 
  */
 //3way:
-
+//🏋🏻‍♀️right way of solving
 const Vehicle = function ({
   carModel,
   manufacturer,
@@ -224,7 +224,8 @@ const Vehicle = function ({
     `;
   };
 };
-const miniCooper = new Vehicle({
+
+const aboutMiniCooper = {
   carModel: 'Mini Cooper',
   manufacturer: 'England',
   country: 'Netherlands',
@@ -233,7 +234,9 @@ const miniCooper = new Vehicle({
   fuelConsumption: undefined,
   color: 'chestnut',
   tiers: { qty: 2, diameter: 78, model: 'K10', run: 120 },
-});
+};
+
+const miniCooper = new Vehicle(aboutMiniCooper);
 
 console.log(miniCooper);
 console.log(miniCooper.getTiersInfo());
