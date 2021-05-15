@@ -47,24 +47,25 @@ console.log(collectOddValues([1, 2, 3, 4, 5, 6, 7, 8, 9]));
 Implement the function, that should return true if every parenthesis has own closed part, ex: ( has )
 */
 
-// function checkParentheses(str) {
-//   let count1 = 0;
-//   let count2 = 0;
-//   for (const el of str) {
-//     if (el === '(') {
-//       count1++;
-//     } else {
-//       count2++;
-//     }
-//   }
-//   return count1 === count2;
-// }
-//
-// console.log(checkParentheses('(())((()))()')); // -> true
-// console.log(checkParentheses('(())((()))(')); // -> false
-// console.log(checkParentheses('(())((())')); // -> false
-// console.log(checkParentheses('()')); // -> true
-// console.log(checkParentheses('(')); // -> false
+function checkParentheses(str) {
+  let count1 = 0;
+  let count2 = 0;
+  for (const el of str) {
+    if (el === '(') {
+      count1++;
+    } else {
+      count2++;
+    }
+  }
+  return count1 === count2 && count1 > 0 && count2 > 0;
+}
+
+console.log(checkParentheses('(())((()))()')); // -> true
+console.log(checkParentheses('(())((()))(')); // -> false
+console.log(checkParentheses('(())((())')); // -> false
+console.log(checkParentheses('()')); // -> true
+console.log(checkParentheses('(')); // -> false
+console.log(checkParentheses(''));// false
 
 //2️⃣
 /*
@@ -78,14 +79,15 @@ function findDeeperProp(obj) {
     if (typeof value !== 'object') {
       arr.push(`${key}: ${value}`);
     } else if (typeof value === 'object') {
-      debugger;
       arr.push(findDeeperProp(obj[key]));
     }
   }
 
-  return `${arr.flat().slice(-1)}`;
+  return arr.length ? `${arr.flat().slice(-1)}` : {};
 }
 
 console.log(findDeeperProp({ x: 5, y: { z: 6, k: { l: 7 }, m: { p: 1, f: 5 } } })); // -> 'f:5'
 console.log(findDeeperProp({ x: 5, y: { z: 6, k: { l: 7 }, m: { p: 1 } } })); // -> 'p:1'
 console.log(findDeeperProp({ x: 5, y: { z: 6, k: 4, m: { p: 1 } } })); // -> 'p:1'
+console.log(findDeeperProp({x:3, y: {c: {b: 2}}}));// 'b: 2'
+console.log(findDeeperProp({}));//{}
