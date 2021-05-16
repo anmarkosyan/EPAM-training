@@ -87,7 +87,6 @@ function findDeeperProp(obj) {
 
   return `${arr.flat().slice(-1)}`;
 }
-
 console.log(findDeeperProp({ x: 5, y: { z: 6, k: { l: 7 }, m: { p: 1, f: 5 } } })); // -> 'f:5'
 console.log(findDeeperProp({ x: 5, y: { z: 6, k: { l: 7 }, m: { p: 1 } } })); // -> 'p:1'
 console.log(findDeeperProp({ x: 5, y: { z: 6, k: 4, m: { p: 1 } } })); // -> 'p:1'
