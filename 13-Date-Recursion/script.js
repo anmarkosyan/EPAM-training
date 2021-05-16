@@ -75,19 +75,23 @@ Write a function that finds last deeper property of the object and return as a s
 */
 
 function findDeeperProp(obj) {
-  const arr = [];
+  //❗️ not working way, only will walk through all properties and return the last one
+  // const arr = [];
+  // for (const [key, value] of Object.entries(obj)) {
+  //   if (typeof value !== 'object') {
+  //     arr.push(`${key}: ${value}`);
+  //   } else {
+  //     arr.push(findDeeperProp(obj[key]));
+  //   }
+  // }
+  //
+  // return `${arr.flat().slice(-1)}`;
 
-  for (const [key, value] of Object.entries(obj)) {
-    if (typeof value !== 'object') {
-      arr.push(`${key}: ${value}`);
-    } else {
-      arr.push(findDeeperProp(obj[key]));
-    }
-  }
 
-  return `${arr.flat().slice(-1)}`;
 }
-console.log(findDeeperProp({ x: 5, y: { z: 6, k: { l: 7 }, m: { p: 1, f: 5 } } })); // -> 'f:5'
+
+console.log(findDeeperProp({ a: { b: { c: { d: { u: 12 } } } }, y: { q: { w: { r: 7 } } } })); // 'u: 12'
+console.log(findDeeperProp({ x: 5, y: { z: 6, k: { l: { x: 5 } } }, m: { p: 1 } })); // -> 'x: 5'
 console.log(findDeeperProp({ x: 5, y: { z: 6, k: { l: 7 }, m: { p: 1 } } })); // -> 'p:1'
 console.log(findDeeperProp({ x: 5, y: { z: 6, k: 4, m: { p: 1 } } })); // -> 'p:1'
 console.log(findDeeperProp({ x: 3, y: { c: { b: 2 } } })); // 'b: 2'
