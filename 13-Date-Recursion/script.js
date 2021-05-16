@@ -50,6 +50,8 @@ Implement the function, that should return true if every parenthesis has own clo
 function checkParentheses(str) {
   let count1 = 0;
   let count2 = 0;
+  if (str.length === 0) return false;
+
   for (const el of str) {
     if (el === '(') {
       count1++;
@@ -57,7 +59,7 @@ function checkParentheses(str) {
       count2++;
     }
   }
-  return count1 === count2 && count1 > 0 && count2 > 0;
+  return count1 === count2;
 }
 
 console.log(checkParentheses('(())((()))()')); // -> true
@@ -65,7 +67,7 @@ console.log(checkParentheses('(())((()))(')); // -> false
 console.log(checkParentheses('(())((())')); // -> false
 console.log(checkParentheses('()')); // -> true
 console.log(checkParentheses('(')); // -> false
-console.log(checkParentheses(''));// false
+console.log(checkParentheses('')); // false
 
 //2️⃣
 /*
@@ -78,16 +80,16 @@ function findDeeperProp(obj) {
   for (const [key, value] of Object.entries(obj)) {
     if (typeof value !== 'object') {
       arr.push(`${key}: ${value}`);
-    } else if (typeof value === 'object') {
+    } else {
       arr.push(findDeeperProp(obj[key]));
     }
   }
 
-  return arr.length ? `${arr.flat().slice(-1)}` : {};
+  return `${arr.flat().slice(-1)}`;
 }
 
 console.log(findDeeperProp({ x: 5, y: { z: 6, k: { l: 7 }, m: { p: 1, f: 5 } } })); // -> 'f:5'
 console.log(findDeeperProp({ x: 5, y: { z: 6, k: { l: 7 }, m: { p: 1 } } })); // -> 'p:1'
 console.log(findDeeperProp({ x: 5, y: { z: 6, k: 4, m: { p: 1 } } })); // -> 'p:1'
-console.log(findDeeperProp({x:3, y: {c: {b: 2}}}));// 'b: 2'
-console.log(findDeeperProp({}));//{}
+console.log(findDeeperProp({ x: 3, y: { c: { b: 2 } } })); // 'b: 2'
+console.log(findDeeperProp({})); //''
