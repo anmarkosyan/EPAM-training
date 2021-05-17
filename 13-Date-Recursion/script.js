@@ -85,44 +85,77 @@ Write a function that finds last deeper property of the object and return as a s
 // }
 //
 // return `${arr.flat().slice(-1)}`;
-function goDeeper(obj, count = 1) {
-  const arr = [];
+
+let count = 1;
+function goDeeper(obj) {
+  const arr1 = [];
+  let entriesCount = 0;
 
   for (const [key, value] of Object.entries(obj)) {
     if (typeof value === 'object') {
-      if (count === undefined) {
-        return count;
-      }
-      return goDeeper(obj[key], count++);
-    }
-    arr.push(`${key}: ${value}`);
-  }
+      count++;
 
-  return `${arr.slice(-1)}`;
+      return goDeeper(obj[key]);
+    }
+    arr1.push(`${key}: ${value}`);
+  }
+  entriesCount = count;
+  count = 1;
+
+  return { [arr1.slice(-1)]: entriesCount };
 }
 
 function findDeeperProp(obj) {
-  const objKeys = Object.keys(obj);
-  if (objKeys.length === 0) return '';
+  const arr = [];
 
-  for (const key of objKeys) {
+  const keysArr = Object.keys(obj);
+  if (keysArr.length === 0) return '';
+  for (const key of keysArr) {
     if (typeof obj[key] === 'object') {
-      return goDeeper(obj[key]);
+      arr.push(goDeeper(obj[key]));
     }
   }
+
+  return arr;
 }
-
 const obj = {
-  a: 3,
-  k: { b: { c: { d: { u: { j: { fg: 12, tg: 34 }, o: 9 } } } } },
-  l: { s: { q: { x: { f: { j: 12, p: 8 } } } } },
-  er: { df: { sx: 34 } },
-  f: { v: 67 },
+  a: { m: { n: 12 }, k: { t: { l: 28 } }, b: 1, c: 2 },
 };
+console.log(findDeeperProp(obj));
+// console.log(
+//   findDeeperProp({
+//     a: 3,
+//     l: { s: { q: { x: { f: { j: 12, p: 8 } } } } },
+//     k: { b: { c: { d: { u: { j: { fg: 12, tg: 34 }, o: 9 } } } } },
+//     er: { df: { sx: 34 } },
+//     f: { v: 67 },
+//   })
+// ); //
+// console.log(findDeeperProp({ x: 5, y: { z: 6, k: { l: { x: 5 } } }, m: { p: 34 } })); // -> 'x: 5'
+// console.log(findDeeperProp({ x: 5, y: { z: 6, k: { l: 7 }, m: { p: 1 } } })); // -> 'p:1'
+// console.log(findDeeperProp({ x: 5, y: { z: 6, k: 4, m: { p: 1 } } })); // -> 'p:1'
+// console.log(findDeeperProp({ x: 3, y: { c: { b: 2 } } })); // 'b: 2'
+// console.log(findDeeperProp({})); //''
 
-console.log(findDeeperProp(obj)); //
-console.log(findDeeperProp({ x: 5, y: { z: 6, k: { l: { x: 5 } } }, m: { p: 1 } })); // -> 'x: 5'
-console.log(findDeeperProp({ x: 5, y: { z: 6, k: { l: 7 }, m: { p: 1 } } })); // -> 'p:1'
-console.log(findDeeperProp({ x: 5, y: { z: 6, k: 4, m: { p: 1 } } })); // -> 'p:1'
-console.log(findDeeperProp({ x: 3, y: { c: { b: 2 } } })); // 'b: 2'
-console.log(findDeeperProp({})); //''
+//3️⃣
+/*
+you have number from 1 to 100 in an array const arrayOfNumbers = [5,2,77,34…]  (note without order) and there missed one item,
+we need to find this missed number.
+Note: you can’t plus arrayOfNumbers numbers to each other and subtract from 1-100 added result, there is expected another approach to solve it.
+*/
+
+// const findMissedNumber = function (arr) {
+//   if (arr.length === 0) return arr;
+//   const orderedArr = arr.slice().sort((a, b) => a - b);
+//
+//   for (let i = 0; i < orderedArr.length / 2; i++) {
+//     if (orderedArr[i] + 1 !== orderedArr[i + 1]) {
+//       return orderedArr[i] + 1;
+//     }
+//   }
+//   return '❗️ no missed number';
+// };
+// console.log(findMissedNumber([6, 4, 1, 2, 7, 3])); //5
+// console.log(findMissedNumber([])); //[]
+// console.log(findMissedNumber([3, 4, 5, 1, 7, 2, 8, 6])); //'❗️ no missed number'
+// console.log(findMissedNumber([]));
