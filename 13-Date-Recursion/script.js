@@ -73,69 +73,123 @@ console.log(checkParentheses('')); // false
 /*
 Write a function that finds last deeper property of the object and return as a string, using recursion.
 */
-
-//❗️ not working way, only will walk through all properties and return the last one
-// const arr = [];
-// for (const [key, value] of Object.entries(obj)) {
-//   if (typeof value !== 'object') {
-//     arr.push(`${key}: ${value}`);
-//   } else {
-//     arr.push(findDeeperProp(obj[key]));
-//   }
-// }
+// let counter = 0;
+// const findDeeperProp = function (obj) {
+//   const keysArr = Object.keys(obj);
+//   let innerCounter;
+//   const valueArr = [];
 //
-// return `${arr.flat().slice(-1)}`;
-
-let count = 1;
-function goDeeper(obj) {
-  const arr1 = [];
-  let entriesCount = 0;
-
-  for (const [key, value] of Object.entries(obj)) {
-    if (typeof value === 'object') {
-      count++;
-
-      return goDeeper(obj[key]);
-    }
-    arr1.push(`${key}: ${value}`);
-  }
-  entriesCount = count;
-  count = 1;
-
-  return { [arr1.slice(-1)]: entriesCount };
-}
-
-function findDeeperProp(obj) {
-  const arr = [];
-
-  const keysArr = Object.keys(obj);
-  if (keysArr.length === 0) return '';
-  for (const key of keysArr) {
-    if (typeof obj[key] === 'object') {
-      arr.push(goDeeper(obj[key]));
-    }
-  }
-
-  return arr;
-}
-const obj = {
-  a: { m: { n: 12 }, k: { t: { l: 28 } }, b: 1, c: 2 },
-};
-console.log(findDeeperProp(obj));
+//   if (keysArr.length === 0) return '';
+//
+//   for (const [key, value] of Object.entries(obj)) {
+//     if (typeof value === 'object') {
+//       counter++;
+//       findDeeperProp(obj[key]);
+//     } else {
+//
+//       valueArr.push(`${key}: ${value}`);
+//     }
+//     innerCounter = counter;
+//     counter = 1;
+//     console.log(counter);
+//   }
+//   return valueArr;
+// };
+//
 // console.log(
 //   findDeeperProp({
 //     a: 3,
 //     l: { s: { q: { x: { f: { j: 12, p: 8 } } } } },
 //     k: { b: { c: { d: { u: { j: { fg: 12, tg: 34 }, o: 9 } } } } },
 //     er: { df: { sx: 34 } },
-//     f: { v: 67 },
+//     d: { v: 67 },
 //   })
-// ); //
+// );
 // console.log(findDeeperProp({ x: 5, y: { z: 6, k: { l: { x: 5 } } }, m: { p: 34 } })); // -> 'x: 5'
 // console.log(findDeeperProp({ x: 5, y: { z: 6, k: { l: 7 }, m: { p: 1 } } })); // -> 'p:1'
 // console.log(findDeeperProp({ x: 5, y: { z: 6, k: 4, m: { p: 1 } } })); // -> 'p:1'
 // console.log(findDeeperProp({ x: 3, y: { c: { b: 2 } } })); // 'b: 2'
 // console.log(findDeeperProp({})); //''
+
+let count1 = 0;
+let count2 = 0;
+
+function goDeeper(obj) {
+  const arr1 = [];
+  let str = '';
+  let entriesCount = 0;
+
+
+  for (const [key, value] of Object.entries(obj)) {
+    if (typeof value === 'object') {
+      arr1.push(key);
+    }
+  }
+ const [left, right] = arr1;
+
+  return obj[left];
+
+// return str;
+}
+function findDeeperProp(obj) {
+  const arr = [];
+  const keysArr = Object.keys(obj);
+  if (keysArr.length === 0) return '';
+
+  for (const key of keysArr) {
+    //console.log(key); //a
+    if (typeof obj[key] === 'object') {
+      return goDeeper(obj[key]);
+    }
+  }
+
+  //return arr;
+}
+console.log(
+  findDeeperProp({
+    a: { m: { n: 12 }, k: { t: { l: 28 } }, b: 1, c: 2 },
+  })
+);
+
+//
+// console.log(
+//   findDeeperProp({
+//     a: 3,
+//     l: { s: { q: { x: { f: { j: 12, p: 8 } } } } },
+//     k: { b: { c: { d: { u: { j: { fg: 12, tg: 34 }, o: 9, l: { g: 56 } } } } } },
+//     er: { df: { sx: 34 } },
+//     f: { v: 67 },
+//   })
+// );
+// console.log(findDeeperProp({ x: 5, y: { z: 6, k: { l: { x: 5 } } }, m: { p: 34 } })); // -> 'x: 5'
+// console.log(findDeeperProp({ x: 5, y: { z: 6, k: { l: 7 }, m: { p: 1 } } })); // -> 'p:1'
+// console.log(findDeeperProp({ x: 5, y: { z: 6, k: 4, m: { p: 1 } } })); // -> 'p:1'
+// console.log(findDeeperProp({ x: 3, y: { c: { b: 2 } } })); // 'b: 2'
+// console.log(findDeeperProp({})); //''
+// console.log(
+//   findDeeperProp({
+//     a: { b: 2, c: { d: 4, e: 7 }, t: { e: 12, j: 34 } },
+//   })
+// );
+// let counter = 1;
+// const findDeeperProp = function (obj) {
+//   const arr = [];
+//   let node;
+//   for (const [key, value] of Object.entries(obj)) {
+//     if (typeof value === 'object') {
+//       node = key;
+//       arr.push(node);
+//       findDeeperProp(obj[key]);
+//     }
+//   }
+//
+//   return arr;
+// };
+console.log(
+  findDeeperProp({
+    a: { m: { n: 12 }, k: { t: { l: 28 } }, b: 1, c: 2 },
+  })
+);
 
 //3️⃣
 /*
@@ -159,3 +213,45 @@ Note: you can’t plus arrayOfNumbers numbers to each other and subtract from 1-
 // console.log(findMissedNumber([])); //[]
 // console.log(findMissedNumber([3, 4, 5, 1, 7, 2, 8, 6])); //'❗️ no missed number'
 // console.log(findMissedNumber([]));
+
+// function goDeeper(obj, count = 1) {
+//   const arr = [];
+//
+//   for (const [key, value] of Object.entries(obj)) {
+//     if (typeof value === 'object') {
+//       if (count === undefined) {
+//         return count;
+//       }
+//       return goDeeper(obj[key], count++);
+//     }
+//     arr.push(`${key}: ${value}`);
+//   }
+//
+//   return `${arr.slice(-1)}`;
+// }
+//
+// function findDeeperProp(obj) {
+//   const keysArr = Object.keys(obj);
+//   if (keysArr.length === 0) return '';
+//
+//   for (const key of keysArr) {
+//     if (typeof obj[key] === 'object') {
+//       return goDeeper(obj[key]);
+//     }
+//   }
+// }
+//
+// const obj = {
+//   a: 3,
+//   k: { b: { c: { d: { u: { j: { fg: 12, tg: 34 }, o: 9 } } } } },
+//   l: { s: { q: { x: { f: { j: 12, p: 8 } } } } },
+//   er: { df: { sx: 34 } },
+//   f: { v: 67 },
+// };
+//
+// console.log(findDeeperProp(obj)); //
+// console.log(findDeeperProp({ x: 5, y: { z: 6, k: { l: { x: 5 } } }, m: { p: 1 } })); // -> 'x: 5'
+// console.log(findDeeperProp({ x: 5, y: { z: 6, k: { l: 7 }, m: { p: 1 } } })); // -> 'p:1'
+// console.log(findDeeperProp({ x: 5, y: { z: 6, k: 4, m: { p: 1 } } })); // -> 'p:1'
+// console.log(findDeeperProp({ x: 3, y: { c: { b: 2 } } })); // 'b: 2'
+// console.log(findDeeperProp({})); //''
