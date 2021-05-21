@@ -24,10 +24,10 @@
 // ); //2
 //===
 //function f25() {
-  // (function () {
-  //   var x55 = 82;
-  //   console.log(x55);//82
-  // })();
+// (function () {
+//   var x55 = 82;
+//   console.log(x55);//82
+// })();
 //   var x55 = 91;
 //   if (x55) {
 //     (function () {
@@ -138,5 +138,80 @@
 //   return x;
 // }
 // console.log(fc())
-
-
+//=======
+// var a44 = 1;
+// console.log(a44); //1
+// if (true) {
+//   var a44 = 2;
+//   console.log(a44); //2
+// }
+// console.log(a44); //2
+//=====
+// console.log(
+//   (function (x) {
+//     var x = 1 + x;
+//     return x;
+//   })(1)
+// );
+//======
+// const foo = (baz = 9) => {
+//   function bar() {
+//     return 'HAPPY!';
+//   }
+//   function baz() {
+//     return 'HAPPY!';
+//   }
+//   var bar;
+//   var baz;
+//   bar = 8;
+//   baz = 'HAPPY!';
+//   return [typeof baz, typeof bar];
+// };
+// console.log(foo()); //
+// //======
+// const foo = (baz = 9) => {
+//   var baz;
+//   var bar;
+//   var baz;
+//   var bar;
+//
+//   baz = 'happy';
+//   bar = function () {
+//     return 'HAPPY!';
+//   };
+//   baz = function () {
+//     return 'HAPPY!';
+//   };
+//   bar = 8;
+//
+//   console.log('----');
+//   // var baz = 'HAPPY!';
+//   // var bar =  function () {
+//   //   return 'HAPPY!'
+//   // }
+//   // var baz = function () {
+//   //   return 'HAPPY!'
+//   // }
+//   var bar = 8;
+//   return [typeof baz, typeof bar];
+// };
+// console.log(foo()); //[function, number]
+//========
+// function a() {
+//   function b() {
+//     console.log(myVar);
+//   }
+//   var myVar;
+//   myVar = 2;
+//   b(); //2
+//
+//   console.log('-----');
+//   // function b (){
+//   //   console.log(myVar);
+//   // }
+//   // var myVar = 2;
+//   // b();
+// }
+// var myVar = 1;
+// a(); //2
+//
