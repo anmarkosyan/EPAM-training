@@ -73,29 +73,28 @@ console.log(checkParentheses('')); // false
 /*
 Write a function that finds last deeper property of the object and return as a string, using recursion.
 */
+
 const isObject = function (val) {
   if (val === null) return false;
   return typeof val === 'object';
 };
 
+//the main function
 const globalTree = function () {
   let maxNode = 0;
   let leafValue = '';
 
   return function findLeaf(node, count = 0, val) {
-    if(Object.keys(node).length === 0) return {};
+    if (Object.keys(node).length === 0) return node;
     let nodeCount = count;
     leafValue = val;
 
     for (const [key, value] of Object.entries(node)) {
       if (isObject(value)) {
         leafValue = findLeaf(node[key], nodeCount + 1, leafValue);
-        // console.log(leafValue);
-        //console.log(nodeCount, `${key} ${value}`);
       } else {
         if (nodeCount >= maxNode) {
           maxNode = nodeCount;
-          //console.log(maxNode, `${key} ${value}`);
           leafValue = `${key} ${value}`;
         }
       }
@@ -121,7 +120,7 @@ console.log(tree3({ x: 5, y: { z: 6, k: 4, m: { p: 1 } } })); // -> 'p:1'
 const tree4 = globalTree();
 console.log(tree4({ x: 3, y: { c: { b: 2 } } })); // 'b: 2'
 const tree5 = globalTree();
-console.log(tree5({})); //''
+console.log(tree5({})); //{}
 
 //3️⃣
 /*
