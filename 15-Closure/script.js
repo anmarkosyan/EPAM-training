@@ -15,7 +15,7 @@
 // console.log(multi());
 
 //2️⃣
-const arr = [5, 11, 18, 25];
+//const arr = [5, 11, 18, 25];
 // for (var i = 0; i < arr.length; i++) {
 //   setTimeout(function () {
 //     console.log('Element: ' + arr[i] + ', at index: ' + i);
@@ -38,7 +38,7 @@ const arr = [5, 11, 18, 25];
 // Element: 18, at index:  2
 // Element: 25, at index:  3
 //2way: using closure
-const array = [5, 11, 18, 25];
+//const array = [5, 11, 18, 25];
 // for (var i = 0; i < array.length; i++) {
 //   setTimeout(
 //     (function (local_i) {
@@ -58,16 +58,84 @@ const array = [5, 11, 18, 25];
 //   })(i);
 // }
 //arbitrary curly brackets
-for (var i = 0; i < array.length; i++) {
-  {
-    let j = i;
-    setTimeout(function () {
-      console.log(`Element: ${arr[j]}, at index:  ${j}`);
-    }, 1000);
-  }
-}
+// for (var i = 0; i < array.length; i++) {
+//   {
+//     let j = i;
+//     setTimeout(function () {
+//       console.log(`Element: ${arr[j]}, at index:  ${j}`);
+//     }, 1000);
+//   }
+// }
 
 //3️⃣
+// function add() {
+//   let count = 0;
+//   return function x() {
+//     return count++;
+//   };
+// }
+// const res = add();
+// console.log(res());
+function createIncrement() {
+  let count = 0;
+  function increment() {
+    count++;
+  }
+
+  //let message = `Count is ${count}`; => will take count = 0;
+  function log() {
+    let message = `Count is ${count}`; //=> solving the problem count = 3
+    console.log(message);
+  }
+
+  return [increment, log];
+}
+
+const [increment, log] = createIncrement();
+increment();
+increment();
+increment();
+log(); //Count is 0
+
+//4️⃣
+function createStack() {
+  const items = [];
+  return {
+    push(item) {
+      items.push(item);
+    },
+    pop() {
+      return items.pop();
+    },
+  };
+}
+
+const stack = createStack();
+stack.push(10);
+stack.push(5);
+stack.pop(); // => 5
+
+stack.items; // => [10]
+//stack.items = [10, 100, 1000]; // Encapsulation broken!
+console.log(stack.items); //=> undefined
+
+//5️⃣
+function multiply(num1, num2) {
+  if (!num2) {
+    return function multi(num) {
+      return num * num1;
+    };
+  }
+  return num1 * num2;
+}
+
+console.log(multiply(4, 5)); // => 20
+console.log(multiply(3, 3)); // => 9
+
+const double = multiply(2);
+console.log(double(5));  // => 10
+console.log(double(11)); // => 22
+
 
 //======================= 🔴 about this ====================
 // var person = {
