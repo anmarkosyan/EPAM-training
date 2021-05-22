@@ -38,4 +38,29 @@
 - **07: Objects**
   - Object methods
   - this 
+  
+- **08:Optional chaining and Symbols**
+
+
+- **09:Strings and Numbers**
+
+- **10:Array**
+  - Array methods
+  
+- **11:Iterables**
+  - String
+  - Array
+  - Map
+  - Set
+  
+- **12:Object methods and Destructuring**
+  
+- **13:Date and recursion**
+
+- **14:Execution Context And Hoisting**
+
+- **15: Closure** 
+
+
+  
 
