@@ -1,9 +1,36 @@
-//'use strict';
+'use strict';
 //======================== 🔴 Lecture Part =======================
 //1️⃣ Execution Context
 
 //2️⃣ Hoisting
+immaBeOnTop();
 
+var immaBeOnTop;
+
+function immaBeOnTop() {
+  console.log('first');
+}
+
+immaBeOnTop = function() {
+  console.log('second');
+};
+
+//=====
+foo();
+
+function foo() {
+  console.log(1);
+}
+
+var foo = function() {
+  console.log(2);
+};
+
+function foo() {
+  console.log(3);
+}
+
+foo();
 //======================= 👩🏻‍💻 Coding Part =======================
 // if (true) {
 //   function fn() {
