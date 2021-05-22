@@ -73,7 +73,6 @@ console.log(checkParentheses('')); // false
 /*
 Write a function that finds last deeper property of the object and return as a string, using recursion.
 */
-
 const isObject = function (val) {
   if (val === null) return false;
   return typeof val === 'object';
@@ -128,32 +127,39 @@ you have number from 1 to 100 in an array const arrayOfNumbers = [5,2,77,34…] 
 we need to find this missed number.
 Note: you can’t plus arrayOfNumbers numbers to each other and subtract from 1-100 added result, there is expected another approach to solve it.
 */
-//const findMissedNumber = function (arr) {
-// if (arr.length === 0) return arr;
-// const orderedArr = arr.slice().sort((a, b) => a - b);
-//
-// for (let i = 0; i < orderedArr.length - 1; i++) {
-//   if (orderedArr[i] + 1 !== orderedArr[i + 1]) {
-//     return orderedArr[i] + 1;
+// const findMissedNumber = function (arr) {
+//   //best way of searching
+//   arr = arr || [];
+//   for (let i = arr[0]; i < arr.length + 1; i++) {
+//     if (!arr.includes(i)) {
+//       return i;
+//     }
 //   }
-// }
-// return '❗️ no missed number';
-
-//2 way://Time complexity 0(N)/0(1)
-// const n = arr.length + 1;
-// let sum = 0;
 //
-// for (let i = 1; i <= n; i++) {
-//   sum += i;
-// }
-// console.log(sum);//10
-// arr.forEach(function(num){
-//   sum -= num;
+//  //===
+//   const orderedArr = arr.slice().sort((a, b) => a - b);
 //
-// })
-// return sum;
-
-//3way: XOR logic operator
+//   for (let i = 0; i < orderedArr.length - 1; i++) {
+//     if (orderedArr[i] + 1 !== orderedArr[i + 1]) {
+//       return orderedArr[i] + 1;
+//     }
+//   }
+//   return '❗️ no missed number';
+//
+//   //2 way://Time complexity 0(N)/0(1)
+//   const n = arr.length + 1;
+//   let sum = 0;
+//
+//   for (let i = 1; i <= n; i++) {
+//     sum += i;
+//   }
+//
+//   arr.forEach(function (num) {
+//     sum -= num;
+//   });
+//   return sum;
+//
+//   //3way: XOR logic operator
 //   const maxNum = arr.length + 1;
 //   //find sum of all numbers with comparing digits from 1 to given array length + 1
 //   let xor1 = 1;
