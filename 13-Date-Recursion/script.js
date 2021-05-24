@@ -74,75 +74,69 @@ console.log(checkParentheses('')); // false
 Write a function that finds last deeper property of the object and return as a string, using recursion.
 */
 //the best way
-function findDeeperProp(arg, key, count = 0) {
-  key = key || {};
-  for (const i in arg) {
-    if (typeof arg[i] == 'object') {
-      findDeeperProp(arg[i], key, count + 1);
-    } else {
-      key[count] = `${i}: ${arg[i]}`;
-    }
-  }
-
-  const res = Object.values(key);
-  return res[res.length - 1];
-}
-
-console.log(
-  findDeeperProp({
-    a: { m: { n: { f: 12 } }, k: { t: { l: { s: { r: 28 } } } }, b: { w: 1 }, c: { o: 2 } },
-    b: { c: { f: 23 }, g: { r: 45 } },
-  })
-); //'r: 28'
-
-//2way
-// const isObject = function (val) {
-//   if (val === null) return false;
-//   return typeof val === 'object';
-// };
-//
-// //the main function
-// const globalTree = function () {
-//   let maxNode = 0;
-//   let leafValue = '';
-//
-//   return function findLeaf(node, count = 0, val) {
-//     if (Object.keys(node).length === 0) return node;
-//     let nodeCount = count;
-//     leafValue = val;
-//
-//     for (const [key, value] of Object.entries(node)) {
-//       if (isObject(value)) {
-//         leafValue = findLeaf(node[key], nodeCount + 1, leafValue);
-//       } else {
-//         if (nodeCount >= maxNode) {
-//           maxNode = nodeCount;
-//           leafValue = `${key} ${value}`;
-//         }
-//       }
+// function findDeeperProp(arg, key, count = 0) {
+//   key = key || {};
+//   for (const i in arg) {
+//     if (typeof arg[i] == 'object') {
+//       findDeeperProp(arg[i], key, count + 1);
+//     } else {
+//       key[count] = `${i}: ${arg[i]}`;
 //     }
+//   }
 //
-//     return leafValue;
-//   };
-// };
+//   const res = Object.values(key);
+//   return res[res.length - 1];
+// }
 //
-// const tree = globalTree();
 // console.log(
-//   tree({
+//   findDeeperProp({
 //     a: { m: { n: { f: 12 } }, k: { t: { l: { s: { r: 28 } } } }, b: { w: 1 }, c: { o: 2 } },
 //     b: { c: { f: 23 }, g: { r: 45 } },
 //   })
-// );
-// const tree1 = globalTree();
-// console.log(tree1({ x: 5, y: { z: 6, k: { l: { x: 5 } } }, m: { p: 34 } })); // -> 'x: 5'
-// const tree2 = globalTree();
-// console.log(tree2({ x: 5, y: { z: 6, k: { l: 7 }, m: { p: 1 } } })); // -> 'p:1'
-// const tree3 = globalTree();
-// console.log(tree3({ x: 5, y: { z: 6, k: 4, m: { p: 1 } } })); // -> 'p:1'
-// const tree4 = globalTree();
-// console.log(tree4({ x: 3, y: { c: { b: 2 } } })); // 'b: 2'
-// const tree5 = globalTree();
-// console.log(tree5({})); //{}
+// ); //'r: 28'
+
+//2way
+const globalTree = function () {
+  let maxNode = 0;
+  let leafValue = '';
+
+  return function findLeaf(node, count = 0, val) {
+    if (Object.keys(node).length === 0) return node;
+    let nodeCount = count;
+    leafValue = val;
+
+    for (const [key, value] of Object.entries(node)) {
+      if (value instanceof Object) {
+        leafValue = findLeaf(node[key], nodeCount + 1, leafValue);
+      } else {
+        if (nodeCount >= maxNode) {
+          maxNode = nodeCount;
+          leafValue = `${key} ${value}`;
+        }
+      }
+    }
+
+    return leafValue;
+  };
+};
+
+const tree = globalTree();
+console.log(
+  tree({
+    a: { m: { n: { f: 12 } }, k: { t: { l: { s: { r: 28 } } } }, b: { w: 1 }, c: { o: 2 } },
+    b: { c: { f: 23 }, g: { r: 45 } },
+  })
+);
+const tree1 = globalTree();
+console.log(tree1({ x: 5, y: { z: 6, k: { l: { x: 5 } } }, m: { p: 34 } })); // -> 'x: 5'
+const tree2 = globalTree();
+console.log(tree2({ x: 5, y: { z: 6, k: { l: 7 }, m: { p: 1 } } })); // -> 'p:1'
+const tree3 = globalTree();
+console.log(tree3({ x: 5, y: { z: 6, k: 4, m: { p: 1 } } })); // -> 'p:1'
+const tree4 = globalTree();
+console.log(tree4({ x: 3, y: { c: { b: 2 } } })); // 'b: 2'
+const tree5 = globalTree();
+console.log(tree5({})); //{}
 
 //3️⃣
 /*
