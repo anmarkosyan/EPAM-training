@@ -1,7 +1,6 @@
 'use strict';
 //=============== 🔴 lecture part ===================
-// const request = fetch('https://restcountries.eu/rest/v2/name/portugal');
-// console.log(request);//Promise{}
+const btn = document.querySelector('.btn-country');
 
 const getCountryData = function (country) {
   fetch(`https://restcountries.eu/rest/v2/name/${country}`)
@@ -13,7 +12,13 @@ const getCountryData = function (country) {
       return fetch(`https://restcountries.eu/rest/v2/name/${neighbour}`);
     })
     .then(response => response.json())
-    .then(data => console.log(data[0]));
+    .then(data => console.log(data[0]))
+    .catch(err => {
+      console.error(`Something went wrong 💥💥💥 ${err.message}.Try again!`);
+    });
 };
-getCountryData('armenia');
+
+btn.addEventListener('click', function () {
+  getCountryData('armenia');
+});
 //================ 🔴 coding challenges =============
