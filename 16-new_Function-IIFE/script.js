@@ -1,5 +1,6 @@
 'use strict';
-//================= 🔴 lecture ========================
+
+//================= 🔴 coding challenges ==============
 //1️⃣
 // (function immediateA(a) {
 //   return (function immediateB(b) {
@@ -35,4 +36,4 @@
 // }
 
 
-//================= 🔴 coding challenges ==============
+
