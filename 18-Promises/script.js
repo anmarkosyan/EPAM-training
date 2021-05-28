@@ -2,7 +2,6 @@
 //=============== 🔴 lecture part ===================
 /*
 const btn = document.querySelector('.btn-country');
- /*
 
 const getJSON = function (url, errorMsg = 'Something went wrong') {
   return fetch(url).then(response => {
@@ -14,12 +13,12 @@ const getJSON = function (url, errorMsg = 'Something went wrong') {
 };
 
 const getCountryData = function (country) {
-   getJSON(`https://restcountries.eu/rest/v2/name/${country}`, 'Country not found')
+  getJSON(`https://restcountries.eu/rest/v2/name/${country}`, 'Country not found')
     .then(data => {
       console.log(data[0]);
       const neighbour = data[0].borders[1];
 
-      if(!neighbour) throw new Error('No neighbour found 🤷🏻‍')
+      if (!neighbour) throw new Error('No neighbour found 🤷🏻‍');
       return getJSON(`https://restcountries.eu/rest/v2/name/${neighbour}`, 'Country not found');
     })
     .then(data => console.log(data[0]))
@@ -31,9 +30,8 @@ const getCountryData = function (country) {
 btn.addEventListener('click', function () {
   getCountryData('australia');
 });
+*/
 
-
- */
 //getCountryData('hjkghj');
 //================ 🔴 coding challenges =============
 //1️⃣ Find the bug
@@ -103,30 +101,79 @@ btn.addEventListener('click', function () {
  * 2.If num is odd, resolve the promise after 1 second with the data odd passed to it.
  * 3.If num is even, reject the promise after 2 seconds with the data even passed to it.
  */
-function evenOdd(num) {
+// function evenOdd(num) {
+//   return new Promise(function (resolve, reject) {
+//     if (isNaN(num)) reject('error');
+//
+//     if (num % 2 !== 0) {
+//       setTimeout(() => {
+//         resolve('odd');
+//       }, 1000);
+//     }
+//
+//     if (num % 2 === 0) {
+//       setTimeout(() => {
+//         reject('even');
+//       }, 2000);
+//     }
+//   });
+// }
+//
+// function test(number) {
+//   return evenOdd(number)
+//     .then(data => console.log(data))
+//     .catch(err => console.log(err));
+// }
+//
+// test(4);
+// test(5);
+// test('bhg');
+//5️⃣ what will be the output
+// function func1() {
+//   return new Promise(function (resolve, reject) {
+//     setTimeout(function () {
+//       resolve('Func1');
+//     }, 1000);
+//   });
+// }
+//
+// function func2() {
+//   return new Promise(function (resolve, reject) {
+//     setTimeout(function () {
+//       resolve('Func2');
+//     }, 2000);
+//   });
+// }
+//
+// func1()
+//   .then( func2()) //will skip this part
+//   .then(function (result) {
+//     console.log(result); //'Func1'
+//   });
+
+//6️⃣ what will be the output
+function func1() {
   return new Promise(function (resolve, reject) {
-    if (isNaN(num)) reject('error');
-
-    if (num % 2 !== 0) {
-      setTimeout(() => {
-        resolve('odd');
-      }, 1000);
-    }
-
-    if (num % 2 === 0) {
-      setTimeout(() => {
-        reject('even');
-      }, 2000);
-    }
+    setTimeout(function () {
+      resolve('Func1');
+    }, 1000);
   });
 }
 
-function test(number) {
-  return evenOdd(number)
-    .then(data => console.log(data))
-    .catch(err => console.log(err));
+function func2() {
+  console.log('Func2');
+  return new Promise(function (resolve, reject) {
+    setTimeout(function () {
+      resolve('Inside Func2');
+    }, 2000);
+  });
 }
 
-test(4);
-test(5);
-test('bhg');
+func1()
+  .then(function (result) {
+    console.log(result);//'Func1'
+      func2();//'Func2'
+  })
+  .then(function (result) {
+    console.log(result);//undefined
+  });
