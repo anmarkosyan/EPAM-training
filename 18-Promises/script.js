@@ -95,4 +95,38 @@ btn.addEventListener('click', function () {
 // display();
 
 //4️⃣
+/*
+ * In this challenge, you have to implement the function evenOdd. It takes a number num as a parameter.
+ * You have to make use of the concept of promises to determine whether num is even or odd.
+ * You need to do the following:
+ * 1.If num is not a number, reject the promise with the data error that is passed to it.
+ * 2.If num is odd, resolve the promise after 1 second with the data odd passed to it.
+ * 3.If num is even, reject the promise after 2 seconds with the data even passed to it.
+ */
+function evenOdd(num) {
+  return new Promise(function (resolve, reject) {
+    if (isNaN(num)) reject('error');
 
+    if (num % 2 !== 0) {
+      setTimeout(() => {
+        resolve('odd');
+      }, 1000);
+    }
+
+    if (num % 2 === 0) {
+      setTimeout(() => {
+        reject('even');
+      }, 2000);
+    }
+  });
+}
+
+function test(number) {
+  return evenOdd(number)
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
+}
+
+test(4);
+test(5);
+test('bhg');
