@@ -152,28 +152,56 @@ btn.addEventListener('click', function () {
 //   });
 
 //6️⃣ what will be the output
-function func1() {
-  return new Promise(function (resolve, reject) {
-    setTimeout(function () {
-      resolve('Func1');
-    }, 1000);
-  });
-}
+// function func1() {
+//   return new Promise(function (resolve, reject) {
+//     setTimeout(function () {
+//       resolve('Func1');
+//     }, 1000);
+//   });
+// }
+//
+// function func2() {
+//   console.log('Func2');
+//   return new Promise(function (resolve, reject) {
+//     setTimeout(function () {
+//       resolve('Inside Func2');
+//     }, 2000);
+//   });
+// }
+//
+// func1()
+//   .then(function (result) {
+//     console.log(result);//'Func1'
+//       func2();//'Func2'
+//   })
+//   .then(function (result) {
+//     console.log(result);//undefined
+//   });
 
-function func2() {
-  console.log('Func2');
-  return new Promise(function (resolve, reject) {
-    setTimeout(function () {
-      resolve('Inside Func2');
-    }, 2000);
-  });
-}
+//7️⃣
+const computeSqrtAsync = function (number) {
+  if (number < 0) {
+    return Promise.reject('no negative number, please!.');
+  }
 
-func1()
-  .then(function (result) {
-    console.log(result);//'Func1'
-      func2();//'Func2'
-  })
-  .then(function (result) {
-    console.log(result);//undefined
+  if (number === 0) {
+    return Promise.resolve(0);
+  }
+
+  return new Promise(function (resolve, reject) {
+    setTimeout(() => resolve(Math.sqrt(number)), 1000);
   });
+};
+
+//START:STATE
+const forNegative1 = computeSqrtAsync(-1);
+const forZero = computeSqrtAsync(0);
+const forSixteen = computeSqrtAsync(16);
+
+const testing = function (promise) {
+  promise.then(data => console.log(data)).catch(err => console.log(err));
+};
+
+testing(forNegative1);
+testing(forZero);
+testing(forSixteen);
