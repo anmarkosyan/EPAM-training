@@ -37,22 +37,22 @@ btn.addEventListener('click', function () {
 //getCountryData('hjkghj');
 //================ 🔴 coding challenges =============
 //1️⃣ Find the bug
-function feelings(val, func) {
-  console.log('I am ' + val + ', ' + func(2));
-}
-
-var laughing = function (num) {
-  var laugh = '';
-  for (var i = 0; i < num; i++) {
-    laugh = laugh + 'ha';
-  }
-  return laugh;
-};
-
-function display() {
-  feelings('happy', laughing);
-}
-display();
+// function feelings(val, func) {
+//   console.log('I am ' + val + ', ' + func(2));
+// }
+//
+// var laughing = function (num) {
+//   var laugh = '';
+//   for (var i = 0; i < num; i++) {
+//     laugh = laugh + 'ha';
+//   }
+//   return laugh;
+// };
+//
+// function display() {
+//   feelings('happy', laughing);
+// }
+// display();
 
 //2️⃣ check the names using callback function
 // const checkName = (firstName, lastName, callback) => {
@@ -68,15 +68,31 @@ display();
 //
 // checkName('Aram', 'Markos', callback);
 //2way
-const checkName = (firstName, lastName, callback) => {
-  if (!firstName) return callback(new Error('No First Name Entered!'));
-  if (!lastName) return callback(firstName);
+// const checkName = (firstName, lastName, callback) => {
+//   if (!firstName) return callback(new Error('No First Name Entered!'));
+//   if (!lastName) return callback(firstName);
+//
+//   const fullName = `${firstName} ${lastName}`;
+//   return callback(fullName);
+// };
+//
+// function callback(arg) {
+//   console.log(arg);
+// }
+// checkName('anush', 'markos', callback);
+//3️⃣ find bug
+// const getTodo = callback => {
+//   setTimeout(() => {
+//     callback({ text: 'Complete Code Example' });
+//   }, 2000);
+// };
+//
+// function display() {
+//   getTodo(msg => {
+//     console.log(msg.text);
+//   });
+// }
+// display();
 
-  const fullName = `${firstName} ${lastName}`;
-  return callback(fullName);
-};
+//4️⃣
 
-function callback(arg) {
-  console.log(arg);
-}
-checkName('anush', 'markos', callback);
