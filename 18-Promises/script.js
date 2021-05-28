@@ -1,6 +1,8 @@
 'use strict';
 //=============== 🔴 lecture part ===================
+/*
 const btn = document.querySelector('.btn-country');
+ /*
 
 const getJSON = function (url, errorMsg = 'Something went wrong') {
   return fetch(url).then(response => {
@@ -29,5 +31,52 @@ const getCountryData = function (country) {
 btn.addEventListener('click', function () {
   getCountryData('australia');
 });
+
+
+ */
 //getCountryData('hjkghj');
 //================ 🔴 coding challenges =============
+//1️⃣ Find the bug
+function feelings(val, func) {
+  console.log('I am ' + val + ', ' + func(2));
+}
+
+var laughing = function (num) {
+  var laugh = '';
+  for (var i = 0; i < num; i++) {
+    laugh = laugh + 'ha';
+  }
+  return laugh;
+};
+
+function display() {
+  feelings('happy', laughing);
+}
+display();
+
+//2️⃣ check the names using callback function
+// const checkName = (firstName, lastName, callback) => {
+//   console.log(callback(firstName, lastName));
+// };
+//
+// function callback(...arg) {
+//   const [firstName, lastName] = arg;
+//   if (!firstName) return new Error('No First Name Entered!');
+//   if (!lastName) return firstName;
+//   else return `${firstName} ${lastName}`;
+// }
+//
+// checkName('Aram', 'Markos', callback);
+//2way
+const checkName = (firstName, lastName, callback) => {
+  if (!firstName) return callback(new Error('No First Name Entered!'));
+  if (!lastName) return callback(firstName);
+
+  const fullName = `${firstName} ${lastName}`;
+  return callback(fullName);
+};
+
+function callback(arg) {
+  console.log(arg);
+}
+checkName('anush', 'markos', callback);
