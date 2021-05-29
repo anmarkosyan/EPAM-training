@@ -38,41 +38,36 @@
 1.callback1 must be called only one time, after 2 seconds.
 2.callback2 must be called three times with an interval of 1 second.
 */
+function job(callback1, callback2) {
+  setTimeout(() => {
+    callback1();
+  }, 2000);
+  const timer = setInterval(() => {
+    callback2();
+  }, 1000);
 
-// function job(callback1, callback2) {
-//   let count = 0;
-//   const timer = setInterval(()=>{
-//     callback2();
-//     count++;
-//     if(count === 3){
-//       clearInterval(timer);
-//     }
-//   }, 1000)
-//    setTimeout(()=>{
-//     callback1()
-//   }, 2000)
-// }
-//
-// job(
-//   function () {
-//     console.log('timer1');
-//   },
-//   function () {
-//     console.log('timer2');
-//   }
-// );
+  setTimeout(() => {
+    clearInterval(timer);
+  }, 3000);
+}
+
+const fnc1 = function () {
+  console.log('timer1');
+};
+
+const fnc2 = function () {
+  console.log('timer2');
+};
+job(fnc1, fnc2);
 //5️⃣
 // function evenOdd(data) {
 //   return new Promise(function (resolve, reject) {
 //     if (isNaN(data)) reject('error');
-//     if (data % 2 !== 0) {
-//       setTimeout(() => {
-//         resolve('odd');
-//       }, 1000);
+//     else if (data % 2 !== 0) {
+//       setTimeout(resolve, 1000, 'odd');
+//     } else {
+//       setTimeout(reject, 2000, 'even');
 //     }
-//     setTimeout(() => {
-//       reject('even');
-//     }, 2000);
 //   });
 // }
 //
