@@ -59,22 +59,39 @@ btn.addEventListener('click', function () {
 //   .then(() => console.log('I waited for 1 second!'));
 
 //4️⃣ async/await
-const getCountryDataAsync = async function (country) {
-  try {
-    const response = await fetch(`https://restcountries.eu/rest/v2/name/${country}`);
-    const data = await response.json();
-    console.log(data[0]);
-    const neighbour = data[0].borders[1];
+// const getCountryDataAsync = async function (country) {
+//   try {
+//     const response = await fetch(`https://restcountries.eu/rest/v2/name/${country}`);
+//     const data = await response.json();
+//     console.log(data[0]);
+//     const neighbour = data[0].borders[1];
+//
+//     const neighbourData = await fetch(`https://restcountries.eu/rest/v2/name/${neighbour}`);
+//     const data2 = await neighbourData.json();
+//     console.log(data2[0]);
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
+//  getCountryDataAsync('armenia');
+// console.log('first');
+//5️⃣
+function wait(secondsToWait) {
+  return new Promise(resolve => {
+    setTimeout(() => resolve(`Resolved after ${secondsToWait} seconds`), secondsToWait * 1000);
+  });
+}
 
-    const neighbourData = await fetch(`https://restcountries.eu/rest/v2/name/${neighbour}`);
-    const data2 = await neighbourData.json();
-    console.log(data2[0]);
-  } catch (err) {
-    console.error(err);
-  }
-};
- getCountryDataAsync('armenia');
-console.log('first');
+async function fn() {
+  console.log('Beginning fn');//1 output
+
+  const result = await wait(2);//stop function invoked
+  console.log(result);//after 2 sec will resolve aoutput
+
+  console.log('Ending fn');// 3 output
+}
+
+fn();
 
 //================ 🔴 coding challenges =============
 //1️⃣ Find the bug
