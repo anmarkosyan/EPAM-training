@@ -1,6 +1,7 @@
 'use strict';
 //=============== 🔴 lecture part ===================
 /*
+//1️⃣
 const btn = document.querySelector('.btn-country');
 
 const getJSON = function (url, errorMsg = 'Something went wrong') {
@@ -22,17 +23,59 @@ const getCountryData = function (country) {
       return getJSON(`https://restcountries.eu/rest/v2/name/${neighbour}`, 'Country not found');
     })
     .then(data => console.log(data[0]))
-    .catch(err => {
-      console.error(`Something went wrong 💥💥💥 ${err.message} .Try again!`);
-    });
+    .catch(err => console.error(`Something went wrong 💥💥💥 ${err.message} .Try again!`));
 };
 
 btn.addEventListener('click', function () {
-  getCountryData('australia');
+  getCountryData('armenia');
 });
 */
+//2️⃣
+// const lotteryPromise = new Promise(function (resolve, reject) {
+//   console.log('Lottery draw is happening 🔮');
+//   setTimeout(function () {
+//     if (Math.random() >= 0.5) {
+//       resolve('YOU WIN 💰');
+//     } else {
+//       reject(new Error('You lost your money 💩'));
+//     }
+//   }, 2000);
+// });
+//
+// lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
 
-//getCountryData('hjkghj');
+//3️⃣ chaining
+// const wait = function (seconds) {
+//   return new Promise(function (resolve) {
+//     setTimeout(resolve, seconds * 1000);
+//   });
+// };
+//
+// wait(2)
+//   .then(() => {
+//     console.log('I waited for 2 second!');
+//     return wait(1);
+//   })
+//   .then(() => console.log('I waited for 1 second!'));
+
+//4️⃣ async/await
+const getCountryDataAsync = async function (country) {
+  try {
+    const response = await fetch(`https://restcountries.eu/rest/v2/name/${country}`);
+    const data = await response.json();
+    console.log(data[0]);
+    const neighbour = data[0].borders[1];
+
+    const neighbourData = await fetch(`https://restcountries.eu/rest/v2/name/${neighbour}`);
+    const data2 = await neighbourData.json();
+    console.log(data2[0]);
+  } catch (err) {
+    console.error(err);
+  }
+};
+ getCountryDataAsync('armenia');
+console.log('first');
+
 //================ 🔴 coding challenges =============
 //1️⃣ Find the bug
 // function feelings(val, func) {
@@ -130,7 +173,7 @@ btn.addEventListener('click', function () {
 // test('bhg');
 //5️⃣ what will be the output
 // function func1() {
-//   return new Promise(function (resolve, reject) {
+//   return new Promise(function (resolve) {
 //     setTimeout(function () {
 //       resolve('Func1');
 //     }, 1000);
@@ -138,7 +181,7 @@ btn.addEventListener('click', function () {
 // }
 //
 // function func2() {
-//   return new Promise(function (resolve, reject) {
+//   return new Promise(function (resolve) {
 //     setTimeout(function () {
 //       resolve('Func2');
 //     }, 2000);
@@ -153,7 +196,7 @@ btn.addEventListener('click', function () {
 
 //6️⃣ what will be the output
 // function func1() {
-//   return new Promise(function (resolve, reject) {
+//   return new Promise(function (resolve) {
 //     setTimeout(function () {
 //       resolve('Func1');
 //     }, 1000);
@@ -162,7 +205,7 @@ btn.addEventListener('click', function () {
 //
 // function func2() {
 //   console.log('Func2');
-//   return new Promise(function (resolve, reject) {
+//   return new Promise(function (resolve) {
 //     setTimeout(function () {
 //       resolve('Inside Func2');
 //     }, 2000);
@@ -179,36 +222,33 @@ btn.addEventListener('click', function () {
 //   });
 
 //7️⃣
-const computeSqrtAsync = function (number) {
-  if (number < 0) {
-    return Promise.reject('no negative number, please!.');
-  }
-
-  if (number === 0) {
-    return Promise.resolve(0);
-  }
-
-  return new Promise(function (resolve, reject) {
-    setTimeout(() => resolve(Math.sqrt(number)), 1000);
-  });
-};
-
-//START:STATE
-const forNegative1 = computeSqrtAsync(-1);
-const forZero = computeSqrtAsync(0);
-const forSixteen = computeSqrtAsync(16);
-
-const testing = function (promise) {
-  promise.then(
-    function (data) {
-      console.log(data);
-    },
-    function (err) {
-      console.log(err);
-    }
-  );
-};
-
-testing(forNegative1);
-testing(forZero);
-testing(forSixteen);
+// const computeSqrtAsync = function (number) {
+//   if (number < 0) {
+//     return Promise.reject('no negative number, please!.');
+//   }
+//
+//   if (number === 0) {
+//     return Promise.resolve(0);
+//   }
+//
+//   return new Promise(function (resolve) {
+//     setTimeout(() => resolve(Math.sqrt(number)), 1000);
+//   });
+// };
+//
+// //START:STATE
+// const forNegative1 = computeSqrtAsync(-1);
+// const forZero = computeSqrtAsync(0);
+// const forSixteen = computeSqrtAsync(16);
+//
+// const testing = function (promise) {
+//   promise
+//     .then(function (data) {
+//       console.log(data);
+//     })
+//     .catch(err => console.error(err));
+// };
+//
+// testing(forNegative1);
+// testing(forZero);
+// testing(forSixteen);
