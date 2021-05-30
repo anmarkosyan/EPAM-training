@@ -38,27 +38,27 @@
 1.callback1 must be called only one time, after 2 seconds.
 2.callback2 must be called three times with an interval of 1 second.
 */
-function job(callback1, callback2) {
-  setTimeout(() => {
-    callback1();
-  }, 2000);
-  const timer = setInterval(() => {
-    callback2();
-  }, 1000);
-
-  setTimeout(() => {
-    clearInterval(timer);
-  }, 3000);
-}
-
-const fnc1 = function () {
-  console.log('timer1');
-};
-
-const fnc2 = function () {
-  console.log('timer2');
-};
-job(fnc1, fnc2);
+// function job(callback1, callback2) {
+//   setTimeout(() => {
+//     callback1();
+//   }, 2000);
+//   const timer = setInterval(() => {
+//     callback2();
+//   }, 1000);
+//
+//   setTimeout(() => {
+//     clearInterval(timer);
+//   }, 3000);
+// }
+//
+// const fnc1 = function () {
+//   console.log('timer1');
+// };
+//
+// const fnc2 = function () {
+//   console.log('timer2');
+// };
+// job(fnc1, fnc2);
 //5️⃣
 // function evenOdd(data) {
 //   return new Promise(function (resolve, reject) {
@@ -77,3 +77,28 @@ job(fnc1, fnc2);
 // test(evenOdd(5));
 // test(evenOdd(8));
 // test(evenOdd('ko'));
+//6️⃣
+/*
+ * Print the message “Hello after 4 seconds” after 4 seconds
+ * Print the message “Hello after 8 seconds” after 8 seconds.
+ * */
+// const wait = delay => {
+//   console.log(`Hello after ${delay} seconds!`);
+// };
+//
+// setTimeout(wait, 4 * 1000, 4);
+// setTimeout(wait, 8 * 1000, 8);
+
+//using clearTimeout
+//const timerId = setTimeout(() => console.log('You will never see this one 🤷🏻‍'), 0);
+//console.log(timerId);
+//clearTimeout(timerId);
+
+//7️⃣ setImmediate:❗️ use only for node.js, don't use it for front-end code
+//setImmediate(() => console.log('I am equivalent to setTimeout with 0 ms'));
+//clearImmediate();
+
+//exp:
+//setTimeout(() => console.log('hello after 1 second, MAYBE!!'), 1000);
+
+//for (let i = 0; i < 1e10; i++) {}
