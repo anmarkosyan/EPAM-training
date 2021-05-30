@@ -102,3 +102,54 @@
 //setTimeout(() => console.log('hello after 1 second, MAYBE!!'), 1000);
 
 //for (let i = 0; i < 1e10; i++) {}
+
+//8️⃣
+/*
+ * Write a script to print the message “Hello World” every second, but only 5 times.
+ * After 5 times, the script should print the message “Done” and let the Node process exit.
+ *
+ * Constraints: You cannot use a setTimeout call for this challenge.
+ * Hint: You need a counter.
+ * */
+
+// let counter = 0;
+// const intervalId = setInterval(function () {
+//   console.log('Hello world!');
+//   counter++;
+//   if (counter === 5) {
+//     console.log('Done!');
+//     clearInterval(intervalId);
+//   }
+// }, 1000);
+
+//9️⃣THIS !!!! Who exactly “calls” the delayed functions?
+// const obj = {
+//   id: 42,
+//   whoCallMe() {
+//     console.log('Caller is', this);
+//   },
+// };
+// obj.whoCallMe();
+// setTimeout(obj.whoCallMe, 0); //Timeout object
+
+//1️⃣0️⃣
+/*
+* Write a script to continuously print the message “Hello World” with varying delays.
+* Start with a delay of 1 second and then increment the delay by 1 second each time.
+* The second time will have a delay of 2 seconds. The third time will have a delay of 3 seconds, and so on.
+* Include the delay in the printed message. Expected output looks like:
+Hello World. 1
+Hello World. 2
+Hello World. 3
+...
+* Constraints: You can only use const to define variables. You can’t use let or var.
+*/
+
+const greeting = delay => {
+  setTimeout(() => {
+    console.log(`Hello World. ${delay}`);
+    greeting(delay + 1);
+  }, delay * 1000);
+};
+
+greeting(1);
