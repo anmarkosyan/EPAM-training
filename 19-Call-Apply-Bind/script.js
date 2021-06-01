@@ -46,26 +46,30 @@
 // console.log(userFullName.apply(user3, [user3.secondName]));
 
 //======
-// function slow(x) {
-//   return x;
-// }
-// function cachingDecorator(func) {
-//   let cache = new Map();
-//
-//   return function (...arg) {
-//     const arr = arg;
-//
-//     if (cache.has(...arr)) {
-//       return cache.get(...arr);
-//     }
-//
-//     let result = func.call(this, ...arr);
-//     cache.set(arr, result);
-//     return result;
-//   };
-// }
-// const newSlow = cachingDecorator(slow);
-// console.log(newSlow(1, 3, 4));
-// console.log('Again: ' + newSlow(1, 3, 4));
-// console.log(newSlow(2));
-// console.log('Again: ' + newSlow(2));
+const add = (n) => (n + 10);
+//console.log('Simple call', add(3));
+// a simple memoize function that takes in a function
+// and returns a memoized function
+const memoize = (fn) => {
+  let cache = {};
+  return (...args) => {
+    //console.log(args)
+    let n = args[0];  // just taking one argument here
+    if (n in cache) {
+      console.log('Fetching from cache');
+      return cache[n];
+    }
+    else {
+      console.log('Calculating result');
+      let result = fn(n);
+      cache[n] = result;
+      return result;
+    }
+  }
+}
+// creating a memoized function for the 'add' pure function
+const memoizedAdd = memoize(add);
+console.log(memoizedAdd(3, 4, 5));  // calculated
+console.log(memoizedAdd(3));  // cached
+console.log(memoizedAdd(4));  // calculated
+console.log(memoizedAdd(4));  // cached
