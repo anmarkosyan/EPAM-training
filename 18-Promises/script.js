@@ -76,22 +76,22 @@ btn.addEventListener('click', function () {
 //  getCountryDataAsync('armenia');
 // console.log('first');
 //5️⃣
-function wait(secondsToWait) {
-  return new Promise(resolve => {
-    setTimeout(() => resolve(`Resolved after ${secondsToWait} seconds`), secondsToWait * 1000);
-  });
-}
-
-async function fn() {
-  console.log('Beginning fn');//1 output
-
-  const result = await wait(2);//stop function invoked
-  console.log(result);//after 2 sec will resolve aoutput
-
-  console.log('Ending fn');// 3 output
-}
-
-fn();
+// function wait(secondsToWait) {
+//   return new Promise(resolve => {
+//     setTimeout(() => resolve(`Resolved after ${secondsToWait} seconds`), secondsToWait * 1000);
+//   });
+// }
+//
+// async function fn() {
+//   console.log('Beginning fn');//1 output
+//
+//   const result = await wait(2);//stop function invoked
+//   console.log(result);//after 2 sec will resolve aoutput
+//
+//   console.log('Ending fn');// 3 output
+// }
+//
+// fn();
 
 //================ 🔴 coding challenges =============
 //1️⃣ Find the bug
