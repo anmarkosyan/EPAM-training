@@ -435,5 +435,36 @@ console.log(+'');
 //
 // let fido1 = new Dog1('fido')
 // fido1.bark() // "fido says woof"
+//1️⃣
+/*
+ * Given an unsorted array of numbers and another num,
+ * you are required to find the index at which the num would be placed
+ * if it were to be inserted in a sorted version of the array of numbers.
+ * */
+const getIndex = (arr, num) => arr.reduce((counter, currNum) => (currNum < num ? ++counter : counter), 0);
+console.log(getIndex([5, 1, 4, 3], 2));
 
+//2️⃣
 
+function createPhoneNumber(arr) {
+  const str = arr.join('');
+  const first = str.slice(0, 3);
+  const second = str.slice(3, 6);
+  const last = str.slice(-4);
+  return `(${first}) ${second}-${last}`;
+}
+console.log(createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]));
+
+//3️⃣
+function sliceSplice(array1, array2, n) {
+  // const newArray = array2.splice(0, n);
+  // //console.log(newArray);
+  // return [...newArray, ...array1, ...array2];
+  const newArray = array2.slice(0);
+  //console.log(newArray);
+  newArray.splice(n, 0, ...array1);
+  return newArray;
+}
+
+console.log(sliceSplice([1, 2, 3], [4, 5, 6], 1)); //[4, 1, 2, 3, 5, 6]
+console.log(sliceSplice([8, 9, 10], [11, 12, 13], 2)); //[11, 12, 8, 9, 10, 13]
