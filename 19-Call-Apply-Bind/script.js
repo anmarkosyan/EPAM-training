@@ -45,20 +45,20 @@
 // console.log(userFullName.call(user2, user2.secondName));
 // console.log(userFullName.apply(user3, [user3.secondName]));
 //3way
-const userData = function () {
-  return {
-    name: prompt('Please, enter your name', ''),
-    lastName: prompt('Please, enter your last name', ''),
-  };
-};
-
-const firstUpper = name => name[0].toUpperCase() + name.slice(1);
-
-const userFullName = function (msg) {
-  alert(`${this.name && this.lastName ? `${firstUpper(this.name)} ${firstUpper(this.lastName)}` : msg}`);
-};
-
-console.log(userFullName.bind(userData(), 'Wrong input, please try again❗️')());
+// const userData = function () {
+//   return {
+//     name: prompt('Please, enter your name', ''),
+//     lastName: prompt('Please, enter your last name', ''),
+//   };
+// };
+//
+// const firstUpper = name => name[0].toUpperCase() + name.slice(1);
+//
+// const userFullName = function (msg) {
+//   alert(`${this.name && this.lastName ? `${firstUpper(this.name)} ${firstUpper(this.lastName)}` : msg}`);
+// };
+//
+// console.log(userFullName.bind(userData(), 'Wrong input, please try again❗️')());
 // console.log(userFullName.call(userData(), 'Wrong input, please try again❗️'));
 // console.log(userFullName.apply(userData(), ['Wrong input, please try again❗️']));
 
