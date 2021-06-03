@@ -49,46 +49,32 @@ const item = {
 };
 
 // 1. Add items to cart.
-const addItemsToCart = function (data, input) {
-  return {
-    ...data,
-    cart: [input],
-  };
-};
+const addItemsToCart = (data, input) => ({
+  ...data,
+  cart: [input],
+});
 
 //2. Add 3% tax to item in cart
-const addTaxInPrice = function (data, input) {
-  return {
-    ...data,
-    cart: data.cart.map(item => ({ ...item, price: item.price + item.price * 0.03 })),
-  };
-};
+const addTaxInPrice = data => ({
+  ...data,
+  cart: data.cart.map(item => ({ ...item, price: item.price + item.price * 0.03 })),
+});
+
 // 3. Buy item: cart -> purchases
-const replaceItemsToPurchase = function (data, input) {
-  return {
-    ...data,
-    purchases: [...data.cart],
-  };
-};
+const replaceItemsToPurchase = data => ({
+  ...data,
+  purchases: [...data.cart],
+});
 
 // 4. Empty cart
-const emptyCart = function (data, input) {
-  return {
-    ...data,
-    cart: (data.cart = []),
-  };
+const emptyCart = data => ({
+  ...data,
+  cart: [],
+});
+
+// Function Composition
+const composFunc = function (...arg) {
+  return (data, input) => arg.reduce((acc, fnc) => fnc(acc, input), data);
 };
 
-function compose(f, g) {
-  return function (...args) {
-    return f(g(...args));
-  };
-}
-
-//result function
-const result1 = function (...arg) {
-  return arg.reduce(compose);
-};
-
-const c = result1(emptyCart, replaceItemsToPurchase, addTaxInPrice, addItemsToCart);
-console.log(c(user, item));
+console.log(composFunc(addItemsToCart, addTaxInPrice, replaceItemsToPurchase, emptyCart)(user, item));
