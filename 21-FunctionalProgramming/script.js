@@ -118,7 +118,7 @@ maxDonuts(
  * The gender can either be BOYS or GIRLS.
  * Your task is to return the sum of all the values that have BOYS as the gender.
  * */
-
+/*
 const records = [
   {
     value: 24,
@@ -152,3 +152,34 @@ const calcBoySum = function (boysArr) {
 };
 const boySum = calcBoySum(records);
 console.log(boySum);
+ */
+
+//4️⃣ Currying function
+/*
+ * Write a wrapper function currying which accepts a function, say func,
+ * and returns the curried version of func.
+ * */
+const multiply = function (a, b, c) {
+  return a * b * c;
+};
+
+const curring = function (fnc) {
+  const curriedFunc = function (...arg) {
+    if (arg.length >= fnc.length) {
+      return fnc(...arg);
+    } else {
+      return function (...nextArg) {
+        return curriedFunc(...arg, ...nextArg);
+      };
+    }
+  };
+  return curriedFunc;
+};
+
+const curried = curring(multiply);
+console.log(curried(2, 3, 4));
+console.log(curried(2, 3, 4, 5, 6));
+console.log(curried(1)(2)(3));
+console.log(curried(2)(3)(4));
+console.log(curried(2, 3)(4));
+console.log(curried(5)(6, 7));
