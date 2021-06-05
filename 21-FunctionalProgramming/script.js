@@ -159,6 +159,7 @@ console.log(boySum);
  * Write a wrapper function currying which accepts a function, say func,
  * and returns the curried version of func.
  * */
+/*
 const multiply = function (a, b, c) {
   return a * b * c;
 };
@@ -183,11 +184,58 @@ console.log(curried(1)(2)(3));
 console.log(curried(2)(3)(4));
 console.log(curried(2, 3)(4));
 console.log(curried(5)(6, 7));
+ */
 
 //5️⃣ partial functions
+/*
 function addition(x, y, z) {
   return x + y + z;
 }
 // const plus5 = addition.bind(null, 5);
 // console.log(plus5(10, 3));
 console.log(addition.bind(null, 5)(10, 3));//18
+ */
+
+//6️⃣ partial functions
+// const sentence = (conjunction, ...otherWords) => {
+//   const commasJoiningWords = otherWords.slice(0,-1).join(", ");
+//   const lastWord = otherWords.pop();
+//   return `${commasJoiningWords} ${conjunction} ${lastWord}`;
+// }
+//
+// const result = sentence.bind(null, 'and');
+// console.log(result("apple", "mango", "peach"))
+
+//7️⃣ higher-order function
+/*
+* A security guard at the club needs to ensure that only customers over or equal to the age of 18 enter the club.
+Here customers is an array of objects such that each customer object has an age and name property.
+The guard needs the names of the customers who can enter the club. He can make use of two functions:
+*filter
+*map
+
+Both of these are given to you in the testing widget.
+Your task is to write a funcCompose function,
+which will be a higher-order function that takes multiple functions and composes them.
+In this case, it should compose the two functions mentioned above.
+*/
+const customers = [
+  { name: 'Hermon', age: 15 },
+  { name: 'Ron', age: 18 },
+  { name: 'Harry', age: 24 },
+];
+//*filter
+const func1 = userData => userData.filter(user => user.age >= 18);
+
+//*map
+const func2 = userData => userData.map(item => item.name);
+
+//console.log(func2(func1(customers)));//["Ron", "Harry"]
+
+const funcCompose = function (...arg) {
+  return function (userData) {
+    return arg.reduce((acc, fn) => fn(acc), userData);
+  };
+};
+
+console.log(funcCompose(func1, func2)(customers)); //["Ron", "Harry"]
