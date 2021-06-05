@@ -183,3 +183,11 @@ console.log(curried(1)(2)(3));
 console.log(curried(2)(3)(4));
 console.log(curried(2, 3)(4));
 console.log(curried(5)(6, 7));
+
+//5️⃣ partial functions
+function addition(x, y, z) {
+  return x + y + z;
+}
+// const plus5 = addition.bind(null, 5);
+// console.log(plus5(10, 3));
+console.log(addition.bind(null, 5)(10, 3));//18
