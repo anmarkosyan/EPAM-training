@@ -104,9 +104,51 @@ maxDonuts(
 
 */
 
-const countOfDonuts = function (recipe, quantity) {
-  return  Math.min(...Object.keys(recipe).map(ing => Math.floor(quantity[ing] / recipe[ing]) || 0));
+// const countOfDonuts = function (recipe, quantity) {
+//   return  Math.min(...Object.keys(recipe).map(ing => Math.floor(quantity[ing] / recipe[ing]) || 0));
+//
+// };
+// const maxDonuts = countOfDonuts({ flour: 2, sugar: 40, butter: 20 }, { flour: 5, sugar: 120, butter: 500 });
+// console.log(maxDonuts);
 
+//3️⃣
+/*
+ * In this challenge, you have to implement the function boySum that takes the parameter records.
+ * Here records is an array of objects that contains two properties, gender and value.
+ * The gender can either be BOYS or GIRLS.
+ * Your task is to return the sum of all the values that have BOYS as the gender.
+ * */
+
+const records = [
+  {
+    value: 24,
+    gender: 'BOYS',
+  },
+  {
+    value: 42,
+    gender: 'BOYS',
+  },
+  {
+    value: 85,
+    gender: 'GIRLS',
+  },
+  {
+    value: 12,
+    gender: 'GIRLS',
+  },
+  {
+    value: 10,
+    gender: 'BOYS',
+  },
+];
+
+const calcBoySum = function (boysArr) {
+  return boysArr.reduce(function (acc, item) {
+    if (item.gender === 'BOYS') {
+      acc += item.value;
+    }
+    return acc;
+  }, 0);
 };
-const maxDonuts = countOfDonuts({ flour: 2, sugar: 40, butter: 20 }, { flour: 5, sugar: 120, butter: 500 });
-console.log(maxDonuts);
+const boySum = calcBoySum(records);
+console.log(boySum);
