@@ -21,29 +21,29 @@ If salaries is empty, then the result must be 0
 //   Mary: 250,
 // };
 //
-// const sumSalaries = function (obj) {
+// const sumSalaries = function (obj1) {
 //   let sum = 0;
-//   for (const value of Object.values(obj)) {
+//   for (const value of Object.values(obj1)) {
 //     sum += value;
 //   }
 //   return sum;
 //
-//   // return Object.values(obj).reduce(function(obj, num){
-//   //   obj += num;
-//   //   return obj;
+//   // return Object.values(obj1).reduce(function(obj1, num){
+//   //   obj1 += num;
+//   //   return obj1;
 //   // }, 0)
 // };
 // console.log(sumSalaries(salaries)); //650
 
 //🏋🏻‍♀️
-//Write a function count(obj) that returns the number of properties in the object:
+//Write a function count(obj1) that returns the number of properties in the object:
 // let user = {
 //   name: 'John',
 //   age: 30,
 // };
 //
-// const count = function (obj) {
-//   return Object.keys(obj).length;
+// const count = function (obj1) {
+//   return Object.keys(obj1).length;
 // };
 //
 // console.log(count(user)); // 2
@@ -88,24 +88,24 @@ console.log(sumPPG(iverson, jordan));// => 31.4
 /*
 function countLetters(str) {
   const newStr = str.toLowerCase();
-  // const obj = {};
+  // const obj1 = {};
   // for (const el of newStr) {
-  //   if (el !== ' ' && !obj[el]) {
-  //     obj[el] = 1;
-  //   } else if (obj[el]) {
-  //     obj[el]++;
+  //   if (el !== ' ' && !obj1[el]) {
+  //     obj1[el] = 1;
+  //   } else if (obj1[el]) {
+  //     obj1[el]++;
   //   }
   // }
   //
-  // return obj;
+  // return obj1;
 
-  return [...newStr].reduce(function(obj, el){
-    if(el !== ' ' && !obj[el]) {
-          obj[el] = 1;
-        } else if (obj[el]) {
-          obj[el]++;
+  return [...newStr].reduce(function(obj1, el){
+    if(el !== ' ' && !obj1[el]) {
+          obj1[el] = 1;
+        } else if (obj1[el]) {
+          obj1[el]++;
         }
-    return obj;
+    return obj1;
   }, {})
 }
 
@@ -116,10 +116,10 @@ console.log(countLetters('I like milk')); //{i: 3, l: 2, k: 2, e: 1, m: 1}
 //🏋🏻‍♀️
 // function countWords(str) {
 //   const lowerStr = str.toLowerCase();
-//   return lowerStr.split(' ').reduce(function (obj, word) {
-//     if (!obj[word]) obj[word] = 1;
-//     else obj[word]++;
-//     return obj;
+//   return lowerStr.split(' ').reduce(function (obj1, word) {
+//     if (!obj1[word]) obj1[word] = 1;
+//     else obj1[word]++;
+//     return obj1;
 //   }, {});
 // }
 //
@@ -148,17 +148,17 @@ console.log(bite(plant));
 
 //🏋🏻‍
 // function mostFrequentElement(arr) {
-//   const obj = arr.reduce(function (obj, num) {
-//     if (!obj[num]) obj[num] = 1;
-//     else obj[num]++;
-//     return obj;
+//   const obj1 = arr.reduce(function (obj1, num) {
+//     if (!obj1[num]) obj1[num] = 1;
+//     else obj1[num]++;
+//     return obj1;
 //   }, {});
 //
-//   const maxNum = Math.max(...Object.values(obj));
+//   const maxNum = Math.max(...Object.values(obj1));
 //
-//   return Object.keys(obj).reduce(function (obj, num) {
-//     if (obj[num] === maxNum) obj.push(+num);
-//     return obj;
+//   return Object.keys(obj1).reduce(function (obj1, num) {
+//     if (obj1[num] === maxNum) obj1.push(+num);
+//     return obj1;
 //   }, []);
 // }
 //
@@ -366,10 +366,10 @@ console.log(+'');
 //   return innerFunc;
 // }
 //
-// const obj = { a: 1 };
-// const example = outerFunc(obj);
+// const obj1 = { a: 1 };
+// const example = outerFunc(obj1);
 // const answer = example(2);
-// console.log(obj); //{ a: 1, b: 2 }
+// console.log(obj1); //{ a: 1, b: 2 }
 
 //🏋🏻‍♀️
 // let arr = [1, 2];
@@ -521,7 +521,7 @@ Given matrix, a rectangular matrix of integers, where each value represents the 
 * (ie: add up all the values that don't appear below a 0).
 
  */
-
+/*
 const matrixElementsSum = function (matrix) {
   // return matrix.map((line, j) => line.map((el, i) => (matrix.slice(0, j).
   // every(l => l[i] !== 0) ? el : 0))).reduce((a, b) => a + b.reduce((c, d) => c + d), 0);
@@ -561,3 +561,47 @@ console.log(
     [3, 3, 3],
   ])
 ); //15
+ */
+
+//7️⃣ =========== code signal -> commonCharacterCount ===============
+/*
+ * Given two strings, find the number of common characters between them.
+ * */
+
+const commonCharacterCount = function (s1, s2) {
+  // let count = 0;
+  // for (const char of s1) {
+  //   if (s2.indexOf(char) > -1) {
+  //     count++;
+  //     s2 = s2.replace(char, '');
+  //   }
+  // }
+  // return count;
+  //2way
+  /*
+  const obj1 = {};
+  const obj2 = {};
+  let count = 0;
+  for (const char of s1) {
+    obj1[char] ? obj1[char]++ : (obj1[char] = 1);
+  }
+
+  for (const char of s2) {
+    obj2[char] ? obj2[char]++ : (obj2[char] = 1);
+  }
+
+  for (const key in obj1) {
+    if (obj2[key]) {
+      if (obj1[key] <= obj2[key]) {
+        count += obj1[key];
+      } else {
+        count += obj2[key];
+      }
+    }
+  }
+
+  return count;
+};
+console.log(commonCharacterCount('aabcc', 'adcaa')); //3
+console.log(commonCharacterCount('zzzz', 'zzzzzzz')); //4
+*/
