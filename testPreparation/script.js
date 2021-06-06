@@ -568,17 +568,17 @@ console.log(
  * Given two strings, find the number of common characters between them.
  * */
 
-const commonCharacterCount = function (s1, s2) {
-  // let count = 0;
-  // for (const char of s1) {
-  //   if (s2.indexOf(char) > -1) {
-  //     count++;
-  //     s2 = s2.replace(char, '');
-  //   }
-  // }
-  // return count;
-  //2way
-  /*
+//const commonCharacterCount = function (s1, s2) {
+// let count = 0;
+// for (const char of s1) {
+//   if (s2.indexOf(char) > -1) {
+//     count++;
+//     s2 = s2.replace(char, '');
+//   }
+// }
+// return count;
+//2way
+/*
   const obj1 = {};
   const obj2 = {};
   let count = 0;
@@ -605,3 +605,30 @@ const commonCharacterCount = function (s1, s2) {
 console.log(commonCharacterCount('aabcc', 'adcaa')); //3
 console.log(commonCharacterCount('zzzz', 'zzzzzzz')); //4
 */
+
+//8️⃣ ============ code signal ->isLucky ================
+/*Ticket numbers usually consist of an even number of digits.
+A ticket number is considered lucky if the sum of the first half of
+the digits is equal to the sum of the second half.
+
+Given a ticket number n, determine if it's lucky or not.
+*/
+
+const isLucky = function (num) {
+  const str = num + '';
+  const firstPart = str.slice(0, str.length / 2);
+  const secondPart = str.slice(str.length / 2);
+  let sum = 0;
+
+  for (const num of firstPart) {
+    sum += +num;
+  }
+  for (const num of secondPart) {
+    sum -= +num;
+  }
+
+  return sum === 0;
+};
+
+console.log(isLucky(1230)); //true
+console.log(isLucky(239017)); //false
