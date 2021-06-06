@@ -269,9 +269,9 @@ function f(x) {
 //wrapper function
 function delay(fnc, timeMs) {
   return function(test) {
-    // setTimeout(() => {
-    //   fnc.call(this, test);
-    // }, timeMs);
+    setTimeout(() => {
+      fnc.call(this, test);
+    }, timeMs);
 
     //2nd way
     //setTimeout(fnc, timeMs, test)
