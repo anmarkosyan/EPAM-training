@@ -219,6 +219,7 @@ Your task is to write a funcCompose function,
 which will be a higher-order function that takes multiple functions and composes them.
 In this case, it should compose the two functions mentioned above.
 */
+/*
 const customers = [
   { name: 'Hermon', age: 15 },
   { name: 'Ron', age: 18 },
@@ -239,3 +240,47 @@ const funcCompose = function (...arg) {
 };
 
 console.log(funcCompose(func1, func2)(customers)); //["Ron", "Harry"]
+ */
+
+//8️⃣
+// function work(x, y) {
+//   return x + y;
+// }
+//
+// function spy(fnc) {
+//   function wrapper(...args) {
+//     wrapper.calls.push(args);
+//     return fnc.apply(this, args);
+//   }
+//
+//   wrapper.calls = [];
+//   console.log(wrapper);
+//   return wrapper;
+// }
+//
+// work = spy(work);
+//console.log(work(2, 3)); //5
+
+//9️⃣
+//pure function
+function f(x) {
+  console.log(x);
+}
+//wrapper function
+function delay(fnc, timeMs) {
+  return function(test) {
+    // setTimeout(() => {
+    //   fnc.call(this, test);
+    // }, timeMs);
+
+    //2nd way
+    //setTimeout(fnc, timeMs, test)
+  };
+}
+
+// create wrappers
+const f1000 = delay(f, 1000);
+const f1500 = delay(f, 1500);
+
+f1000('test'); // shows "test" after 1000ms
+f1500('test'); // shows "test" after 1500ms
