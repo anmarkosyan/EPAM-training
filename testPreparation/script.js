@@ -479,7 +479,7 @@ console.log(+'');
 "{ [ ] ( ) }" //true
 "{ [ ( ] ) }" //false
 */
-
+/*
 const parenthesesChecker = function (str) {
   //2way
   let count = 0;
@@ -494,3 +494,16 @@ const parenthesesChecker = function (str) {
 
 console.log(parenthesesChecker('{[]()}')); //
 console.log(parenthesesChecker('{[(])}')); //
+ */
+
+//5️⃣Destructuring
+function pointValues(point) {
+  //const { name, age } = { ...point };
+  const { name, age } = point || {};
+  console.log(name);
+  console.log(age);
+}
+let point = { name: 'jerry', age: 2 };
+pointValues(point);
+point = undefined;
+pointValues(point);
