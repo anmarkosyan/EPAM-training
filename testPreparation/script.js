@@ -28,9 +28,9 @@ If salaries is empty, then the result must be 0
 //   }
 //   return sum;
 //
-//   // return Object.values(obj).reduce(function(acc, num){
-//   //   acc += num;
-//   //   return acc;
+//   // return Object.values(obj).reduce(function(obj, num){
+//   //   obj += num;
+//   //   return obj;
 //   // }, 0)
 // };
 // console.log(sumSalaries(salaries)); //650
@@ -99,13 +99,13 @@ function countLetters(str) {
   //
   // return obj;
 
-  return [...newStr].reduce(function(acc, el){
-    if(el !== ' ' && !acc[el]) {
-          acc[el] = 1;
-        } else if (acc[el]) {
-          acc[el]++;
+  return [...newStr].reduce(function(obj, el){
+    if(el !== ' ' && !obj[el]) {
+          obj[el] = 1;
+        } else if (obj[el]) {
+          obj[el]++;
         }
-    return acc;
+    return obj;
   }, {})
 }
 
@@ -116,10 +116,10 @@ console.log(countLetters('I like milk')); //{i: 3, l: 2, k: 2, e: 1, m: 1}
 //🏋🏻‍♀️
 // function countWords(str) {
 //   const lowerStr = str.toLowerCase();
-//   return lowerStr.split(' ').reduce(function (acc, word) {
-//     if (!acc[word]) acc[word] = 1;
-//     else acc[word]++;
-//     return acc;
+//   return lowerStr.split(' ').reduce(function (obj, word) {
+//     if (!obj[word]) obj[word] = 1;
+//     else obj[word]++;
+//     return obj;
 //   }, {});
 // }
 //
@@ -148,17 +148,17 @@ console.log(bite(plant));
 
 //🏋🏻‍
 // function mostFrequentElement(arr) {
-//   const obj = arr.reduce(function (acc, num) {
-//     if (!acc[num]) acc[num] = 1;
-//     else acc[num]++;
-//     return acc;
+//   const obj = arr.reduce(function (obj, num) {
+//     if (!obj[num]) obj[num] = 1;
+//     else obj[num]++;
+//     return obj;
 //   }, {});
 //
 //   const maxNum = Math.max(...Object.values(obj));
 //
-//   return Object.keys(obj).reduce(function (acc, num) {
-//     if (obj[num] === maxNum) acc.push(+num);
-//     return acc;
+//   return Object.keys(obj).reduce(function (obj, num) {
+//     if (obj[num] === maxNum) obj.push(+num);
+//     return obj;
 //   }, []);
 // }
 //
@@ -441,30 +441,56 @@ console.log(+'');
  * you are required to find the index at which the num would be placed
  * if it were to be inserted in a sorted version of the array of numbers.
  * */
-const getIndex = (arr, num) => arr.reduce((counter, currNum) => (currNum < num ? ++counter : counter), 0);
-console.log(getIndex([5, 1, 4, 3], 2));
+// const getIndex = (arr, num) => arr.reduce((counter, currNum) => (currNum < num ? ++counter : counter), 0);
+// console.log(getIndex([5, 1, 4, 3], 2));
 
 //2️⃣
 
-function createPhoneNumber(arr) {
-  const str = arr.join('');
-  const first = str.slice(0, 3);
-  const second = str.slice(3, 6);
-  const last = str.slice(-4);
-  return `(${first}) ${second}-${last}`;
-}
-console.log(createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]));
+// function createPhoneNumber(arr) {
+//   const str = arr.join('');
+//   const first = str.slice(0, 3);
+//   const second = str.slice(3, 6);
+//   const last = str.slice(-4);
+//   return `(${first}) ${second}-${last}`;
+// }
+// console.log(createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]));
 
 //3️⃣
-function sliceSplice(array1, array2, n) {
-  // const newArray = array2.splice(0, n);
-  // //console.log(newArray);
-  // return [...newArray, ...array1, ...array2];
-  const newArray = array2.slice(0);
-  //console.log(newArray);
-  newArray.splice(n, 0, ...array1);
-  return newArray;
-}
+// function sliceSplice(array1, array2, n) {
+//   // const newArray = array2.splice(0, n);
+//   // //console.log(newArray);
+//   // return [...newArray, ...array1, ...array2];
+//   const newArray = array2.slice(0);
+//   //console.log(newArray);
+//   newArray.splice(n, 0, ...array1);
+//   return newArray;
+// }
+//
+// console.log(sliceSplice([1, 2, 3], [4, 5, 6], 1)); //[4, 1, 2, 3, 5, 6]
+// console.log(sliceSplice([8, 9, 10], [11, 12, 13], 2)); //[11, 12, 8, 9, 10, 13]
 
-console.log(sliceSplice([1, 2, 3], [4, 5, 6], 1)); //[4, 1, 2, 3, 5, 6]
-console.log(sliceSplice([8, 9, 10], [11, 12, 13], 2)); //[11, 12, 8, 9, 10, 13]
+//4️⃣
+/*
+* Let’s say your teammate is working on a JavaScript code that won’t run because the 
+* brackets (square, curly, round) are not properly nested. You then decide to write 
+* a Parentheses Checker function, which efficiently checks whether or not the input string’s 
+* opening and closing brackets are correctly nested.
+* 
+"{ [ ] ( ) }" //true
+"{ [ ( ] ) }" //false
+*/
+
+const parenthesesChecker = function (str) {
+  //2way
+  let count = 0;
+  for (let i = 0; i < str.length - 1; i++) {
+    if ((str[i] === '[' && str[i + 1] === ']') || (str[i] === '(' && str[i + 1] === ')')) {
+      count++;
+    }
+  }
+
+  return !!count;
+};
+
+console.log(parenthesesChecker('{[]()}')); //
+console.log(parenthesesChecker('{[(])}')); //
