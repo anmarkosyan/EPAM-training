@@ -75,7 +75,7 @@ const emptyCart = data => ({
 });
 
 // Function Composition
-const composFunc = function (...arg) {
+const composFunc = function composFunc (...arg) {
   return (data, input) => arg.reduce((acc, fnc) => fnc(acc, input), data);
 };
 
@@ -263,24 +263,24 @@ console.log(funcCompose(func1, func2)(customers)); //["Ron", "Harry"]
 
 //9️⃣
 //pure function
-function f(x) {
-  console.log(x);
-}
-//wrapper function
-function delay(fnc, timeMs) {
-  return function(test) {
-    setTimeout(() => {
-      fnc.call(this, test);
-    }, timeMs);
-
-    //2nd way
-    //setTimeout(fnc, timeMs, test)
-  };
-}
-
-// create wrappers
-const f1000 = delay(f, 1000);
-const f1500 = delay(f, 1500);
-
-f1000('test'); // shows "test" after 1000ms
-f1500('test'); // shows "test" after 1500ms
+// function f(x) {
+//   console.log(x);
+// }
+// //wrapper function
+// function delay(fnc, timeMs) {
+//   return function(test) {
+//     setTimeout(() => {
+//       fnc.call(this, test);
+//     }, timeMs);
+//
+//     //2nd way
+//     //setTimeout(fnc, timeMs, test)
+//   };
+// }
+//
+// // create wrappers
+// const f1000 = delay(f, 1000);
+// const f1500 = delay(f, 1500);
+//
+// f1000('test'); // shows "test" after 1000ms
+// f1500('test'); // shows "test" after 1500ms
