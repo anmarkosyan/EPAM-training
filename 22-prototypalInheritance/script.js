@@ -1,4 +1,19 @@
-// const users = ['anush', 'markosyan'].map((num, i, thisArg)=>{});
+'use strict';
+//================== 🔴 lecture part =====================
+const obj = {
+  name: 'anush',
+};
+
+console.log(obj.__proto__ === Object.prototype);//{constructor: ƒ, __defineGetter__: ƒ, __defineSetter__: ƒ, hasOwnProperty: ƒ, __lookupGetter__: ƒ, …}
+
+const str = 'abra';
+console.log(Object.values(str));
+console.log(str.hasOwnProperty('a'));
+console.log(str.__proto__.__proto__ === Object.prototype);
+
+//================== 🔴 coding challenges ================
+//1️⃣ map implementation
+// const users = ['anush', ' markosyan'].map((num, i, thisArg)=>{});
 //
 // Array.prototype.newMap = function (callback) {
 //   const userArr = this;
@@ -16,30 +31,24 @@
 //
 //  console.log(users.newMap(callback));
 
-//====== reduce
-const numbers = [1, 2, 3];
+//2️⃣ reduce implementation
+/*
+const str = 'abrakatabra';
 
 Array.prototype.newReduce = function (callFnc, acc) {
   const arr = this;
-  const firstItem = arr[0];
   let totalRes = acc;
-  let i;
 
-
-  if (totalRes === undefined) {
-    totalRes = firstItem;
-    i = 1;
-  }else{
-    i = 0;
-  }
-
-  for (; i < arr.length; i++) {
-    totalRes = callFnc(totalRes, arr[i], i, this);
+  for (let i = 0; i < arr.length; i++) {
+    totalRes = callFnc(totalRes, arr[i], i, arr);
   }
   return totalRes;
 };
 
-const callbackFnc = function (acc, num) {
-  return acc + num;
+const callbackFnc = function callbackFnc(acc, el) {
+  acc[el] ? acc[el]++ : (acc[el] = 1);
+  return acc;
 };
-console.log(numbers.newReduce(callbackFnc, 10));
+
+console.log([...str].newReduce(callbackFnc, {}));
+ */
