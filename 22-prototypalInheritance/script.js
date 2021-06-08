@@ -1,5 +1,7 @@
 'use strict';
 //================== 🔴 lecture part =====================
+//1️⃣ accessing prototype using __proto__ refer
+/*
 const obj = {
   name: 'anush',
 };
@@ -10,6 +12,37 @@ const str = 'abra';
 console.log(Object.values(str));
 console.log(str.hasOwnProperty('a'));
 console.log(str.__proto__.__proto__ === Object.prototype);
+ */
+
+//2️⃣ Factory function vs function constructor
+//factory function which return  new object
+function person(firstName, lastName, age) {
+  const person = {};
+  person.firstName = firstName;
+  person.lastName = lastName;
+  person.age = age;
+  return person;
+}
+const mike = new person('mike', 'grand', 23);
+console.log(mike); //{firstName: "mike", lastName: "grand", age: 23}\
+console.log(mike.__proto__); //[Object: null prototype] {}
+console.log(mike.__proto__ === person.prototype); //false
+console.log(mike.__proto__ === Object.prototype); //true
+
+//constructor function
+console.log('===== constructors ======');
+function Person(firstName, lastName, age) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.age = age;
+}
+const mike2 = new Person('mike', 'grand', 23);
+const alen = Person('alen', 'mark', 34);
+console.log(alen); //undefined
+
+console.log(mike2);
+console.log(mike2.__proto__ === Person.prototype); //true
+console.log(mike2.__proto__.__proto__ === Object.prototype); //true
 
 //================== 🔴 coding challenges ================
 //1️⃣ map implementation
