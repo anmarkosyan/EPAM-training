@@ -19,13 +19,25 @@ try {
 //   alert( "won't work" );
 // }
 //instead of doing this
-setTimeout(function() {
+// setTimeout(function() {
+//   try {
+//     noSuchVariable; // try...catch handles the error!
+//   } catch {
+//     console.log( "error is caught here!" );
+//   }
+// }, 1000);
+
+//===============  🔴 coding challenges ==================
+
+function reverseString(s) {
   try {
-    noSuchVariable; // try...catch handles the error!
+    s = s.split('').reverse().join('');
   } catch {
-    console.log( "error is caught here!" );
+    console.log('s.split is not a function');
   }
-}, 1000);
 
+  console.log(s);
+}
 
-
+reverseString('1234');
+reverseString(1234);
