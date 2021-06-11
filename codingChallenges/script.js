@@ -57,12 +57,19 @@ Write a function without using Number.isInteger
 Make this work
 duplicate([1, 2, 3, 4, 5]);  // [1,2,3,4,5,1,2,3,4,5]
 */
-// const duplicate = function (arr) {
-//   //return [...arr, ...arr];
-//   return arr.concat(arr);
-// };
-//
-// console.log(duplicate([1, 2, 3, 4, 5])); // [1,2,3,4,5,1,2,3,4,5]);
+const duplicate = function (arr) {
+  //return [...arr, ...arr];
+  //return arr.concat(arr);
+  const doubleArr = [];
+  let i = 1;
+  while (i <= 2) {
+    doubleArr.push(...arr);
+    i++;
+  }
+  return doubleArr;
+};
+
+console.log(duplicate([1, 2, 3, 4, 5])); // [1,2,3,4,5,1,2,3,4,5]);
 
 //5️⃣
 /*
@@ -106,14 +113,13 @@ addSix(21); // returns 27
 //     return this._name;
 //   },
 // };
-// var stoleSecretIdentity = hero.getSecretIdentity();
+// var stoleSecretIdentity = hero.getSecretIdentity;
 //here we should call the function and store the result into variable, because if after call it will be
 // calling like regular function, not a method, so like this will show window obj, so there couldn't find the _name property
-//console.log(stoleSecretIdentity);
+//console.log(stoleSecretIdentity.call(hero));
 //console.log(hero.getSecretIdentity());
 //What is the issue with this code and how can it be fixed.*/
 
 //8️⃣
 //What is the meaning of life the universe and everything?
 //Life is for challenge yourself, and become  stronger
-
