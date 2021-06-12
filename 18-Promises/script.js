@@ -42,7 +42,7 @@ btn.addEventListener('click', function () {
 //   }, 2000);
 // });
 //
-// lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
+// lotteryPromise.then(upperName => console.log(upperName)).catch(err => console.error(err));
 
 //3️⃣ chaining
 // const wait = function (seconds) {
@@ -236,7 +236,7 @@ btn.addEventListener('click', function () {
 //   })
 //   .then(function (result) {
 //     console.log(result);//undefined
-//   });
+// });
 
 //7️⃣
 // const computeSqrtAsync = function (number) {
@@ -251,7 +251,7 @@ btn.addEventListener('click', function () {
 //   return new Promise(function (resolve) {
 //     setTimeout(() => resolve(Math.sqrt(number)), 1000);
 //   });
-// };
+//  };
 //
 // //START:STATE
 // const forNegative1 = computeSqrtAsync(-1);
@@ -269,3 +269,36 @@ btn.addEventListener('click', function () {
 // testing(forNegative1);
 // testing(forZero);
 // testing(forSixteen);
+
+const userData = [{ name: 'Anush' }, { name: 'Aram' }];
+
+// const upperWords = function (data) {
+//   return new Promise(function (resolve) {
+//     const upperName = data.map(el => el.name.toUpperCase());
+//
+//     setTimeout(resolve, 3000, upperName);
+//   });
+// };
+// upperWords(userData)
+//   .then(res => console.log(res))
+//   .catch(err => console.log('Data not completed'));
+
+// upperWords(userData)
+//   .then(res => console.log(res))
+//   .catch(err => console.log('Data not completed'));
+const userData1 = [{ name: 'Anush' }, { name: 'Aram' }, { age: 45 }];
+const upperWords = async function (data) {
+  try {
+    return await new Promise(function (resolve) {
+      const upperName = data.map(el => el.name.toUpperCase());
+
+      setTimeout(resolve, 3000, upperName);
+
+    });
+  } catch (err) {
+    return 'Data not completed';
+  }
+};
+upperWords(userData1)
+  .then(val => console.log(val))
+  .catch(err => console.log(err));
