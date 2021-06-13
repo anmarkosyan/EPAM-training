@@ -5,29 +5,29 @@
 For example Welcome to this Javascript Guide! should be become emocleW ot siht tpircsavaJ !ediuG
 * */
 
-//const reverseWords = function (str) {
-//1way
-// const arr = str.split(' ');
-// const newArr = [];
-// for (const word of arr) {
-//   newArr.push(word.split('').reverse().join(''));
-// }
+const reverseWords = function (str) {
+  //1way
+  // const arr = str.split(' ');
+  // for (let i = 0; i < arr.length; i++) {
+  //   let str = '';
+  //   for (let j = 0; j < arr[i].length; j++) {
+  //     str = arr[i][j] + str;
+  //   }
+  //
+  //   arr[i] = str;
+  // }
+  // return arr.join(' ');
 
-//return newArr.join(' ');
-//2way
-//   const arr = str.split(' ');
-//   for (let i = 0; i < arr.length; i++) {
-//     let str = '';
-//     for (let j = 0; j < arr[i].length; j++) {
-//       str = arr[i][j] + str;
-//     }
-//
-//     arr[i] = str;
-//   }
-//   return arr.join(' ');
-// };
-//
-// console.log(reverseWords('Welcome to this Javascript Guide!')); //emocleW ot siht tpircsavaJ !ediuG
+  //2way
+  const arr1 = str.split(' ');
+  arr1.forEach((el, i) => {
+    arr1[i] = el.split('').reverse().join('');
+  });
+
+  return arr1.join('');
+};
+
+console.log(reverseWords('Welcome to this Javascript Guide!')); //emocleW ot siht tpircsavaJ !ediuG
 
 /*2️⃣
  How to empty an array in JavaScript?
@@ -57,19 +57,19 @@ Write a function without using Number.isInteger
 Make this work
 duplicate([1, 2, 3, 4, 5]);  // [1,2,3,4,5,1,2,3,4,5]
 */
-const duplicate = function (arr) {
-  //return [...arr, ...arr];
-  //return arr.concat(arr);
-  const doubleArr = [];
-  let i = 1;
-  while (i <= 2) {
-    doubleArr.push(...arr);
-    i++;
-  }
-  return doubleArr;
-};
-
-console.log(duplicate([1, 2, 3, 4, 5])); // [1,2,3,4,5,1,2,3,4,5]);
+//const duplicate = function (arr) {
+//return [...arr, ...arr];
+//return arr.concat(arr);
+// const doubleArr = [];
+// let i = 1;
+// while (i <= 2) {
+//   doubleArr.push(...arr);
+//   i++;
+// }
+//   return doubleArr;
+// };
+//
+// console.log(duplicate([1, 2, 3, 4, 5])); // [1,2,3,4,5,1,2,3,4,5]);
 
 //5️⃣
 /*
