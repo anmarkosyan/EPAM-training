@@ -270,8 +270,8 @@ btn.addEventListener('click', function () {
 // testing(forZero);
 // testing(forSixteen);
 
-const userData = [{ name: 'Anush' }, { name: 'Aram' }];
-
+//8️⃣
+//const userData = [{ name: 'Anush' }, { name: 'Aram' }];
 // const upperWords = function (data) {
 //   return new Promise(function (resolve) {
 //     const upperName = data.map(el => el.name.toUpperCase());
@@ -286,6 +286,7 @@ const userData = [{ name: 'Anush' }, { name: 'Aram' }];
 // upperWords(userData)
 //   .then(res => console.log(res))
 //   .catch(err => console.log('Data not completed'));
+//using try ...catch bloke
 const userData1 = [{ name: 'Anush' }, { name: 'Aram' }, { age: 45 }];
 const upperWords = async function (data) {
   try {
