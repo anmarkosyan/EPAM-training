@@ -19,12 +19,16 @@ const reverseWords = function (str) {
   // return arr.join(' ');
 
   //2way
-  const arr1 = str.split(' ');
-  arr1.forEach((el, i) => {
-    arr1[i] = el.split('').reverse().join('');
-  });
+  // const arr1 = str.split(' ');
+  // arr1.forEach((el, i) => {
+  //   arr1[i] = el.split('').reverse().join('');
+  // });
+  //
+  // return arr1.join('');
 
-  return arr1.join('');
+  //3way
+  const arr2 = str.split(' ');
+  return [...arr2].map(el => el.split('').reverse().join('')).join(' ');
 };
 
 console.log(reverseWords('Welcome to this Javascript Guide!')); //emocleW ot siht tpircsavaJ !ediuG
