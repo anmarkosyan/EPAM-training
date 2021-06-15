@@ -57,11 +57,11 @@ class SmartPhone extends Device {
   }
 
   call(num) {
-    const numStr = `${num}`;
+    const numStr = num.toString();
     const currTime = new Date();
     const hour = `${currTime.getHours()}`.padStart(2, '0');
     const minute = `${currTime.getMinutes()}`.padStart(2, '0');
-    return this.callHistory.push({ number: `(+${numStr.slice(0, 3)}) ${numStr.slice(3)}` , callTime: `${hour}:${minute}` });
+    return this.callHistory.push({ number: `(+${numStr.slice(0, 3)}) ${numStr.slice(3)}`, callTime: `${hour}:${minute}` });
   }
 }
 
@@ -76,7 +76,7 @@ class Laptop extends Device {
     if (this.os === 'MAC') {
       this.power = 0;
       this.brightness = 0;
-    }else{
+    } else {
       this.turnOff();
     }
   }
@@ -88,4 +88,5 @@ macBook.litClose();
 console.log(macBook.power);
 
 huawei.call(37455000000);
+huawei.call(37499887766);
 console.log(huawei.callHistory);
