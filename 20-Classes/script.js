@@ -38,16 +38,20 @@ class Device {
   }
 
   turnOff() {
-    this.power = false;
+    return this.power = false;
   }
 
   turnOn() {
-    this.power = false;
+    return this.power = false;
   }
 
-  volumeUp() {}
+  volumeUp() {
+    return this.volume++;
+  }
 
-  volumeDown() {}
+  volumeDown() {
+    return this.volume--;
+  }
 }
 
 class SmartPhone extends Device {
@@ -82,9 +86,13 @@ class Laptop extends Device {
   }
 }
 
-const macBook = new Laptop(2, 8, 10, true, 10.13, true, 'MAC', true);
+const macBook = new Laptop(2, 8, 10, true, 5, true, 'MAC', true);
 const huawei = new SmartPhone(3, 6, 12, true, 3, false);
 macBook.litClose();
+console.log(macBook.volumeUp());
+console.log(macBook.volumeUp());
+console.log(macBook);
+
 console.log(macBook.power);
 
 huawei.call(37455000000);
