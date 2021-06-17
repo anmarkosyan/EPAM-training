@@ -115,20 +115,51 @@
 // console.log(...10);
 
 //2️⃣ Fibonacci problem
-const fibonacciSeries = function* (n) {
+// const fibonacciSeries = function* (n) {
+//   let first = 0;
+//   let second = 1;
+//   yield* [first, second];
+//   while (true) {
+//     const temp = first;
+//     first = second;
+//     second = second + temp;
+//
+//     if(second > n) break;
+//     yield second;
+//   }
+// };
+//
+// console.log([...fibonacciSeries(10)]);//[0,1,1,2,3,5,8]
+// for (const number of fibonacciSeries(25)) {
+//   console.log(number);
+// }
+
+//3️⃣ Fibonacci problem
+
+const fibonacciCounter = function* (limit) {
   let first = 0;
   let second = 1;
+  let counter = 0;
   yield* [first, second];
   while (true) {
-    const temp = first;
+    counter++;
+    const swap = first;
     first = second;
-    second = second + temp;
+    second = second + swap;
 
-    if(second > n) break;
+    if (counter === limit) break;
     yield second;
   }
 };
 
-for (const number of fibonacciSeries(25)) {
-  console.log(number);
+let str = '';
+for (const strElement of fibonacciCounter(3)) {
+  str += `, ${strElement}`
+
 }
+console.log(str.slice(1));//0, 1, 1, 2,
+
+console.log([...fibonacciCounter(2)]); //[0,1,1]
+console.log([...fibonacciCounter(4)]); //[ 0, 1, 1, 2, 3 ]
+console.log([...fibonacciCounter(12)]);
+
