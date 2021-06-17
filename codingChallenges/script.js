@@ -5,33 +5,33 @@
 For example Welcome to this Javascript Guide! should be become emocleW ot siht tpircsavaJ !ediuG
 * */
 
-const reverseWords = function (str) {
-  //1way
-  // const arr = str.split(' ');
-  // for (let i = 0; i < arr.length; i++) {
-  //   let str = '';
-  //   for (let j = 0; j < arr[i].length; j++) {
-  //     str = arr[i][j] + str;
-  //   }
-  //
-  //   arr[i] = str;
-  // }
-  // return arr.join(' ');
+//const reverseWords = function (str) {
+//1way
+// const arr = str.split(' ');
+// for (let i = 0; i < arr.length; i++) {
+//   let str = '';
+//   for (let j = 0; j < arr[i].length; j++) {
+//     str = arr[i][j] + str;
+//   }
+//
+//   arr[i] = str;
+// }
+// return arr.join(' ');
 
-  //2way
-  // const arr1 = str.split(' ');
-  // arr1.forEach((el, i) => {
-  //   arr1[i] = el.split('').reverse().join('');
-  // });
-  //
-  // return arr1.join('');
+//2way
+// const arr1 = str.split(' ');
+// arr1.forEach((el, i) => {
+//   arr1[i] = el.split('').reverse().join('');
+// });
+//
+// return arr1.join('');
 
-  //3way
-  const arr2 = str.split(' ');
-  return [...arr2].map(el => el.split('').reverse().join('')).join(' ');
-};
-
-console.log(reverseWords('Welcome to this Javascript Guide!')); //emocleW ot siht tpircsavaJ !ediuG
+//3way
+//   const arr2 = str.split(' ');
+//   return [...arr2].map(el => el.split('').reverse().join('')).join(' ');
+// };
+//
+// console.log(reverseWords('Welcome to this Javascript Guide!')); //emocleW ot siht tpircsavaJ !ediuG
 
 /*2️⃣
  How to empty an array in JavaScript?
