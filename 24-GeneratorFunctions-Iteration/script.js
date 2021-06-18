@@ -63,17 +63,21 @@
 //======
 // Number.prototype[Symbol.iterator] = function* () {
 //   for (let i = 1; i <= this; i++) {
-//     yield* eachNum(i);
+//     yield i;
 //   }
 // };
-// // const even = [...5].filter(n => n % 2 === 0);
-// // console.log(even);
+// const even = [...5].filter(n => n % 2 === 0);
+// console.log(even);
 //
-// const eachNum = function* (num) {
-//   if (num % 2 === 0) yield num;
-// };
-
 // console.log([...5]); //[2, 4]
+//
+console.log([1, 2, 3][Symbol.iterator]());//Object [Array Iterator] {}
+console.log('asdfg'[Symbol.iterator]());//Object [String Iterator] {}
+console.log(new Set()[Symbol.iterator]());//[Set Iterator] {  }
+console.log(new Map()[Symbol.iterator]());//[Map Entries] {  }
+
+//console.log(123[Symbol.iterator]());//TypeError: 123[Symbol.iterator] is not a function
+//console.log({}[Symbol.iterator]());//TypeError: {}[Symbol.iterator] is not a function
 
 // Solution 1:
 // Number.prototype[Symbol.iterator] = function*(){
@@ -135,31 +139,32 @@
 // }
 
 //3️⃣ Fibonacci problem
+// const fibonacciCounter = function* (limit) {
+//   let first = 0;
+//   let second = 1;
+//   let counter = 0;
+//   yield* [first, second];
+//   while (true) {
+//     counter++;
+//     const swap = first;
+//     first = second;
+//     second = second + swap;
+//
+//     if (counter === limit) break;
+//     yield second;
+//   }
+// };
+//
+// let str = '';
+// for (const strElement of fibonacciCounter(3)) {
+//   str += `, ${strElement}`
+//
+// }
+// console.log(str.slice(1));//0, 1, 1, 2,
+//
+// console.log([...fibonacciCounter(2)]); //[0,1,1]
+// console.log([...fibonacciCounter(4)]); //[ 0, 1, 1, 2, 3 ]
+// console.log([...fibonacciCounter(12)]);
 
-const fibonacciCounter = function* (limit) {
-  let first = 0;
-  let second = 1;
-  let counter = 0;
-  yield* [first, second];
-  while (true) {
-    counter++;
-    const swap = first;
-    first = second;
-    second = second + swap;
-
-    if (counter === limit) break;
-    yield second;
-  }
-};
-
-let str = '';
-for (const strElement of fibonacciCounter(3)) {
-  str += `, ${strElement}`
-
-}
-console.log(str.slice(1));//0, 1, 1, 2,
-
-console.log([...fibonacciCounter(2)]); //[0,1,1]
-console.log([...fibonacciCounter(4)]); //[ 0, 1, 1, 2, 3 ]
-console.log([...fibonacciCounter(12)]);
-
+// const arr = [1, 2, 3, 4];
+// console.log(arr);
