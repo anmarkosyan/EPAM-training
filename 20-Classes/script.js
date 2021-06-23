@@ -81,7 +81,7 @@ class Laptop extends Device {
       this.power = 0;
       this.brightness = 0;
     } else {
-      this.turnOff();
+      super.turnOff();
     }
   }
 }
