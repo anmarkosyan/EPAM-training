@@ -1,5 +1,28 @@
 'use strict';
 //===================== 🔴 lecture part ===================
+//These all create a shallow copy; top-level elements containing primitive values are copied,
+// but if the array contains nested objects or arrays,
+// those will reference elements in the original array.
+const a = [1, 2, 34];
+const b = a;
+console.log(a === b);//true
+const c = [...a];
+console.log(c === a);//false
+const d = a.slice();
+console.log(d === a);//false
+const e = Array.from(a);
+console.log(e, e === a);// false
+
+//✔ sort method
+const unsortedArr = [2, 1, 6, 3, 9, 2, 10];
+const sortedByUTF = unsortedArr.sort();
+const ascending = unsortedArr.sort((a, b) => a - b);
+const descending = unsortedArr.sort((a, b) => b - a);
+
+console.log(sortedByUTF);//convert into string by UTF-16 code
+console.log(ascending);// right ascending order
+console.log(descending);// right descending order
+
 /*
 const x = [2, 3, 4];
 //1️⃣ unshift
@@ -204,3 +227,4 @@ console.log(x);
 //   // return oddNums.reduce((acc, num) => acc + num, 0) / oddNums.length;
 // };
 // console.log(oddAvg(arr));
+
