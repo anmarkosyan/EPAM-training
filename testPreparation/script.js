@@ -614,21 +614,230 @@ the digits is equal to the sum of the second half.
 Given a ticket number n, determine if it's lucky or not.
 */
 
-const isLucky = function (num) {
-  const str = num + '';
-  const firstPart = str.slice(0, str.length / 2);
-  const secondPart = str.slice(str.length / 2);
-  let sum = 0;
+// const isLucky = function (num) {
+//   const str = num + '';
+//   const firstPart = str.slice(0, str.length / 2);
+//   const secondPart = str.slice(str.length / 2);
+//   let sum = 0;
+//
+//   for (const num of firstPart) {
+//     sum += +num;
+//   }
+//   for (const num of secondPart) {
+//     sum -= +num;
+//   }
+//
+//   return sum === 0;
+// };
+//
+// console.log(isLucky(1230)); //true
+// console.log(isLucky(239017)); //false
 
-  for (const num of firstPart) {
-    sum += +num;
-  }
-  for (const num of secondPart) {
-    sum -= +num;
-  }
+//
+const obj = new Object();//using Object Constructor function;
 
-  return sum === 0;
-};
+const obj1 = {};//using object literal;
 
-console.log(isLucky(1230)); //true
-console.log(isLucky(239017)); //false
+const obj2 = Object.create(null);// using object create method;
+function Obj3(name){
+    this.name = name;
+    this.age = 21;
+}
+
+const user = new Obj3('Anush');//using function constructor;
+
+class Obj4 {
+    constructor(name) {
+        this.name = name;
+    }
+}
+
+const user1 = new Obj4('Anush');
+
+
+//================
+// function foo(){
+//     const shoots = [];
+//
+//     let i = 0;
+//     while(i < 10){
+//         function shoot() {
+//             console.log(i);
+//         }
+//
+//         shoots.push(shoot);
+//         i++;
+//
+//     }
+//
+//     return shoots;
+// }
+//
+// foo()[9](); //
+// foo()[4](); //
+
+// const print = data => {
+//     console.log(data);
+// }
+//
+// const job = state => {
+//     return new Promise((resolve, reject) => {
+//         if(state){
+//             resolve("success")
+//         } else {
+//             reject("error")
+//         }
+//     })
+// }
+//
+// const promise = job(true);
+//
+// promise
+//     .then(data => {
+//         print(data);
+//         return job(false)
+//     })
+//     .catch(data => {
+//         print(data);
+//         return "Error Occurred";
+//     })
+//     .then(data => {
+//         print(data);
+//         return job(true);
+//     })
+//     .catch(data => {
+//         print(data);
+//         return job("false");
+//     })
+
+//=====
+// greeting();
+// var greeting = function(){
+//     console.log('first greeting!');
+// }
+// greeting();
+// function greeting(){
+//     console.log('second greeting!')
+// }
+//
+// greeting();
+
+//=======
+// var a = 'John Doe';
+// var obj7 = {
+//     a: 'test1',
+//     prop:{
+//         a: 'test2',
+//         getFullName: function(){
+//             return this.a;
+//         }
+//     },
+//     getMyName(){
+//         return this.a;
+//     },
+//     getFirstName: () => {
+//         return this.a.split(' ')[0];
+//     },
+//
+//     getLastName: (function(){
+//         return this.a.split(' ')[1]
+//
+//     })()
+// }
+// console.log(obj7.prop.getFullName());
+// console.log(obj7.getMyName());
+// console.log(obj7.getFirstName());
+// console.log(obj7.getLastName);
+
+//--------------
+// let counter = function(){
+//     let k = 0;
+//     return () => k++;
+// };
+// console.log(counter()());
+
+//=============
+// function ObjectConstructor(){
+//     this.foo = 'object constructor';
+// }
+//
+// const obj45 = new ObjectConstructor();
+//
+// const obj67 = Object.create(null);
+//
+// console.log(obj45, '-----');
+// console.log(obj67, '=====');
+
+// console.log(true && '' && 0);
+//
+// const num = new Number(34);
+//
+// console.log(num);
+
+//========
+// var x = 1;
+// if(function f(){}){
+//     x += typeof f;
+//
+// }
+// console.log(x)
+//
+// const newMap = new Map();
+// console.log(typeof newMap);
+//
+// const fnc = (function(x, y){return x + y})(2, 3);
+// console.log(fnc);
+
+//=========
+const data = [
+    {id: 1, name: 'a'},
+    {id: 2, name: 'b'},
+    {id: 1, name: 'c'},
+    {id: 1, name: 'd'},
+    {id: 3, name: 'e'},
+    {id: 2, name: 'f'},
+    {id: 1, name: 'g'},
+    {id: 6, name: 'h'},
+    {id: 2, name: 'i'},
+    {id: 4, name: 'j'},
+    {id: 7, name: 'k'},
+    {id: 1, name: 'l'},
+    {id: 3, name: 'm'},
+    {id: 1, name: 'n'},
+    {id: 8, name: 'o'},
+    {id: 1, name: 'p'},
+    {id: 4, name: 'q'},
+    {id: 7, name: 'r'},
+];
+
+const resumeObj = function(arr){
+    const uniqueIds = [...new Set(arr.map(obj => obj.id))]
+    const result = [];
+    for(let num of uniqueIds){
+        const nameArr = arr.filter(obj => obj.id === num).map(obj => obj.name);
+        result.push({id: num, name: nameArr})
+    }
+    return result;
+}
+console.log(resumeObj(data));
+
+//  [
+//     {id: 1, name: ['a', 'c', 'd', 'g', 'l', 'n', 'p']},
+//     { id: 2, name: [ 'b', 'f', 'i' ] },
+//     { id: 3, name: [ 'e', 'm' ] },
+//     { id: 6, name: [ 'h' ] },
+//     { id: 4, name: [ 'j', 'q' ] },
+//     { id: 7, name: [ 'k', 'r' ] },
+//     { id: 8, name: [ 'o' ] }
+// ];
+
+
+
+
+
+
+
+
+
+
+
