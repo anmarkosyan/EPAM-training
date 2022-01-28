@@ -810,16 +810,16 @@ const data = [
     {id: 7, name: 'r'},
 ];
 
-const resumeObj = function(arr){
-    const uniqueIds = [...new Set(arr.map(obj => obj.id))]
-    const result = [];
-    for(let num of uniqueIds){
-        const nameArr = arr.filter(obj => obj.id === num).map(obj => obj.name);
-        result.push({id: num, name: nameArr})
-    }
-    return result;
-}
-console.log(resumeObj(data));
+// const resumeObj = function(arr){
+//     const uniqueIds = [...new Set(arr.map(obj => obj.id))]
+//     const result = [];
+//     for(let num of uniqueIds){
+//         const nameArr = arr.filter(obj => obj.id === num).map(obj => obj.name);
+//         result.push({id: num, name: nameArr})
+//     }
+//     return result;
+// }
+// console.log(resumeObj(data));
 
 //  [
 //     {id: 1, name: ['a', 'c', 'd', 'g', 'l', 'n', 'p']},
@@ -831,11 +831,75 @@ console.log(resumeObj(data));
 //     { id: 8, name: [ 'o' ] }
 // ];
 
+//==========
+// const sumOfN = function(n){
+//     const arrOfSum = [];
+//     for (let i = 0; i < Math.abs(n) + 1 ; i++) {
+//         let sum = 0;
+//         for(let j = 0; j <= i; j++){
+//            n > 0 ? sum += j : sum += -j;
+//         }
+//         arrOfSum.push(sum);
+//     }
+//     return arrOfSum;
+// }
+// console.log(sumOfN(3));//[0, 1, 3, 6];
+// console.log(sumOfN(-4));// [0, -1, -3, -6, -10]
+// console.log(sumOfN(1));// [0, 1]
 
+//===========
+// const generateInt = function(n){
+//     //return Array.from({length: n + 1}, (_, i) => i);
+//
+//     //return [...Array(n + 1).keys()]
+//
+//     const arr = [];
+//     arr.length = n + 1;
+//     return [...arr.keys()];
+// }
+// console.log(generateInt(3));//[0, 1, 2, 3]
 
+//==========
+//function findMultiples(integer, limit) {
+     //const arrLength = Math.floor(limit / integer);
+     //1
+    //return Array.from({length: arrLength}, (_, i)=> (i + 1) * integer);
+    //2
+    // const arr = [];
+    // arr.length = arrLength;
+    // return [...arr.keys()].map(i => (i + 1) * integer);
+    //3
+    // const arr = [];
+    // for(let i = 0; i < arrLength; i++){
+    //     arr.push(integer * (i + 1));
+    // }
+    // return arr;
+    //4
+    // const arr = [];
+    // for(let i = integer; i <= limit; i += integer){
+    //     arr.push(i);
+    // }
+    // return arr;
+//}
 
+// console.log(findMultiples(5, 25));//[5, 10, 15, 20, 25]
+// console.log(findMultiples(1, 2));// [1, 2]
+// console.log(findMultiples(5, 7));// [5]
+// console.log(findMultiples(4, 27));// [4, 8, 12, 16, 20, 24])
 
+//===============
+// const allNonConsecutive = function(arr){
+//     const newArr = [];
+//     for(let i = 0; i < arr.length; i++){
+//         if(arr[i] + 1 !== arr[i + 1]){
+//             newArr.push({i: i + 1 , n: arr[i + 1]})
+//         }
+//     }
+//     return newArr.slice(0, -1);
+// }
+// console.log(allNonConsecutive([1,2,3,4,6,7,8,10]));//[{i: 4, n:6}, {i: 7, n:10}]
 
+//============
 
 
 
