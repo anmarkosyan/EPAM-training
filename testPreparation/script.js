@@ -789,26 +789,26 @@ const user1 = new Obj4('Anush');
 // console.log(fnc);
 
 //=========
-const data = [
-    {id: 1, name: 'a'},
-    {id: 2, name: 'b'},
-    {id: 1, name: 'c'},
-    {id: 1, name: 'd'},
-    {id: 3, name: 'e'},
-    {id: 2, name: 'f'},
-    {id: 1, name: 'g'},
-    {id: 6, name: 'h'},
-    {id: 2, name: 'i'},
-    {id: 4, name: 'j'},
-    {id: 7, name: 'k'},
-    {id: 1, name: 'l'},
-    {id: 3, name: 'm'},
-    {id: 1, name: 'n'},
-    {id: 8, name: 'o'},
-    {id: 1, name: 'p'},
-    {id: 4, name: 'q'},
-    {id: 7, name: 'r'},
-];
+// const data = [
+//     {id: 1, name: 'a'},
+//     {id: 2, name: 'b'},
+//     {id: 1, name: 'c'},
+//     {id: 1, name: 'd'},
+//     {id: 3, name: 'e'},
+//     {id: 2, name: 'f'},
+//     {id: 1, name: 'g'},
+//     {id: 6, name: 'h'},
+//     {id: 2, name: 'i'},
+//     {id: 4, name: 'j'},
+//     {id: 7, name: 'k'},
+//     {id: 1, name: 'l'},
+//     {id: 3, name: 'm'},
+//     {id: 1, name: 'n'},
+//     {id: 8, name: 'o'},
+//     {id: 1, name: 'p'},
+//     {id: 4, name: 'q'},
+//     {id: 7, name: 'r'},
+// ];
 
 // const resumeObj = function(arr){
 //     const uniqueIds = [...new Set(arr.map(obj => obj.id))]
@@ -900,8 +900,69 @@ const data = [
 // console.log(allNonConsecutive([1,2,3,4,6,7,8,10]));//[{i: 4, n:6}, {i: 7, n:10}]
 
 //============
+// class Person {
+// }
+//
+// class Employee extends Person {
+//     constructor() {
+//         super();
+//     }
+// }
+//
+// class Developer extends Employee {
+//     constructor() {
+//         super();
+//     }
+// }
+//
+// const tom = new Developer();
+// console.log(Object.getPrototypeOf(tom) === Developer.prototype); // true
+// console.log(Object.getPrototypeOf(tom) === Employee.prototype); // false
+// console.log(Developer.isPrototypeOf(tom)); // false
+// console.log(Developer.prototype.isPrototypeOf(tom)); // true
+// console.log(Employee.prototype.isPrototypeOf(tom)); // true
+// console.log(Person.prototype.isPrototypeOf(tom)); // true
+// console.log(Object.prototype.isPrototypeOf(tom)); // true
 
+//=========
+function doubles(s){
+    let arrOfString = [...s];
+    let arr = [];
+    for(let char of arrOfString){
+        if(arr.length !== 0 && arr[arr.length - 1] === char){
+            arr.pop();
+        }else {
+            arr.push(char)
+        }
+    }
+   return arr.join('');
+}
 
+console.log(doubles('abbcccdddda'))//'aca'
+console.log(doubles('abbbzz'));//'ab'
+console.log(doubles('zzzzykkkd'))//'ykd'
+console.log(doubles('vvvvvoiiiiin'))//'voin'
 
+//===========
+const data = {1: 'asa', 2:'ere', 3: 'there'};
+console.log(Object.entries(data));
+//convert object to map
+const mapData = new Map(Object.entries(data));
+mapData.set([1, 2], 'hello');
+console.log(mapData);
 
+for(const [key, value] of mapData){
+    console.log(key, value)
 
+}
+console.log(mapData.get('2'))
+
+//=========
+const tests = new Map();
+tests.set(() => 2+2, 4);
+tests.set(() => 2*2, 4);
+tests.set(() => 2/2, 1);
+
+for(const item of tests){
+    console.log(item[0]() === item[1] ? 'Pass' : 'fail');
+}
