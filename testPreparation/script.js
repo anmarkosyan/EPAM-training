@@ -925,44 +925,52 @@ const user1 = new Obj4('Anush');
 // console.log(Object.prototype.isPrototypeOf(tom)); // true
 
 //=========
-function doubles(s){
-    let arrOfString = [...s];
-    let arr = [];
-    for(let char of arrOfString){
-        if(arr.length !== 0 && arr[arr.length - 1] === char){
-            arr.pop();
-        }else {
-            arr.push(char)
-        }
-    }
-   return arr.join('');
-}
-
-console.log(doubles('abbcccdddda'))//'aca'
-console.log(doubles('abbbzz'));//'ab'
-console.log(doubles('zzzzykkkd'))//'ykd'
-console.log(doubles('vvvvvoiiiiin'))//'voin'
+// function doubles(s){
+//     let arrOfString = [...s];
+//     let arr = [];
+//     for(let char of arrOfString){
+//         if(arr.length !== 0 && arr[arr.length - 1] === char){
+//             arr.pop();
+//         }else {
+//             arr.push(char)
+//         }
+//     }
+//    return arr.join('');
+// }
+//
+// console.log(doubles('abbcccdddda'))//'aca'
+// console.log(doubles('abbbzz'));//'ab'
+// console.log(doubles('zzzzykkkd'))//'ykd'
+// console.log(doubles('vvvvvoiiiiin'))//'voin'
 
 //===========
-const data = {1: 'asa', 2:'ere', 3: 'there'};
-console.log(Object.entries(data));
-//convert object to map
-const mapData = new Map(Object.entries(data));
-mapData.set([1, 2], 'hello');
-console.log(mapData);
-
-for(const [key, value] of mapData){
-    console.log(key, value)
-
-}
-console.log(mapData.get('2'))
+// const data = {1: 'asa', 2:'ere', 3: 'there'};
+// console.log(Object.entries(data));
+// //convert object to map
+// const mapData = new Map(Object.entries(data));
+// mapData.set([1, 2], 'hello');
+// console.log(mapData);
+//
+// for(const [key, value] of mapData){
+//     console.log(key, value)
+//
+// }
+// console.log(mapData.get('2'));
 
 //=========
-const tests = new Map();
-tests.set(() => 2+2, 4);
-tests.set(() => 2*2, 4);
-tests.set(() => 2/2, 1);
+// const tests = new Map();
+// tests.set(() => 2+2, 4);
+// tests.set(() => 2*2, 4);
+// tests.set(() => 2/2, 1);
+//
+// for(const item of tests){
+//     console.log(item[0]() === item[1] ? 'Pass' : 'fail');
+//}
 
-for(const item of tests){
-    console.log(item[0]() === item[1] ? 'Pass' : 'fail');
-}
+//======
+let randomObj = {1: 'hello'};
+const newMap = new Map();
+newMap.set(randomObj, true);
+console.log(newMap.get(randomObj));
+randomObj = undefined;
+console.log(newMap.get(randomObj), newMap);
