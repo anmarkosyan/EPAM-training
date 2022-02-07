@@ -1,4 +1,4 @@
-//'use strict';
+'use strict';
 //🏋🏻‍♀️
 // Number.prototype.plus = function (number) {
 //   return this + number;
@@ -634,26 +634,25 @@ Given a ticket number n, determine if it's lucky or not.
 // console.log(isLucky(239017)); //false
 
 //
-const obj = new Object();//using Object Constructor function;
-
-const obj1 = {};//using object literal;
-
-const obj2 = Object.create(null);// using object create method;
-function Obj3(name){
-    this.name = name;
-    this.age = 21;
-}
-
-const user = new Obj3('Anush');//using function constructor;
-
-class Obj4 {
-    constructor(name) {
-        this.name = name;
-    }
-}
-
-const user1 = new Obj4('Anush');
-
+// const obj = new Object();//using Object Constructor function;
+//
+// const obj1 = {};//using object literal;
+//
+// const obj2 = Object.create(null);// using object create method;
+// function Obj3(name){
+//     this.name = name;
+//     this.age = 21;
+// }
+//
+// const user = new Obj3('Anush');//using function constructor;
+//
+// class Obj4 {
+//     constructor(name) {
+//         this.name = name;
+//     }
+// }
+//
+// const user1 = new Obj4('Anush');
 
 //================
 // function foo(){
@@ -968,9 +967,122 @@ const user1 = new Obj4('Anush');
 //}
 
 //======
-let randomObj = {1: 'hello'};
-const newMap = new Map();
-newMap.set(randomObj, true);
-console.log(newMap.get(randomObj));
-randomObj = undefined;
-console.log(newMap.get(randomObj), newMap);
+// let randomObj = {1: 'hello'};
+// const newMap = new Map();
+// newMap.set(randomObj, true);
+// console.log(newMap.get(randomObj));
+// randomObj = undefined;
+// console.log(newMap.get(randomObj), newMap);
+
+//======
+// const findMin = function(arr){
+//     //1
+//     let first = arr[0][1];
+//     for (let i = 1; i < arr.length ; i++) {
+//         if(arr[i][1] < first){
+//             first = arr[i][1];
+//         }
+//     }
+//     return first;
+    //2
+    // const numArr = [];
+    // for(const [, num] of arr){
+    //     numArr.push(num);
+    //
+    // }
+    // return Math.min(...numArr);
+    //3
+    // const first = arr[0][1];
+    // const second = arr[1][1];
+    // const three = arr[2][1];
+    // return Math.min(first, second, three);
+    //4
+    // const nums = arr.map(el => el[1]);
+    // return Math.min(...nums);
+    //5
+   // return arr.reduce((min, num) => min < num[1] ? min : num[1], arr[0][1]);
+//}
+
+//console.log(findMin([['a', 2], ['b', 10], ['c', 60]]));
+
+//=============
+// var firstName = 'Aram';
+//
+// const user34 = {
+//     firstName: 'Anush',
+//     year: 1991,
+//     calcAge () {
+//         //console.log(this);//user{}
+//         console.log(2021 - this.year); //30
+//     },
+//
+//     greet: () => {
+//
+//         //console.log(this); //window object
+//         console.log(this.firstName); //undefined || var firstName = 'Aram'; will calling as window.firstName = 'Aram'
+//     },
+// };
+// user34.calcAge();
+// user34.greet();
+
+//=========
+// var x = 22;
+//
+// const objNew = {
+//     x: 55,
+//     bar: {
+//         x: 6,
+//         baz: function() {
+//             return this.x;
+//         }
+//     }
+// }
+// const foo = objNew.bar.baz;
+//
+// //console.log((foo()));
+// console.log((objNew.bar.baz()));
+
+//========
+// var x = 10
+// const obj = {
+//     x: 20,
+//     foo: function() {
+//         setTimeout(() => {
+//             console.log(this.x)
+//         }, 0)
+//     }
+// }
+// obj.foo();
+
+//======
+// const person = { name: "Davit" };
+//
+// Object.defineProperty(person, "age", { value: 21, writable: true });
+//
+// console.log(person);
+// console.log(Object.keys(person));
+
+//=========
+Promise.resolve()
+    .then(() => {
+        setTimeout(() => {
+            console.log('setTimeout 1')
+        }, 0)
+    })
+    .then(() => {
+        console.log('then')
+    })
+
+setTimeout(() => {
+    console.log('setTimeout 2')
+}, 0)
+
+//===============
+// let config = {
+//     alert: setInterval(() => {
+//         console.log('Hello Wolrd!')
+//     }, 1000)
+// }
+
+//config = null
+
