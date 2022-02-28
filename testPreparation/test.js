@@ -9,7 +9,6 @@
 // function getCoordinates(){}
 
 
-console.log('hello');
 
 
 
